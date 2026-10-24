@@ -1,25 +1,26 @@
 {
   "resumen": {
-    "fecha": "2026-10-23T14:22:16",
+    "fecha": "2026-10-23T18:35:20",
     "modelo": "qwen3:4b-instruct",
+    "etiqueta": "",
     "embeddings": "bge-m3",
     "juez": "qwen3:8b",
     "preguntas": 40,
     "recuperacion_acierto_k": 1.0,
     "recuperacion_recall_articulos": 0.971,
-    "precision_citas": 0.68,
+    "precision_citas": 0.695,
     "responde_cuando_debe": 1.0,
     "se_abstiene_cuando_debe": 1.0,
     "citas_rechazadas_total": 2,
     "reintentos_total": 0,
-    "latencia_p50_s": 3.76,
-    "latencia_p95_s": 9.24,
-    "tokens_promedio": 1551.275,
-    "faithfulness": 0.873,
+    "latencia_p50_s": 4.83,
+    "latencia_p95_s": 11.01,
+    "tokens_promedio": 1548.25,
+    "faithfulness": 0.868,
     "answer_relevancy": 0.993,
-    "contextual_precision": 0.92,
+    "contextual_precision": 0.934,
     "contextual_recall": 0.971,
-    "correctness": 0.712,
+    "correctness": 0.697,
     "por_tipo": {
       "coloquial": {
         "n": 16,
@@ -75,7 +76,7 @@
       "similitud_max": 0.695,
       "tokens_entrada": 978,
       "tokens_salida": 189,
-      "segundos": 3.33,
+      "segundos": 6.75,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -101,7 +102,7 @@
       "articulos_esperados": [
         "LFT 80"
       ],
-      "respuesta": "La prima vacacional es de al menos un veinticinco por ciento sobre los salarios recibidos durante el período de vacaciones.",
+      "respuesta": "La prima vacacional es un porcentaje mínimo del 25% sobre los salarios recibidos durante el periodo de vacaciones.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 1.0,
@@ -114,7 +115,7 @@
         "LFT 80",
         "LFT 81",
         "LFT 199",
-        "LFT 71"
+        "LFT 79"
       ],
       "contexto": [
         "LFT Art. 76: Las personas trabajadoras que tengan más de un año de servicios disfrutarán de un periodo anual de vacaciones pagadas, que en ningún caso podrá ser inferior a doce días laborables, y que aumentará en dos días laborables, hasta llegar a veinte, por cada año subsecuente de servicios.\nA partir del sexto año, el periodo de vacaciones aumentará en dos días por cada cinco de servicios.",
@@ -122,15 +123,15 @@
         "LFT Art. 80: Los trabajadores tendrán derecho a una prima no menor de veinticinco por ciento sobre los salarios que les correspondan durante el período de vacaciones.",
         "LFT Art. 81: Las vacaciones deberán concederse a los trabajadores dentro de los seis meses siguientes al cumplimiento del año de servicios. Los patrones entregarán anualmente a sus trabajadores una constancia que contenga su antigüedad y de acuerdo con ella el período de vacaciones que les corresponda y la fecha en que deberán disfrutarlo.",
         "LFT Art. 199: Los trabajadores tienen derecho a un período mínimo de doce días laborables de vacaciones anuales pagadas, que se aumentará en dos días laborables, hasta llegar a veinticuatro, por cada año subsecuente de servicios. Con posterioridad se aumentará el período de vacaciones en dos días por cada cinco años de servicios.\nLas vacaciones deberán disfrutarse en tierra, pudiendo fraccionarse cuando lo exija la continuidad del trabajo.",
-        "LFT Art. 71: En los reglamentos de esta Ley se procurará que el día de descanso semanal sea el domingo.\nLas personas que laboren en domingo tendrán derecho a una prima adicional de un veinticinco por ciento, por lo menos, sobre el salario de los días ordinarios de trabajo."
+        "LFT Art. 79: Las vacaciones no podrán compensarse con una remuneración.\nSi la relación de trabajo termina antes de que se cumpla el año de servicios, el trabajador tendrá derecho a una remuneración proporcionada al tiempo de servicios prestados."
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
       "reescrita": null,
       "similitud_max": 0.707,
-      "tokens_entrada": 1020,
-      "tokens_salida": 111,
-      "segundos": 2.35,
+      "tokens_entrada": 1006,
+      "tokens_salida": 108,
+      "segundos": 2.68,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -141,11 +142,11 @@
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the response is fully relevant and directly addresses the question about the vacation bonus amount. There are no irrelevant statements in the output.",
       "contextual_precision": 0.5833333333333333,
-      "contextual_precision_razon": "The score is 0.58 because the first node, which is irrelevant, is ranked higher than the second and third nodes, which are relevant. The irrelevant nodes should be ranked lower than the relevant ones, but some relevant nodes are placed after irrelevant ones, lowering the score.",
+      "contextual_precision_razon": "The score is 0.58 because the first node, which is irrelevant, is ranked higher than the second and third nodes, which are relevant. The irrelevant nodes should be ranked lower than the relevant ones, but some irrelevant nodes are placed before relevant ones, reducing the score.",
       "contextual_recall": 1.0,
-      "contextual_recall_razon": "The score is 1.00 because the sentence in the expected output is fully supported by the 1st, 3rd, and 4th node(s) in the retrieval context, which directly mention the 25% vacation bonus over the salary during the vacation period.",
-      "correctness": 0.9,
-      "correctness_razon": "La respuesta real menciona 'al menos un veinticinco por ciento' mientras que la respuesta esperada dice 'por lo menos el veinticinco por ciento'. Ambas expresiones son equivalentes en significado, pero la respuesta real utiliza una estructura ligeramente diferente. No hay contradicción en los porcentajes ni en los términos clave, por lo que se considera una coincidencia aceptable. Sin embargo, la respuesta real omite 'que correspondan' y 'durante el periodo de vacaciones' en lugar de 'durante el período de vacaciones', lo cual no afecta el significado esencial."
+      "contextual_recall_razon": "The score is 1.00 because the sentence in the expected output is fully supported by the 1st, 3rd, and 4th nodes in retrieval context, which directly mention the 25% vacation bonus over the salary during the vacation period.",
+      "correctness": 1.0,
+      "correctness_razon": "La respuesta real menciona '25%' mientras que la respuesta esperada usa 'veinticinco por ciento', lo cual es equivalente en términos numéricos. Sin embargo, la respuesta real omite la frase 'de por lo menos' que aparece en la respuesta esperada, lo cual puede considerarse un detalle secundario. Ambas respuestas coinciden en el porcentaje y el concepto general, por lo que se otorga un puntaje alto."
     },
     {
       "id": 3,
@@ -156,16 +157,13 @@
       "articulos_esperados": [
         "LFT 78"
       ],
-      "respuesta": "No, tu jefe no puede darte las vacaciones de un día por semana. La ley establece que los trabajadores deben disfrutar al menos 12 días laborables de vacaciones anuales, y que pueden ser distribuidos según lo requiera el trabajo, pero no en un solo día por semana.",
+      "respuesta": "No, tu jefe no puede darte las vacaciones de un día por semana. Según la ley, debes tener al menos 12 días laborables de vacaciones anuales, y puedes distribuirlos en el tiempo que quieras, pero no puede ser menos de 12 días ni divididos en un solo día por semana.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.92,
       "citados": [
         "LFT 76",
-        "LFT 77",
-        "LFT 199",
-        "LFT 179",
-        "LFT 233"
+        "LFT 78"
       ],
       "recuperados": [
         "LFT 76",
@@ -188,23 +186,23 @@
       "reescrita": null,
       "similitud_max": 0.65,
       "tokens_entrada": 975,
-      "tokens_salida": 520,
-      "segundos": 7.91,
+      "tokens_salida": 282,
+      "segundos": 4.89,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
-      "precision_citas": 0.0,
+      "precision_citas": 0.5,
       "abstencion_correcta": true,
-      "faithfulness": 0.6666666666666666,
-      "faithfulness_razon": "The score is 0.67 because the actual output contradicts the retrieval context by stating that workers can take one day of vacation per week, which conflicts with the law that guarantees a minimum of twelve working days of paid annual vacation.",
+      "faithfulness": 1.0,
+      "faithfulness_razon": "The score is 1.00 because there are no contradictions, indicating the actual output is fully aligned with the retrieval context.",
       "answer_relevancy": 0.75,
-      "answer_relevancy_razon": "The score is 0.75 because the response directly answers the question but lacks additional relevant information or clarification, which could have further addressed the user's query about taking one day off per week.",
+      "answer_relevancy_razon": "The score is 0.75 because the output includes a redundant statement that repeats the same information without adding new or relevant content to address the input. However, the core response is still relevant and directly answers the question about taking one day off per week.",
       "contextual_precision": 1.0,
       "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 78\" and \"LFT Art. 76\" are the first two nodes and directly support the input, while the irrelevant nodes are ranked lower. The score is at its maximum as all relevant nodes are prioritized above the irrelevant ones.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the entire sentence in the expected output is directly supported by the 1st node and 2nd node in the retrieval context, as it matches the legal provision regarding the minimum twelve continuous vacation days and the worker's discretion in distributing the remaining period.",
-      "correctness": 0.5,
-      "correctness_razon": "La respuesta real menciona correctamente los 12 días laborables de vacaciones anuales, pero no especifica que deben ser continuos, lo cual es clave en la respuesta esperada. Además, la respuesta real menciona que los días pueden ser distribuidos según lo requiera el trabajo, lo cual contradice la respuesta esperada que establece que la distribución del resto es a potestad de la persona trabajadora, no del patrón. Estas discrepancias significativas reducen la alineación con los pasos de evaluación."
+      "correctness": 0.7,
+      "correctness_razon": "La respuesta real menciona correctamente los 12 días laborables mínimos de vacaciones anuales, pero no especifica que deben ser continuos, lo cual es clave en la respuesta esperada. Además, la respuesta real menciona una distribución en semanas, lo cual contradice la idea de que no pueden ser divididos en un solo día por semana. La respuesta esperada es más precisa y alinea mejor con la normativa laboral."
     },
     {
       "id": 4,
@@ -215,7 +213,7 @@
       "articulos_esperados": [
         "LFT 81"
       ],
-      "respuesta": "Te tienen que dar tus vacaciones dentro de los seis meses siguientes al cumplimiento del año de servicios.",
+      "respuesta": "Después de cumplir un año de servicios, debes recibir tus vacaciones dentro de los seis meses siguientes al cumplimiento de ese año.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 1.0,
@@ -243,8 +241,8 @@
       "reescrita": null,
       "similitud_max": 0.737,
       "tokens_entrada": 974,
-      "tokens_salida": 93,
-      "segundos": 4.78,
+      "tokens_salida": 101,
+      "segundos": 2.24,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -258,8 +256,8 @@
       "contextual_precision_razon": "The score is 0.92 because the relevant nodes are ranked higher than the irrelevant ones, with the first four nodes providing direct or complementary information about vacation time frames. The irrelevant nodes (nodes 3, 5, and 6) are correctly placed lower in the ranking, as they pertain to specific worker categories (discontinuous work, minors, and sailors) which are not relevant to the question about the time frame for granting vacation. The score is not higher because one irrelevant node (node 3) is ranked slightly higher than a relevant node (node 4), which slightly reduces the precision.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the 1st sentence in the expected output is directly supported by node 5 in retrieval context, which contains an identical statement.",
-      "correctness": 0.9,
-      "correctness_razon": "La respuesta real es casi idéntica a la esperada, excepto por el uso de 'te tienen que dar tus vacaciones' en lugar de 'las vacaciones deben concederse'. Aunque el significado es similar, la diferencia en la estructura y el uso del verbo 'deber' en la respuesta esperada indica una ligera discrepancia en el lenguaje formal, lo que reduce el puntaje. Sin embargo, no hay contradicción en días, porcentajes o plazos, y el esencial coincide."
+      "correctness": 0.8,
+      "correctness_razon": "La respuesta real incluye información adicional que no está en la respuesta esperada, específicamente la parte sobre 'después de cumplir un año de servicios', lo cual no es necesario y puede considerarse un detalle secundario. Sin embargo, el núcleo esencial sobre el plazo de seis meses coincide. No hay contradicción de datos, pero la inclusión de información extra reduce la precisión."
     },
     {
       "id": 5,
@@ -299,8 +297,8 @@
       "reescrita": null,
       "similitud_max": 0.73,
       "tokens_entrada": 1248,
-      "tokens_salida": 206,
-      "segundos": 3.68,
+      "tokens_salida": 207,
+      "segundos": 4.25,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -326,7 +324,7 @@
       "articulos_esperados": [
         "LFT 87"
       ],
-      "respuesta": "Sí, te toca aguinaldo este diciembre porque, aunque entraste en agosto, tienes derecho a un aguinaldo anual equivalente a quince días de salario, que se paga antes del veinte de diciembre. Este derecho lo tiene cualquier trabajador, incluyendo los del hogar.",
+      "respuesta": "Sí, te toca aguinaldo este diciembre porque, aunque entraste en agosto, tienes derecho a un aguinaldo anual equivalente a quince días de salario, que debe pagarse antes del 20 de diciembre. Este derecho se aplica a todos los trabajadores, incluyendo los del hogar.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.95,
@@ -355,8 +353,8 @@
       "reescrita": null,
       "similitud_max": 0.676,
       "tokens_entrada": 1140,
-      "tokens_salida": 220,
-      "segundos": 3.76,
+      "tokens_salida": 224,
+      "segundos": 4.03,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -370,8 +368,8 @@
       "contextual_precision_razon": "The score is 0.83 because the first three nodes are relevant and correctly ranked higher, but the fourth and fifth nodes are irrelevant and should be ranked lower. The fourth node mentions vacaciones but not aguinaldo, the fifth node talks about discontinuous work but not aguinaldo, and the sixth node is relevant but placed lower than some irrelevant nodes.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the sentence in the expected output is fully supported by the 1st node in retrieval context, which directly addresses the proportional payment of the aguinaldo for those who have not completed one year of service.",
-      "correctness": 0.5,
-      "correctness_razon": "La respuesta real menciona específicamente el pago del aguinaldo en diciembre y la cantidad de quince días de salario, mientras que la respuesta esperada se centra en la proporcionalidad del aguinaldo según el tiempo trabajado. Estas diferencias en los detalles específicos, especialmente en fechas y porcentajes, inciden en la precisión y contradicen parcialmente la respuesta esperada, lo que reduce la puntuación."
+      "correctness": 0.4,
+      "correctness_razon": "La respuesta real menciona un aguinaldo anual equivalente a quince días de salario y un plazo específico de pago (20 de diciembre), mientras que la respuesta esperada se centra en la parte proporcional del aguinaldo según el tiempo trabajado. Estas diferencias en el contenido y los detalles específicos inciden en la precisión y la alineación con la respuesta esperada."
     },
     {
       "id": 7,
@@ -382,7 +380,7 @@
       "articulos_esperados": [
         "LFT 87"
       ],
-      "respuesta": "No, no pierdes tu aguinaldo si te corrieron en octubre. Tienes derecho a la parte proporcional del aguinaldo por el tiempo que trabajaste, según lo establecido en la Ley Federal Del Trabajo.",
+      "respuesta": "No, no pierdes tu aguinaldo si te corrieron en octubre. Tienes derecho a la parte proporcional del aguinaldo por los meses que trabajaste, según lo establecido en el artículo 87 de la Ley Federal Del Trabajo.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.77,
@@ -410,23 +408,23 @@
       "reescrita": null,
       "similitud_max": 0.556,
       "tokens_entrada": 1956,
-      "tokens_salida": 186,
-      "segundos": 4.78,
+      "tokens_salida": 192,
+      "segundos": 5.0,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
       "precision_citas": 1.0,
       "abstencion_correcta": true,
       "faithfulness": 0.5,
-      "faithfulness_razon": "The score is 0.50 because the actual output contradicts the retrieval context by stating that 'no pierdes tu aguinaldo si te corrieron en octubre', whereas the context clearly indicates that the aguinaldo must be paid before December 20th, and being fired before that date could result in losing part of it.",
+      "faithfulness_razon": "The score is 0.50 because the actual output contradicts the retrieval context by stating that not losing your aguinaldo when it was paid in October, while the context clearly indicates that the aguinaldo must be paid before December 20th, meaning it was still due and thus the claim of not losing it is incorrect.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the response is fully relevant and directly addresses the question about whether the person loses their aguinaldo if they were run over in October.",
       "contextual_precision": 1.0,
       "contextual_precision_razon": "The score is 1.00 because the first node, which directly addresses the aguinaldo and its payment deadline, is ranked first, and all other nodes are irrelevant and ranked lower, as they discuss unrelated topics such as termination, indemnization, and prescription periods.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the sentence in the expected output is fully supported by the 1st node in retrieval context, which directly addresses the proportional payment of the aguinaldo based on time worked, regardless of employment status at the time of payment.",
-      "correctness": 0.6,
-      "correctness_razon": "La respuesta real menciona específicamente la Ley Federal Del Trabajo y el mes de octubre, mientras que la respuesta esperada no incluye el mes ni la ley. Esto introduce una diferencia significativa en la precisión legal, lo que se penaliza fuertemente según los pasos de evaluación."
+      "correctness": 0.9,
+      "correctness_razon": "La respuesta real coincide con la esperada en la esencia del mensaje, afirmando que el trabajador tiene derecho a la parte proporcional del aguinaldo. Sin embargo, la respuesta real menciona específicamente el artículo 87 de la Ley Federal Del Trabajo, mientras que la esperada no lo incluye, lo cual no es un error grave pero podría considerarse un detalle secundario. Ambas respuestas son claras y correctas en su esencia."
     },
     {
       "id": 8,
@@ -468,7 +466,7 @@
       "similitud_max": 0.702,
       "tokens_entrada": 996,
       "tokens_salida": 268,
-      "segundos": 4.5,
+      "segundos": 4.51,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -494,13 +492,13 @@
       "articulos_esperados": [
         "CPEUM 123"
       ],
-      "respuesta": "La Constitución establece que la jornada máxima de trabajo es de ocho horas diarias. Además, la Ley Federal del Trabajo fija como duración máxima de la jornada ordinaria de trabajo cuarenta horas semanales.",
+      "respuesta": "La Constitución establece que la jornada laboral máxima es de cuarenta horas semanales, y que por cada seis días de trabajo se debe disfrutar al menos un día de descanso con goce de salario íntegro.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.89,
       "citados": [
-        "LFT 59",
-        "CPEUM 123"
+        "CPEUM 123",
+        "LFT 59"
       ],
       "recuperados": [
         "CPEUM 123",
@@ -516,30 +514,30 @@
         "CPEUM Art. 123, apartado A, fracc. I: A. Entre los obreros, jornaleros, empleados domésticos, artesanos y de una manera general, todo contrato de trabajo:\nI. La duración de la jornada máxima será de ocho horas.",
         "CPEUM Art. 123, apartado A, fracc. II: A. Entre los obreros, jornaleros, empleados domésticos, artesanos y de una manera general, todo contrato de trabajo:\nII. La jornada máxima de trabajo nocturno será de 7 horas. Quedan prohibidas: las labores insalubres o peligrosas, el trabajo nocturno industrial y todo otro trabajo después de las diez de la noche, de los menores de dieciséis años;",
         "LFT Art. 68: Las personas trabajadoras no están obligadas a prestar sus servicios por un tiempo mayor del permitido en este capítulo.\nLa prolongación del tiempo extraordinario que supere lo establecido en el artículo 66 de esta Ley, no podrá ser mayor de cuatro horas a la semana y obliga a la persona empleadora a pagar un doscientos por ciento más del salario que corresponda a las horas de la jornada ordinaria.\nLa suma de las jornadas ordinaria y extraordinaria, en ningún caso podrá ser mayor a doce horas diarias.",
-        "CPEUM Art. 123, apartado A, fracc. XI: A. Entre los obreros, jornaleros, empleados domésticos, artesanos y de una manera general, todo contrato de trabajo:\nXI. Cuando por circunstancias extraordinarias deban aumentarse las horas de la jornada, se abonará como salario por este tiempo un cien por ciento más de lo fijado para las horas ordinarias. El trabajo extraordinario no excederá de doce horas en una semana, las cuales podrán distribuirse en hasta cuatro horas diarias, en un máximo de cuatro días en ese periodo.\nLa prolongación del tiempo extraordinario que supere lo establecido en el párrafo que antecede, obliga a la persona empleadora a pagar doscientos por ciento más del salario que corresponda a las horas de la jornada ordinaria conforme a lo establecido en la Ley de la materia.\nLas personas menores de dieciocho años no podrán laborar tiempo extraordinario."
+        "CPEUM Art. 123, apartado A, fracc. IV: A. Entre los obreros, jornaleros, empleados domésticos, artesanos y de una manera general, todo contrato de trabajo:\nIV. La jornada laboral será de cuarenta horas semanales en los términos que establezca la Ley.\nPor cada seis días de trabajo las personas trabajadoras deberán disfrutar por lo menos de un día de descanso con goce de salario íntegro."
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
       "reescrita": null,
       "similitud_max": 0.634,
-      "tokens_entrada": 1213,
-      "tokens_salida": 156,
-      "segundos": 2.33,
+      "tokens_entrada": 1100,
+      "tokens_salida": 171,
+      "segundos": 3.51,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
       "precision_citas": 0.5,
       "abstencion_correcta": true,
-      "faithfulness": 0.5,
-      "faithfulness_razon": "The score is 0.50 because the actual output incorrectly references the Constitution, while the retrieval context only mentions specific labor norms like the CPEUM Art. 123, without mentioning the Constitution.",
+      "faithfulness": 0.0,
+      "faithfulness_razon": "The score is 0.00 because the actual output incorrectly states that 'La Constitución no establece la jornada laboral máxima', while the retrieval context clarifies that this norm is regulated by the CPEUM Art. 123 and the LFT, not the Constitution.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the answer is fully relevant and directly addresses the question about the number of hours worked per week as stated in the Constitution.",
-      "contextual_precision": 1.0,
-      "contextual_precision_razon": "The score is 1.00 because all relevant nodes are ranked higher than irrelevant nodes. The first six nodes all provide direct and relevant information about maximum working hours, with no irrelevant nodes present to lower the score.",
+      "contextual_precision": 0.9666666666666666,
+      "contextual_precision_razon": "The score is 0.97 because the relevant nodes (nodes 1, 2, 3, 4, and 6) are ranked higher than the irrelevant node (node 5), which discusses additional pay for extended hours rather than the maximum weekly working hours. The only minor issue is node 5 being ranked fifth, which slightly lowers the precision, but the majority of the retrieval contexts are highly relevant.",
       "contextual_recall": 1.0,
-      "contextual_recall_razon": "The score is 1.00 because the sentence in the expected output is fully supported by the 2nd node in the retrieval context, which directly mentions 'jornada ordinaria de trabajo será de cuarenta horas semanales'.",
-      "correctness": 0.8,
-      "correctness_razon": "La respuesta real menciona correctamente la jornada máxima de ocho horas diarias y cuarenta horas semanales, pero no cita específicamente el artículo 123 constitucional como lo hace la respuesta esperada. Además, la respuesta real menciona la Ley Federal del Trabajo, lo cual no está en la respuesta esperada, lo que podría considerarse un detalle secundario. Sin embargo, la respuesta real no contradice la información esencial de la respuesta esperada."
+      "contextual_recall_razon": "The score is 1.00 because all sentences in the expected output are fully supported by the retrieval context, specifically node 2 and node 4, which mention the 'jornada laboral será de cuarenta horas semanales'.",
+      "correctness": 0.7,
+      "correctness_razon": "La respuesta real menciona la jornada laboral máxima de cuarenta horas semanales y el descanso semanal, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real no menciona el artículo 123 constitucional ni la referencia a la ley, lo cual es un detalle clave en la respuesta esperada. Aunque los datos esenciales coinciden, la falta de precisión en la citación legal reduce la alineación."
     },
     {
       "id": 10,
@@ -551,7 +549,7 @@
         "LFT 63",
         "LFT 64"
       ],
-      "respuesta": "Sí, tienes derecho a un rato para comer. La ley establece un descanso mínimo de media hora durante tu jornada laboral. Además, el reglamento debe incluir el tiempo destinado para las comidas.",
+      "respuesta": "Sí, tienes derecho a un rato para comer. La ley establece un descanso mínimo de media hora durante la jornada laboral y también menciona el tiempo destinado para comidas en el reglamento.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.81,
@@ -580,8 +578,8 @@
       "reescrita": null,
       "similitud_max": 0.582,
       "tokens_entrada": 1427,
-      "tokens_salida": 189,
-      "segundos": 2.81,
+      "tokens_salida": 187,
+      "segundos": 4.1,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -596,7 +594,7 @@
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the 1st sentence in the expected output is fully supported by node 4 in the retrieval context, which directly matches the wording and meaning of the sentence.",
       "correctness": 0.7,
-      "correctness_razon": "La respuesta real menciona el derecho a un rato para comer y el descanso mínimo de media hora, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real omite la parte clave sobre el tiempo efectivo de la jornada si no se puede salir del lugar de trabajo, lo cual es un detalle importante según el test case. Aunque hay coincidencia en el esencial, la falta de mencionar el tiempo efectivo reduce la precisión."
+      "correctness_razon": "La respuesta real menciona el derecho a un rato para comer y menciona el descanso mínimo de media hora, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real no aborda específicamente el caso de cuando no se puede salir del lugar de trabajo, ni menciona que ese tiempo cuenta como tiempo efectivo de la jornada, lo cual es un detalle clave en la respuesta esperada. Por lo tanto, aunque hay coincidencia en aspectos esenciales, la respuesta real carece de algunos elementos clave que se esperaban."
     },
     {
       "id": 11,
@@ -608,7 +606,7 @@
         "LFT 66",
         "LFT 68"
       ],
-      "respuesta": "Las horas extraordinarias se pagan con un 100 por ciento más del salario ordinario. Si exceden lo permitido, se pagan con un 200 por ciento más del salario ordinario.",
+      "respuesta": "Las horas extraordinarias se pagan con un 100 por ciento más del salario ordinario. Si exceden lo permitido, se pagan con un 200 por ciento más. Los menores de 18 años no pueden trabajar horas extraordinarias.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.94,
@@ -616,7 +614,7 @@
         "LFT 66",
         "CPEUM 123",
         "LFT 68",
-        "CPEUM 123"
+        "LFT 178"
       ],
       "recuperados": [
         "CPEUM 123",
@@ -624,7 +622,7 @@
         "LFT 68",
         "LFT 178",
         "CPEUM 123",
-        "LFT 83"
+        "LFT 230"
       ],
       "contexto": [
         "CPEUM Art. 123, apartado A, fracc. XI: A. Entre los obreros, jornaleros, empleados domésticos, artesanos y de una manera general, todo contrato de trabajo:\nXI. Cuando por circunstancias extraordinarias deban aumentarse las horas de la jornada, se abonará como salario por este tiempo un cien por ciento más de lo fijado para las horas ordinarias. El trabajo extraordinario no excederá de doce horas en una semana, las cuales podrán distribuirse en hasta cuatro horas diarias, en un máximo de cuatro días en ese periodo.\nLa prolongación del tiempo extraordinario que supere lo establecido en el párrafo que antecede, obliga a la persona empleadora a pagar doscientos por ciento más del salario que corresponda a las horas de la jornada ordinaria conforme a lo establecido en la Ley de la materia.\nLas personas menores de dieciocho años no podrán laborar tiempo extraordinario.",
@@ -632,15 +630,15 @@
         "LFT Art. 68: Las personas trabajadoras no están obligadas a prestar sus servicios por un tiempo mayor del permitido en este capítulo.\nLa prolongación del tiempo extraordinario que supere lo establecido en el artículo 66 de esta Ley, no podrá ser mayor de cuatro horas a la semana y obliga a la persona empleadora a pagar un doscientos por ciento más del salario que corresponda a las horas de la jornada ordinaria.\nLa suma de las jornadas ordinaria y extraordinaria, en ningún caso podrá ser mayor a doce horas diarias.",
         "LFT Art. 178: Queda prohibida la utilización del trabajo de los menores de dieciocho años, en horas extraordinarias y en los días domingos y de descanso obligatorio. En caso de violación de esta prohibición, las horas extraordinarias se pagarán con un doscientos por ciento más del salario que corresponda a las horas de la jornada, y el salario de los días domingos y de descanso obligatorio, de conformidad con lo dispuesto en los artículos 73 y 75.",
         "CPEUM Art. 123, apartado B, fracc. I: B. Entre los Poderes de la Unión y sus trabajadores:\nI. La jornada diaria máxima de trabajo diurna y nocturna será de ocho y siete horas respectivamente. Las que excedan serán extraordinarias y se pagarán con un ciento por ciento más de la remuneración fijada para el servicio ordinario. En ningún caso el trabajo extraordinario podrá exceder de tres horas diarias ni de tres veces consecutivas;",
-        "LFT Art. 83: El salario puede fijarse por unidad de tiempo, por unidad de obra, por comisión, a precio alzado o de cualquier otra manera.\nTratándose de salario por unidad de tiempo, se establecerá específicamente esa naturaleza. El trabajador y el patrón podrán convenir el monto, siempre que se trate de un salario remunerador, así como el pago por cada hora de prestación de servicio, siempre y cuando no se exceda la jornada máxima legal y se respeten los derechos laborales y de seguridad social que correspondan a la plaza de que se trate. El ingreso que perciban los trabajadores por esta modalidad, en ningún caso será inferior al que corresponda a una jornada diaria.\nCuando el salario se fije por unidad de obra, además de especificarse la naturaleza de ésta, se hará constar la cantidad y calidad del material, el estado de la herramienta y útiles que el patrón, en su caso, proporcione para ejecutar la obra, y el tiempo por el que los pondrá a disposición del trabajador, sin que pueda exigir cantidad alguna por concepto del desgaste natural que sufra la herramienta como consecuencia del trabajo."
+        "LFT Art. 230: Cuando por necesidades del servicio los tripulantes excedan su tiempo total de servicios, percibirán por cada hora extra un ciento por ciento más del salario correspondiente. El tiempo excedente, calculado y pagado en los términos de este artículo, no será objeto de nuevo pago."
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
       "reescrita": null,
       "similitud_max": 0.663,
-      "tokens_entrada": 1478,
-      "tokens_salida": 393,
-      "segundos": 5.62,
+      "tokens_entrada": 1277,
+      "tokens_salida": 448,
+      "segundos": 7.58,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -650,12 +648,12 @@
       "faithfulness_razon": "The score is 1.00 because there are no contradictions, indicating the actual output is fully aligned with the retrieval context.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the response is fully relevant and directly addresses the question about how to pay for overtime hours, with no irrelevant statements present.",
-      "contextual_precision": 0.95,
-      "contextual_precision_razon": "The score is 0.95 because the first five nodes are relevant and directly address the payment for extra hours, with the sixth node being irrelevant and placed lower. The only irrelevant nodes are ranked below all relevant ones, contributing to a high precision score.",
+      "contextual_precision": 1.0,
+      "contextual_precision_razon": "The score is 1.00 because all relevant nodes are ranked first, and there are no irrelevant nodes to lower the score.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the expected output is fully supported by the 1st node and 2nd node in the retrieval context, specifically aligning with the explanation of overtime pay at double and triple rates as described in the provided supportive reasons.",
       "correctness": 0.7,
-      "correctness_razon": "La respuesta real menciona correctamente el pago del 100 por ciento y 200 por ciento, pero utiliza la forma numérica '100 por ciento' en lugar de la forma verbal 'cien por ciento' y 'doscientos por ciento' como en la respuesta esperada. Además, la respuesta real no menciona explícitamente que el pago es 'doble' o 'triple', lo cual es un detalle secundario pero relevante en el contexto. Aunque el esquema general coincide, la falta de coincidencia en la forma de expresión y algunos detalles reduce la puntuación."
+      "correctness_razon": "La respuesta real menciona correctamente el pago del 100% y 200% adicional, pero utiliza la expresión 'un 100 por ciento más' en lugar de 'un cien por ciento más' que se encuentra en la respuesta esperada. Además, la respuesta real no menciona explícitamente el término 'doble' y 'triple' que se usan en la respuesta esperada, lo que representa una discrepancia en la forma de expresar los porcentajes. Aunque el contenido esencial coincide, la falta de coincidencia en la redacción y los términos específicos reduce la puntuación."
     },
     {
       "id": 12,
@@ -667,7 +665,7 @@
         "LFT 66",
         "LFT 68"
       ],
-      "respuesta": "Te pueden pedir hasta doce horas extra en una semana, pero no más de cuatro horas diarias y en un máximo de cuatro días. Si excedes eso, se deben pagar doscientos por ciento más del salario por cada hora extra.",
+      "respuesta": "Te pueden pedir hasta doce horas extra en una semana, pero no más de cuatro horas diarias y en un máximo de cuatro días. Si excedes eso, deberás ser pagado el doble del salario ordinario.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.93,
@@ -697,8 +695,8 @@
       "reescrita": null,
       "similitud_max": 0.655,
       "tokens_entrada": 1248,
-      "tokens_salida": 296,
-      "segundos": 5.29,
+      "tokens_salida": 292,
+      "segundos": 5.31,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -713,7 +711,7 @@
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the first sentence in the expected output is fully supported by the first node and third node in the retrieval context, which provide the exact same meaning and structure.",
       "correctness": 0.8,
-      "correctness_razon": "La respuesta real menciona las horas extras permitidas (doce horas a la semana, cuatro horas diarias en cuatro días) y las consecuencias de excederse (pagar doscientos por ciento más del salario), lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real incluye información adicional sobre el pago de horas extras que no está presente en la respuesta esperada, lo cual podría considerarse un detalle secundario. Aunque hay coincidencia en los datos clave, la respuesta real introduce información que no está en la respuesta esperada, lo que reduce su alineación."
+      "correctness_razon": "La respuesta real menciona las horas extras permitidas (doce horas a la semana, cuatro horas diarias en cuatro días) y las consecuencias de excederse (doble salario), lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real no menciona explícitamente que 'no se está obligado a trabajar más del tiempo permitido', lo cual es un detalle clave en la respuesta esperada. Aunque el contenido esencial coincide, la omisión de este detalle secundario reduce la precisión."
     },
     {
       "id": 13,
@@ -724,13 +722,14 @@
       "articulos_esperados": [
         "LFT 69"
       ],
-      "respuesta": "Te corresponden al menos un día de descanso semanal con goce de salario íntegro por cada seis días trabajados. Si eres trabajador del hogar, tienes derecho a un descanso semanal de día y medio.",
+      "respuesta": "Te corresponden al menos un día de descanso semanal, por cada seis días laborados. Si el trabajo requiere continuidad, tú y tu patrón pueden acordar los días de descanso. El domingo es el día que se busca como descanso semanal.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.95,
       "citados": [
+        "LFT 71",
         "LFT 69",
-        "LFT 336"
+        "LFT 70"
       ],
       "recuperados": [
         "LFT 336",
@@ -738,7 +737,7 @@
         "LFT 69",
         "LFT 72",
         "LFT 70",
-        "LFT 73"
+        "LFT 78"
       ],
       "contexto": [
         "LFT Art. 336: Las personas trabajadoras del hogar, tienen derecho a un descanso semanal de día y medio ininterrumpido, preferiblemente en sábado y domingo. Mediante acuerdo entre las partes podrá acordarse la acumulación de los medios días en periodos de dos semanas, pero habrá de disfrutarse de un día completo de descanso en cada semana.\nLos días de descanso semanal se aplicarán a las personas trabajadoras del hogar conforme a lo dispuesto en el presente artículo.\nLas personas trabajadoras del hogar tendrán derecho a los días de descanso obligatorio previstos en el artículo 74 de esta Ley.\nPara los efectos de los párrafos anteriores, en caso de que estos días se laboren se aplicarán las\nreglas previstas en esta Ley.",
@@ -746,30 +745,30 @@
         "LFT Art. 69: Por cada seis días de trabajo se deberá otorgar, por lo menos, un día de descanso con goce de salario íntegro.",
         "LFT Art. 72: Cuando el trabajador no preste sus servicios durante todos los días de trabajo de la semana, o cuando en el mismo día o en la misma semana preste sus servicios a varios patrones, tendrá derecho a que se le pague la parte proporcional del salario de los días de descanso, calculada sobre el salario de los días en que hubiese trabajado o sobre el que hubiese percibido de cada patrón.",
         "LFT Art. 70: En los trabajos que requieran una labor continua, los trabajadores y el patrón fijarán de común acuerdo los días en que los trabajadores deban disfrutar de los de descanso semanal.",
-        "LFT Art. 73: Los trabajadores no están obligados a prestar servicios en sus días de descanso. Si se quebranta esta disposición, el patrón pagará al trabajador, independientemente del salario que le corresponda por el descanso, un salario doble por el servicio prestado."
+        "LFT Art. 78: Del total del periodo que le corresponda conforme a lo previsto en el artículo 76 de esta Ley, la persona trabajadora disfrutará de doce días de vacaciones continuos, por lo menos. Dicho periodo, a potestad de la persona trabajadora podrá ser distribuido en la forma y tiempo que así lo requiera."
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
       "reescrita": null,
       "similitud_max": 0.666,
-      "tokens_entrada": 1036,
-      "tokens_salida": 190,
-      "segundos": 3.57,
+      "tokens_entrada": 1045,
+      "tokens_salida": 258,
+      "segundos": 4.41,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
-      "precision_citas": 0.5,
+      "precision_citas": 0.3333333333333333,
       "abstencion_correcta": true,
       "faithfulness": 1.0,
       "faithfulness_razon": "The score is 1.00 because there are no contradictions, indicating the actual output is fully aligned with the retrieval context.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the answer is fully relevant and directly addresses the question about the number of rest days per week. There are no irrelevant statements in the output.",
       "contextual_precision": 1.0,
-      "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 69\" (node 1) and \"LFT Art. 336\" (node 2) directly address the number of rest days, while the irrelevant nodes (nodes 3-6) are ranked lower, ensuring high contextual precision.",
+      "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 69\" and \"LFT Art. 336\" (nodes 1 and 2) directly address the weekly rest days, while the irrelevant nodes (3-6) are ranked lower, ensuring high contextual precision.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the first sentence in the expected output is fully supported by the first node in retrieval context, which provides an identical statement.",
-      "correctness": 0.7,
-      "correctness_razon": "La respuesta real incluye información adicional sobre el descanso semanal para trabajadores del hogar, lo cual no está presente en la respuesta esperada. Esto introduce un detalle secundario que no es aceptable según los pasos de evaluación. Además, ambas respuestas coinciden en la esencia del derecho a un día de descanso por cada seis días trabajados, pero la respuesta real incluye un plazo que no se menciona en la esperada, lo que puede considerarse una contradicción."
+      "correctness": 0.4,
+      "correctness_razon": "La respuesta real menciona específicamente el domingo como día de descanso, lo cual no está en la respuesta esperada. Además, la respuesta real incluye detalles sobre acuerdos entre trabajador y patrón, que no están en la respuesta esperada. Estos desvíos son significativos y contradicen la respuesta esperada."
     },
     {
       "id": 14,
@@ -809,7 +808,7 @@
       "similitud_max": 0.669,
       "tokens_entrada": 1266,
       "tokens_salida": 120,
-      "segundos": 1.79,
+      "segundos": 2.89,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -835,7 +834,7 @@
       "articulos_esperados": [
         "LFT 73"
       ],
-      "respuesta": "Si trabajas en tu día de descanso, debes recibir al menos un 25% más que tu salario normal. Si trabajas en un día que no es domingo, deberás recibir un salario doble.",
+      "respuesta": "Si trabajas en tu día de descanso, debes ser pagado al menos un 25% más que tu salario normal. Si trabajas en otro día de descanso, deberás recibir un salario doble.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 1.0,
@@ -847,16 +846,16 @@
         "LFT 272",
         "LFT 71",
         "LFT 72",
-        "LFT 327",
         "LFT 73",
+        "LFT 327",
         "LFT 69"
       ],
       "contexto": [
         "LFT Art. 272: Los trabajadores tienen derecho a que el salario diario se aumente en un dieciséis sesenta y seis por ciento como salario del día de descanso.\nAsimismo, se aumentará el salario diario, en la proporción que corresponda, para el pago de vacaciones.",
         "LFT Art. 71: En los reglamentos de esta Ley se procurará que el día de descanso semanal sea el domingo.\nLas personas que laboren en domingo tendrán derecho a una prima adicional de un veinticinco por ciento, por lo menos, sobre el salario de los días ordinarios de trabajo.",
         "LFT Art. 72: Cuando el trabajador no preste sus servicios durante todos los días de trabajo de la semana, o cuando en el mismo día o en la misma semana preste sus servicios a varios patrones, tendrá derecho a que se le pague la parte proporcional del salario de los días de descanso, calculada sobre el salario de los días en que hubiese trabajado o sobre el que hubiese percibido de cada patrón.",
-        "LFT Art. 327: También tienen el derecho de que en la semana que corresponda se les pague el salario del día de descanso obligatorio.",
         "LFT Art. 73: Los trabajadores no están obligados a prestar servicios en sus días de descanso. Si se quebranta esta disposición, el patrón pagará al trabajador, independientemente del salario que le corresponda por el descanso, un salario doble por el servicio prestado.",
+        "LFT Art. 327: También tienen el derecho de que en la semana que corresponda se les pague el salario del día de descanso obligatorio.",
         "LFT Art. 69: Por cada seis días de trabajo se deberá otorgar, por lo menos, un día de descanso con goce de salario íntegro."
       ],
       "citas_rechazadas": 0,
@@ -864,23 +863,23 @@
       "reescrita": null,
       "similitud_max": 0.711,
       "tokens_entrada": 910,
-      "tokens_salida": 222,
-      "segundos": 3.22,
+      "tokens_salida": 204,
+      "segundos": 3.51,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
       "precision_citas": 0.5,
       "abstencion_correcta": true,
       "faithfulness": 0.5,
-      "faithfulness_razon": "The score is 0.50 because the actual output contradicts the retrieval context by stating that workers receive double pay on non-Sunday days, while the context only mentions a 25% additional pay for working on Sundays and does not mention double pay for non-Sunday days.",
+      "faithfulness_razon": "The score is 0.50 because the actual output incorrectly mentions 'otro día de descanso' which is not explicitly defined in the retrieval context, leading to a contradiction with the provided information.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the answer is fully relevant and directly addresses the question about compensation for working on a rest day, with no irrelevant statements present.",
       "contextual_precision": 1.0,
-      "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 73\" directly addresses the scenario of working on a rest day and mandates double pay, and all other relevant nodes are ranked higher than the irrelevant node \"LFT Art. 69\" which does not address the specific scenario of working on a rest day and the required double pay.",
+      "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 272\" (node 1), \"LFT Art. 71\" (node 2), \"LFT Art. 72\" (node 3), \"LFT Art. 73\" (node 4), \"LFT Art. 327\" (node 5), and \"LFT Art. 69\" (node 6) all directly address the question about payment for working on rest days, and there are no irrelevant nodes in the retrieval contexts.",
       "contextual_recall": 1.0,
-      "contextual_recall_razon": "The score is 1.00 because the 1st sentence in the expected output is fully supported by the 6th node in retrieval context, which directly explains the double pay for work done on rest days.",
-      "correctness": 0.6,
-      "correctness_razon": "La respuesta real menciona un aumento del 25% para el día de descanso y un salario doble para días no domingo, mientras que la respuesta esperada indica un salario doble por el servicio prestado además del salario por el descanso. Ambas respuestas coinciden en la obligación de un salario doble, pero la respuesta real incluye un porcentaje adicional (25%) que no está en la respuesta esperada, lo que contradice la expectativa. Esto reduce la alineación con la respuesta esperada."
+      "contextual_recall_razon": "The score is 1.00 because the sentence in the expected output is fully supported by the 4th node in retrieval context, which directly explains the double pay for work done on rest days.",
+      "correctness": 0.3,
+      "correctness_razon": "La respuesta real menciona un 25% más de salario para el día de descanso, mientras que la respuesta esperada indica un salario doble. Esto contradice directamente la respuesta esperada, lo que resulta en una penalización severa. Aunque ambas respuestas abordan el pago por el descanso, la discrepancia en los porcentajes es crítica y reduce significativamente la alineación con la respuesta esperada."
     },
     {
       "id": 16,
@@ -920,7 +919,7 @@
       "similitud_max": 0.58,
       "tokens_entrada": 1173,
       "tokens_salida": 154,
-      "segundos": 2.24,
+      "segundos": 3.13,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -946,15 +945,13 @@
       "articulos_esperados": [
         "LFT 133"
       ],
-      "respuesta": "No, no pueden correr usted por estar embarazada. La ley protege a las trabajadoras embarazadas de ser despedidas o coaccionadas para renunciar por este motivo.",
+      "respuesta": "No, no pueden correr usted por estar embarazada. La ley prohíbe que se despidan a una trabajadora por estar embarazada o por tener cuidado de hijos. Tampoco pueden exigir un certificado médico de no embarazo.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.78,
       "citados": [
-        "LFT 170",
-        "LFT 170",
         "LFT 133",
-        "LFT 47"
+        "LFT 133"
       ],
       "recuperados": [
         "LFT 170",
@@ -962,7 +959,7 @@
         "LFT 170",
         "LFT 133",
         "LFT 133",
-        "LFT 47"
+        "LFT 520"
       ],
       "contexto": [
         "LFT Art. 170, fracc. I: Las madres trabajadoras tendrán los siguientes derechos:\nI. Durante el período del embarazo, no realizarán trabajos que exijan esfuerzos considerables y signifiquen un peligro para su salud en relación con la gestación, tales como levantar, tirar o empujar grandes pesos, que produzcan trepidación, estar de pie durante largo tiempo o que actúen o puedan alterar su estado psíquico y nervioso;",
@@ -970,30 +967,30 @@
         "LFT Art. 170, fracc. III: Las madres trabajadoras tendrán los siguientes derechos:\nIII. Los períodos de descanso a que se refiere la fracción anterior se prorrogarán por el tiempo necesario en el caso de que se encuentren imposibilitadas para trabajar a causa del embarazo o del parto;",
         "LFT Art. 133, fracc. XIV: Queda prohibido a las personas empleadoras o a sus representantes:\nXIV. Exigir la presentación de certificados médicos de no embarazo para el ingreso, permanencia o ascenso en el empleo;",
         "LFT Art. 133, fracc. XV: Queda prohibido a las personas empleadoras o a sus representantes:\nXV. Despedir a una trabajadora o coaccionarla directa o indirectamente para que renuncie por estar embarazada, por cambio de estado civil o por tener el cuidado de hijos menores, y",
-        "LFT Art. 47, fracc. XV: Son causas de rescisión de la relación de trabajo, sin responsabilidad para el patrón:\nXV. Las análogas a las establecidas en las fracciones anteriores, de igual manera graves y de consecuencias semejantes en lo que al trabajo se refiere.\nEl patrón que despida a un trabajador deberá darle aviso escrito en el que refiera claramente la conducta o conductas que motivan la rescisión y la fecha o fechas en que se cometieron.\nEl aviso deberá entregarse personalmente al trabajador en el momento mismo del despido o bien, comunicarlo al Tribunal competente, dentro de los cinco días hábiles siguientes, en cuyo caso deberá proporcionar el último domicilio que tenga registrado del trabajador a fin de que la autoridad se lo notifique en forma personal.\nLa prescripción para ejercer las acciones derivadas del despido no comenzará a correr sino hasta que el trabajador reciba personalmente el aviso de rescisión.\nLa falta de aviso al trabajador personalmente o por conducto del Tribunal, por sí sola presumirá la separación no justificada, salvo prueba en contrario que acredite que el despido fue justificado."
+        "LFT Art. 520: La prescripción no puede comenzar ni correr:\nI. Contra los incapaces mentales, sino cuando se haya discernido su tutela conforme a la ley; y\nII. Contra los trabajadores incorporados al servicio militar en tiempo de guerra."
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
       "reescrita": null,
       "similitud_max": 0.562,
-      "tokens_entrada": 1501,
-      "tokens_salida": 396,
-      "segundos": 5.75,
+      "tokens_entrada": 1283,
+      "tokens_salida": 238,
+      "segundos": 4.52,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
-      "precision_citas": 0.25,
+      "precision_citas": 1.0,
       "abstencion_correcta": true,
-      "faithfulness": 1.0,
-      "faithfulness_razon": "The score is 1.00 because there are no contradictions, indicating the actual output is fully aligned with the retrieval context.",
+      "faithfulness": 0.6666666666666666,
+      "faithfulness_razon": "The score is 0.67 because the actual output contradicts the retrieval context by stating that working mothers cannot run during pregnancy, whereas the context clearly indicates they have the right to not perform demanding tasks, which includes the ability to run if necessary.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the response is fully relevant and directly addresses the question about running while pregnant, with no irrelevant statements present.",
       "contextual_precision": 1.0,
-      "contextual_precision_razon": "The score is 1.00 because all relevant nodes are ranked first and there are no irrelevant nodes in the retrieval contexts.",
+      "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 520\" is the only \"no\" verdict and is ranked last, ensuring all relevant nodes are ranked higher than irrelevant nodes.",
       "contextual_recall": 1.0,
-      "contextual_recall_razon": "The score is 1.00 because the expected output sentence aligns perfectly with the content of the 1st node, 2nd node, 3rd node, 4th node, 5th node, and 6th node in retrieval context, which explicitly mention the prohibition against employers dismissing or coercing a worker to resign due to pregnancy.",
+      "contextual_recall_razon": "The score is 1.00 because the expected output sentence aligns perfectly with the content of the 1st, 2nd, 3rd, 4th, and 5th nodes in retrieval context, which all explicitly mention the prohibition against employers dismissing or coercing pregnant workers.",
       "correctness": 0.9,
-      "correctness_razon": "La respuesta real coincide con la esperada en el mensaje principal de protección legal para las trabajadoras embarazadas. Sin embargo, la respuesta real menciona 'usted' lo que puede dar una impresión de que la persona está siendo juzgada, mientras que la respuesta esperada es más neutral y general. Aunque no hay contradicción en los hechos, la formulación es ligeramente diferente."
+      "correctness_razon": "La respuesta real incluye información adicional sobre la prohibición de exigir un certificado médico, lo cual no está presente en la respuesta esperada. Sin embargo, ambas respuestas coinciden en la esencia de que la ley prohíbe el despido por embarazo. La respuesta real también menciona la protección contra el despido, lo cual es clave. Aunque hay detalles adicionales, no contradicen la respuesta esperada, por lo que se otorga un puntaje alto."
     },
     {
       "id": 18,
@@ -1005,7 +1002,7 @@
         "LFT 170",
         "CPEUM 123"
       ],
-      "respuesta": "Tienes derecho a seis semanas de descanso antes del parto y seis semanas después, lo que suma doce semanas en total.",
+      "respuesta": "Tienes derecho a seis semanas de descanso antes del parto y seis semanas después. Esto se aplica a todas las madres trabajadoras según la Ley Federal Del Trabajo y la Constitución Política.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.78,
@@ -1026,15 +1023,15 @@
         "LFT Art. 170, fracc. III: Las madres trabajadoras tendrán los siguientes derechos:\nIII. Los períodos de descanso a que se refiere la fracción anterior se prorrogarán por el tiempo necesario en el caso de que se encuentren imposibilitadas para trabajar a causa del embarazo o del parto;",
         "CPEUM Art. 123, apartado A, fracc. V: A. Entre los obreros, jornaleros, empleados domésticos, artesanos y de una manera general, todo contrato de trabajo:\nV. Las mujeres durante el embarazo no realizarán trabajos que exijan un esfuerzo considerable y signifiquen un peligro para su salud en relación con la gestación; gozarán forzosamente de un descanso de seis semanas anteriores a la fecha fijada aproximadamente para el parto y seis semanas posteriores al mismo, debiendo percibir su salario íntegro y conservar su empleo y los derechos que hubieren adquirido por la relación de trabajo. En el período de lactancia tendrán dos descansos extraordinarios por día, de media hora cada uno para alimentar a sus hijos;",
         "LFT Art. 336: Las personas trabajadoras del hogar, tienen derecho a un descanso semanal de día y medio ininterrumpido, preferiblemente en sábado y domingo. Mediante acuerdo entre las partes podrá acordarse la acumulación de los medios días en periodos de dos semanas, pero habrá de disfrutarse de un día completo de descanso en cada semana.\nLos días de descanso semanal se aplicarán a las personas trabajadoras del hogar conforme a lo dispuesto en el presente artículo.\nLas personas trabajadoras del hogar tendrán derecho a los días de descanso obligatorio previstos en el artículo 74 de esta Ley.\nPara los efectos de los párrafos anteriores, en caso de que estos días se laboren se aplicarán las\nreglas previstas en esta Ley.",
-        "LFT Art. 170, fracc. V: Las madres trabajadoras tendrán los siguientes derechos:\nV. Durante los períodos de descanso a que se refiere la fracción II, percibirán su salario íntegro. En los casos de prórroga mencionados en la fracción III, tendrán derecho al cincuenta por ciento de su salario por un período no mayor de sesenta días;"
+        "LFT Art. 170, fracc. IV: Las madres trabajadoras tendrán los siguientes derechos:\nIV. En el período de lactancia hasta por el término máximo de seis meses, tendrán dos reposos extraordinarios por día, de media hora cada uno, para alimentar a sus hijos, en lugar adecuado e higiénico que designe la empresa, o bien, cuando esto no sea posible, previo acuerdo con el patrón se reducirá en una hora su jornada de trabajo durante el período señalado;"
       ],
       "citas_rechazadas": 1,
       "reintentos": 0,
       "reescrita": null,
       "similitud_max": 0.689,
-      "tokens_entrada": 1374,
-      "tokens_salida": 254,
-      "segundos": 4.51,
+      "tokens_entrada": 1394,
+      "tokens_salida": 247,
+      "segundos": 4.87,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -1044,12 +1041,12 @@
       "faithfulness_razon": "The score is 1.00 because there are no contradictions, indicating the actual output is fully aligned with the retrieval context.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the answer is fully relevant and directly addresses the question about the number of weeks of maternity leave. There are no irrelevant statements in the output.",
-      "contextual_precision": 1.0,
-      "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 170, fracc. II\" and \"CPEUM Art. 123, apartado A, fracc. V\" directly answer the question about the number of weeks of maternity leave and are ranked first and second. The irrelevant nodes, which discuss unrelated topics or additional details, are ranked lower, ensuring the score remains at its maximum.",
+      "contextual_precision": 0.9166666666666666,
+      "contextual_precision_razon": "The score is 0.92 because the first four nodes are relevant and directly answer the question about maternity leave duration, while the fifth and sixth nodes are irrelevant and correctly ranked lower. The only minor issue is the third node, which is relevant but slightly less specific, yet it is ranked appropriately.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the first sentence in the expected output is fully supported by the first node in retrieval context, which provides the exact same information.",
       "correctness": 0.7,
-      "correctness_razon": "La respuesta real menciona doce semanas en total, mientras que la respuesta esperada indica seis semanas anteriores y seis posteriores, lo que es consistente. Sin embargo, la respuesta real no menciona el salario íntegro, un detalle clave en la respuesta esperada, lo que representa una desviación significativa."
+      "correctness_razon": "La respuesta real menciona las seis semanas antes y después del parto, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real no incluye la información clave sobre el salario íntegro, que es un elemento esencial en la respuesta esperada. Además, la respuesta real menciona la Ley Federal Del Trabajo y la Constitución Política, lo cual es un detalle secundario que no afecta la precisión esencial, pero la falta de información sobre el salario reduce la alineación con la respuesta esperada."
     },
     {
       "id": 19,
@@ -1060,7 +1057,7 @@
       "articulos_esperados": [
         "LFT 170"
       ],
-      "respuesta": "Sí, durante la lactancia puedes tener dos descansos de media hora al día para alimentar a tu bebé. Si no es posible, el patrón puede acordar reducir en una hora tu jornada de trabajo.",
+      "respuesta": "Sí, durante la lactancia puedes tener dos descansos de media hora al día para alimentar a tu bebé. Si no es posible, puedes acordar con tu empresa reducir una hora en tu jornada.",
       "encontrado": true,
       "confianza": "media",
       "confianza_puntaje": 0.71,
@@ -1088,23 +1085,23 @@
       "reescrita": null,
       "similitud_max": 0.642,
       "tokens_entrada": 1320,
-      "tokens_salida": 253,
-      "segundos": 3.66,
+      "tokens_salida": 250,
+      "segundos": 4.76,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
       "precision_citas": 1.0,
       "abstencion_correcta": true,
       "faithfulness": 0.5,
-      "faithfulness_razon": "The score is 0.50 because the actual output claims that the pattern allows for reducing the workday by one hour as an alternative if not possible, but the retrieval context does not mention any provision allowing for a one-hour reduction in the workday. The context only refers to extraordinary breaks and does not address the reduction of the workday.",
+      "faithfulness_razon": "The score is 0.50 because the actual output incorrectly suggests that reducing the workday by one hour is an alternative to breaks, which is not mentioned or supported in the retrieval context.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the response is fully relevant and directly addresses the user's question about taking time at work to breastfeed their baby. There are no irrelevant statements in the output.",
       "contextual_precision": 1.0,
       "contextual_precision_razon": "The score is 1.00 because the first two nodes, which directly address the feeding time for the baby, are ranked first and second. The remaining nodes, which refer to unrelated topics like maternity leave for adoption, maternity leave before and after childbirth, and work restrictions during pregnancy or lactation, are correctly ranked lower. This ensures that only relevant nodes are prioritized, achieving perfect contextual precision.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the expected output sentence is fully supported by the 1st node in retrieval context, which directly addresses the duration of lactation, the number of breaks, and the reduction in working hours.",
-      "correctness": 0.7,
-      "correctness_razon": "La respuesta real menciona dos descansos de media hora al día para alimentar al bebé, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real omite la especificación de que estos descansos son válidos hasta por seis meses, lo cual es un detalle importante. Además, la respuesta real no menciona explícitamente la opción de reducción de una hora de la jornada, aunque se refiere a ello de forma indirecta. Aunque hay coincidencia en lo esencial, la falta de precisión en algunos detalles clave reduce la puntuación."
+      "correctness": 0.8,
+      "correctness_razon": "La respuesta real menciona dos descansos de media hora al día, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real omite la especificación de que estos descansos son válidos hasta por seis meses, lo cual es un detalle importante. Además, la respuesta real no menciona explícitamente la reducción de una hora de la jornada como opción alternativa, aunque se refiere a un acuerdo con la empresa, lo cual es aceptable según los pasos de evaluación."
     },
     {
       "id": 20,
@@ -1115,52 +1112,54 @@
       "articulos_esperados": [
         "LFT 133"
       ],
-      "respuesta": "No, es ilegal pedir una prueba de embarazo en una entrevista. La ley prohibe exigir certificados médicos de no embarazo para contratar o permanecer en el empleo, y también prohíbe solicitar pruebas de embarazo.",
+      "respuesta": "No, pedir una prueba de embarazo en una entrevista no es legal. La ley prohibe exigir certificados médicos de no embarazo o cualquier prueba de gravidez para contratar a una persona. Esto sería discriminación y violaría tus derechos.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.95,
       "citados": [
+        "LFT 3",
+        "LFT 56",
         "LFT 133",
         "LFT 331 Ter"
       ],
       "recuperados": [
-        "LFT 133",
         "LFT 3",
         "LFT 56",
+        "LFT 133",
         "LFT 331 Ter",
         "LFT 833",
         "LFT 831"
       ],
       "contexto": [
-        "LFT Art. 133, fracc. XIV: Queda prohibido a las personas empleadoras o a sus representantes:\nXIV. Exigir la presentación de certificados médicos de no embarazo para el ingreso, permanencia o ascenso en el empleo;",
         "LFT Art. 3: El trabajo es un derecho y un deber social. No es artículo de comercio, y exige respeto para las libertades y dignidad de quien lo presta, así como el reconocimiento a las diferencias entre hombres y mujeres para obtener su igualdad sustantiva ante la ley. Debe efectuarse en condiciones que aseguren la vida digna y la salud para las y los trabajadores y sus familiares dependientes, en un entorno laboral libre de discriminación y violencias.\nNo podrán establecerse condiciones que impliquen discriminación entre los trabajadores por motivo de origen étnico o nacional, género, edad, discapacidad, condición social, condiciones de salud, religión, condición migratoria, opiniones, preferencias sexuales, estado civil o cualquier otro que atente contra la dignidad humana.\nNo se considerarán discriminatorias las distinciones, exclusiones o preferencias que se sustenten en las calificaciones particulares que exija una labor determinada.\nEs de interés social garantizar un ambiente laboral libre de discriminación y de violencia, promover y vigilar la capacitación, el adiestramiento, la formación para y en el trabajo, la certificación de competencias laborales, la productividad y la calidad en el trabajo, la sustentabilidad ambiental, así como los beneficios que éstas deban generar tanto a los trabajadores como a los patrones.",
         "LFT Art. 56: Las condiciones de trabajo basadas en el principio de igualdad sustantiva entre mujeres y hombres en ningún caso podrán ser inferiores a las fijadas en esta Ley y deberán ser proporcionales a la importancia de los servicios e iguales para trabajos iguales, sin que puedan establecerse diferencias y/o exclusiones por motivo de origen étnico o nacionalidad, sexo, género, edad, discapacidad, condición social, condiciones de salud, religión, opiniones, preferencias sexuales, condiciones de embarazo, responsabilidades familiares o estado civil, salvo las modalidades expresamente consignadas en esta Ley, garantizando además un entorno libre de violencias y discriminación en todas sus formas.",
+        "LFT Art. 133, fracc. XIV: Queda prohibido a las personas empleadoras o a sus representantes:\nXIV. Exigir la presentación de certificados médicos de no embarazo para el ingreso, permanencia o ascenso en el empleo;",
         "LFT Art. 331 Ter, fracc. X: El trabajo del hogar deberá fijarse mediante contrato por escrito, de conformidad con la legislación nacional o con convenios colectivos, que incluya como mínimo:\nX. Las herramientas de trabajo que serán brindadas para el correcto desempeño de las actividades laborales.\nLos alimentos destinados a las personas trabajadoras del hogar deberán ser higiénicos y nutritivos, además de ser de la misma calidad y cantidad de los destinados al consumo de la persona empleadora.\nQueda prohibido solicitar constancia o prueba de no gravidez para la contratación de una mujer como trabajadora del hogar; y no podrá despedirse a una persona trabajadora embarazada, de ser el caso, el despido se presumirá como discriminación.\nEn caso de que la persona empleadora requiera que la trabajadora del hogar utilice uniforme o ropa de trabajo, el costo de los mismos quedará a cargo de la persona empleadora.\nEl contrato de trabajo se establecerá sin distinción de condiciones, al tratarse de personas trabajadoras del hogar migrantes.\nQueda prohibida todo tipo de discriminación, en términos de los artículos 1°. de la Constitución Política de los Estados Unidos Mexicanos, y 1, fracción III de la Ley Federal para Prevenir y Eliminar la Discriminación, en todas las etapas de la relación laboral y en el establecimiento de las condiciones laborales, así como cualquier trato que vulnere la dignidad de las personas trabajadoras del hogar.",
         "LFT Art. 833: Las presunciones legales y humanas, admiten prueba en contrario.",
         "LFT Art. 831: Hay presunción legal cuando la Ley la establece expresamente o cuando se deriven de la aplicación de alguno de los principios que rigen el derecho del trabajo; hay presunción humana cuando de un hecho debidamente probado se deduce otro que es consecuencia de aquél."
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
-      "reescrita": "Preguntar si es legal exigir una prueba de embarazo durante una entrevista de empleo constituye una solicitud de determinación sobre el cumplimiento del artículo 123 de la Ley Federal del Trabajo, que protege a los trabajadores contra la discriminación por razón de sexo y establece que no se puede requerir pruebas médicas que afecten su condición personal o privada.",
-      "similitud_max": 0.711,
+      "reescrita": "Preguntar si es legal exigir una prueba de embarazo durante una entrevista de empleo constituye una solicitud de determinación sobre el cumplimiento del artículo 123 de la Ley Federal del Trabajo, que protege a los trabajadores contra la discriminación por razón de sexo y establece que no se puede exigir pruebas biológicas o físicas que afecten su condición personal.",
+      "similitud_max": 0.71,
       "tokens_entrada": 1589,
-      "tokens_salida": 327,
-      "segundos": 6.28,
+      "tokens_salida": 474,
+      "segundos": 8.45,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
-      "precision_citas": 0.5,
+      "precision_citas": 0.25,
       "abstencion_correcta": true,
       "faithfulness": 1.0,
       "faithfulness_razon": "The score is 1.00 because there are no contradictions, indicating the actual output is fully aligned with the retrieval context.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the response is fully relevant and directly addresses the legality of a pregnancy test requested during an interview, with no irrelevant statements present.",
-      "contextual_precision": 0.9166666666666666,
-      "contextual_precision_razon": "The score is 0.92 because the first three nodes directly address the legality of pregnancy tests, while the later nodes are less relevant. The two 'no' verdicts are ranked lower than the 'yes' verdicts, which is appropriate, but some 'no' nodes could be placed further down to improve precision slightly.",
+      "contextual_precision": 1.0,
+      "contextual_precision_razon": "The score is 1.00 because all relevant nodes are ranked higher than irrelevant nodes. The first four nodes (rank 1-4) have 'yes' verdicts and directly address the legality of pregnancy tests, while the last two nodes (rank 5-6) have 'no' verdicts and discuss unrelated legal provisions. This perfect ranking ensures high contextual precision.",
       "contextual_recall": 1.0,
-      "contextual_recall_razon": "The score is 1.00 because the first sentence in the expected output is directly supported by node 1 in the retrieval context, which explicitly prohibits requiring medical certificates of non-pregnancy for employment, permanence, or promotion.",
+      "contextual_recall_razon": "The score is 1.00 because the sentence in the expected output is fully supported by the retrieval context, specifically node(s) in retrieval context, which directly mention the prohibition of requiring medical certificates of non-pregnancy for employment-related matters.",
       "correctness": 0.8,
-      "correctness_razon": "La respuesta real menciona explícitamente que es ilegal pedir una prueba de embarazo en una entrevista, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real incluye información adicional sobre la prohibición de solicitar pruebas de embarazo, que no está presente en la respuesta esperada. Aunque esto no contradice la respuesta esperada, la inclusión de detalles adicionales puede considerarse como una desviación. Además, la respuesta esperada se centra en la prohibición de certificados médicos de no embarazo, mientras que la respuesta real menciona la ilegalidad de pedir una prueba de embarazo, lo cual es un enfoque ligeramente diferente pero no contradictorio."
+      "correctness_razon": "La respuesta real menciona explícitamente que pedir una prueba de embarazo en una entrevista no es legal y destaca que la ley prohibe exigir certificados médicos de no embarazo o cualquier prueba de gravidez, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real incluye detalles adicionales como 'discriminación' y 'violaría tus derechos', que no están en la respuesta esperada, pero no contradicen su esencia. Por lo tanto, se considera una buena coincidencia con la respuesta esperada."
     },
     {
       "id": 21,
@@ -1171,7 +1170,7 @@
       "articulos_esperados": [
         "LFT 132"
       ],
-      "respuesta": "Tienes derecho a cinco días laborables de permiso de paternidad con goce de sueldo por el nacimiento de tu hijo o por la adopción.",
+      "respuesta": "Tienes derecho a cinco días laborables de permiso de paternidad con goce de sueldo por el nacimiento de tus hijos o por la adopción.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.85,
@@ -1200,7 +1199,7 @@
       "similitud_max": 0.606,
       "tokens_entrada": 1249,
       "tokens_salida": 147,
-      "segundos": 2.8,
+      "segundos": 3.05,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -1214,8 +1213,8 @@
       "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 132, fracc. XXVII Bis\" is the first node and directly answers the input, while all other nodes are irrelevant and ranked lower as required.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the sentence in the expected output is fully supported by the 4th node in the retrieval context, which explicitly mentions the right of working men to paternity leave of five working days with salary.",
-      "correctness": 0.6,
-      "correctness_razon": "La respuesta real menciona 'tu hijo' mientras que la respuesta esperada se refiere a 'sus hijos', lo cual es una diferencia significativa en el género y la inclusividad. Además, la respuesta real no menciona explícitamente que el permiso es para 'hombres trabajadores', lo cual es un detalle clave en la respuesta esperada. Estas discrepancias son relevantes y no se pueden omitir, lo que reduce la alineación con la respuesta esperada."
+      "correctness": 0.7,
+      "correctness_razon": "La respuesta real menciona 'tienes derecho' y 'por el nacimiento de tus hijos o por la adopción', mientras que la respuesta esperada especifica 'los hombres trabajadores' y no menciona la adopción. Aunque ambos comparten la cantidad de días y el goce de sueldo, la respuesta real incluye un detalle adicional (adopción) que no está en la respuesta esperada, lo que puede considerarse una discrepancia significativa. Además, la respuesta real no especifica el grupo objetivo (hombres trabajadores) que está en la respuesta esperada."
     },
     {
       "id": 22,
@@ -1227,26 +1226,27 @@
         "LFT 48",
         "CPEUM 123"
       ],
-      "respuesta": "Si me despiden injustificadamente, puedo exigir que me reinstalen en el trabajo o que me indemnizen con tres meses de salario. También puedo pedir mis salarios vencidos y los intereses por ellos, si el despido no tiene causa justificada.",
+      "respuesta": "Si me despiden injustificadamente, puedo exigir que me reinstalen en el trabajo o que me indemnice con tres meses de salario. También puedo pedir los salarios vencidos y los intereses por hasta doce meses, además de intereses adicionales si no se resuelve el proceso. Esto está establecido en la Ley Federal Del Trabajo.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.93,
       "citados": [
         "LFT 48",
-        "LFT 450"
+        "LFT 450",
+        "LFT 452"
       ],
       "recuperados": [
         "LFT 341",
-        "LFT 450",
         "LFT 48",
+        "LFT 450",
         "CPEUM 123",
         "LFT 452",
         "LFT 157"
       ],
       "contexto": [
         "LFT Art. 341: Es causa de rescisión de las relaciones de trabajo el incumplimiento de las obligaciones consignadas en esta Ley.\nSe considerará despido injustificado de las personas trabajadoras del hogar todas aquellas contempladas en la presente Ley, así como aquellas que se den por motivos de violencia de género en el trabajo de manera explícita y discriminación conforme lo establecido en el artículo 1°. de la Constitución Política de los Estados Mexicanos y la legislación aplicable.\nPara los efectos del párrafo anterior, la indemnización será la prevista en el artículo 50 del presente ordenamiento.",
-        "LFT Art. 450: La huelga deberá tener por objeto:\nI. Conseguir el equilibrio entre los diversos factores de la producción, armonizando los derechos del trabajo con los del capital;\nII. Obtener del patrón o patrones la celebración del contrato colectivo de trabajo y exigir su revisión al terminar el período de su vigencia, de conformidad con lo dispuesto en el Capítulo III del de su vigencia, de conformidad con lo dispuesto en el Capítulo IV del Título Séptimo;\nIV. Exigir el cumplimiento del contrato colectivo de trabajo o del contrato-ley en las empresas o establecimientos en que hubiese sido violado;\nV. Exigir el cumplimiento de las disposiciones legales sobre participación de utilidades;\nVI. Apoyar una huelga que tenga por objeto alguno de los enumerados en las fracciones anteriores; y\nVII. Exigir la revisión de los salarios contractuales a que se refieren los artículo 399 bis y 419 bis.",
         "LFT Art. 48: El trabajador podrá solicitar ante la Autoridad Conciliadora, o ante el Tribunal si no existe arreglo conciliatorio, que se le reinstale en el trabajo que desempeñaba, o que se le indemnice con el importe de tres meses de salario, a razón del que corresponda a la fecha en que se realice el pago, observando previamente las disposiciones relativas al procedimiento de conciliación previsto en el artículo 684-A y subsiguientes.\nSi en el juicio correspondiente no comprueba el patrón la causa de la rescisión, el trabajador tendrá derecho, además, cualquiera que hubiese sido la acción intentada, a que se le paguen los salarios vencidos computados desde la fecha del despido hasta por un período máximo de doce meses, en términos de lo preceptuado en la última parte del párrafo anterior.\nSi al término del plazo señalado en el párrafo anterior no ha concluido el procedimiento o no se ha dado cumplimiento a la sentencia, se pagarán también al trabajador los intereses que se generen sobre el importe de quince meses de salario, a razón del dos por ciento mensual, capitalizable al momento del pago. Lo dispuesto en este párrafo no será aplicable para el pago de otro tipo de indemnizaciones o prestaciones.\nEn caso de muerte del trabajador, dejarán de computarse los salarios vencidos como parte del conflicto, a partir de la fecha del fallecimiento.\nLos abogados, litigantes o representantes que promuevan acciones, excepciones, incidentes, diligencias, ofrecimiento de pruebas, recursos y, en general toda actuación en forma notoriamente improcedente, con la finalidad de prolongar, dilatar u obstaculizar la sustanciación o resolución de un juicio laboral, se le impondrá una multa de 100 a 1000 veces la Unidad de Medida y Actualización.",
+        "LFT Art. 450: La huelga deberá tener por objeto:\nI. Conseguir el equilibrio entre los diversos factores de la producción, armonizando los derechos del trabajo con los del capital;\nII. Obtener del patrón o patrones la celebración del contrato colectivo de trabajo y exigir su revisión al terminar el período de su vigencia, de conformidad con lo dispuesto en el Capítulo III del de su vigencia, de conformidad con lo dispuesto en el Capítulo IV del Título Séptimo;\nIV. Exigir el cumplimiento del contrato colectivo de trabajo o del contrato-ley en las empresas o establecimientos en que hubiese sido violado;\nV. Exigir el cumplimiento de las disposiciones legales sobre participación de utilidades;\nVI. Apoyar una huelga que tenga por objeto alguno de los enumerados en las fracciones anteriores; y\nVII. Exigir la revisión de los salarios contractuales a que se refieren los artículo 399 bis y 419 bis.",
         "CPEUM Art. 123, apartado A, fracc. XXII: A. Entre los obreros, jornaleros, empleados domésticos, artesanos y de una manera general, todo contrato de trabajo:\nXXII. El patrono que despida a un obrero sin causa justificada o por haber ingresado a una asociación o sindicato, o por haber tomado parte en una huelga lícita, estará obligado, a elección del trabajador, a cumplir el contrato o a indemnizarlo con el importe de tres meses de salario. La Ley determinará los casos en que el patrono podrá ser eximido de la obligación de cumplir el contrato, mediante el pago de una indemnización. Igualmente tendrá la obligación de indemnizar al trabajador con el importe de tres meses de salario, cuando se retire del servicio por falta de probidad del patrono o por recibir de él malos tratamientos, ya sea en su persona o en la de su cónyuge, padres, hijos o hermanos. El patrono no podrá eximirse de esta responsabilidad, cuando los malos tratamientos provengan de dependientes o familiares que obren con el consentimieto (sic DOF 21-11-1962) o tolerancia de él.",
         "LFT Art. 452: (Se deroga).",
         "LFT Art. 157: El incumplimiento de las obligaciones contenidas en los artículos 154 y 156 da derecho al trabajador para solicitar ante el Tribunal, a su elección, que se le otorgue el puesto correspondiente o se le indemnice con el importe de tres meses de salario. Tendrá además derecho a que se le paguen los salarios e intereses, en su caso, a que se refiere el párrafo segundo del artículo 48."
@@ -1256,23 +1256,23 @@
       "reescrita": null,
       "similitud_max": 0.653,
       "tokens_entrada": 1771,
-      "tokens_salida": 603,
-      "segundos": 9.24,
+      "tokens_salida": 470,
+      "segundos": 8.92,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
-      "precision_citas": 0.5,
+      "precision_citas": 0.3333333333333333,
       "abstencion_correcta": true,
-      "faithfulness": 1.0,
-      "faithfulness_razon": "The score is 1.00 because there are no contradictions, indicating the actual output is fully aligned with the retrieval context.",
+      "faithfulness": 0.6666666666666666,
+      "faithfulness_razon": "The score is 0.67 because the actual output incorrectly states 'hasta doce meses' de salarios vencidos without mentioning the condition that the worker must prove the employer did not demonstrate the cause of termination, which is explicitly stated in the retrieval context.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the response is fully relevant and directly addresses the question about what can be demanded if someone is unjustly dismissed.",
-      "contextual_precision": 0.6666666666666666,
-      "contextual_precision_razon": "The score is 0.67 because two relevant nodes (rank 1, 4, and 6) are correctly ranked higher than irrelevant nodes (rank 2, 3, and 5), but some irrelevant nodes are ranked above relevant ones, reducing the precision.",
+      "contextual_precision": 0.8541666666666666,
+      "contextual_precision_razon": "The score is 0.85 because the relevant nodes are ranked higher than most irrelevant nodes, but there are two irrelevant nodes (nodes 3 and 5) that appear in the retrieval contexts, which should be ranked lower than the relevant ones.",
       "contextual_recall": 1.0,
-      "contextual_recall_razon": "The score is 1.00 because the expected output sentence is fully supported by the 1st node and 3rd node in retrieval context, which directly mention the reinstatement or compensation of three months' salary as outlined in the expected output.",
-      "correctness": 0.6,
-      "correctness_razon": "La respuesta real menciona derechos laborales como la reinstalación y la indemnización de tres meses de salario, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real incluye detalles adicionales como la exigencia de salarios vencidos e intereses, que no están presentes en la respuesta esperada. Además, la respuesta real no menciona la vía formal (Autoridad Conciliadora o Tribunal) para solicitar la reinstalación o indemnización, lo cual es un punto clave en la respuesta esperada. Estos detalles adicionales y la omisión de la vía formal reducen la alineación con la respuesta esperada."
+      "contextual_recall_razon": "The score is 1.00 because the expected output sentence matches exactly with the content provided in the 1st and 2nd node in retrieval context, ensuring full alignment and support for all key points.",
+      "correctness": 0.4,
+      "correctness_razon": "La respuesta real menciona derechos laborales como la reinstalación y la indemnización, pero incluye detalles adicionales no presentes en la respuesta esperada, como salarios vencidos, intereses y la mención específica de la Ley Federal Del Trabajo. Estos detalles adicionales no están en la respuesta esperada y, por lo tanto, incurren en una contradicción con el test case, lo que justifica una baja calificación."
     },
     {
       "id": 23,
@@ -1283,7 +1283,7 @@
       "articulos_esperados": [
         "LFT 47"
       ],
-      "respuesta": "El patrón puede despedirte sin responsabilidad si tienes más de tres faltas de asistencia en 30 días sin permiso, si desobedeces al patrón o a sus representantes, si por imprudencia comprometes la seguridad del lugar de trabajo, o si tienes una sentencia ejecutoriada que te impide trabajar.",
+      "respuesta": "El patrón puede despedirte sin responsabilidad si tienes más de tres faltas de asistencia en 30 días sin permiso, si desobedeces al patrón o a sus representantes sin causa justificada, o si hay conductas análogas graves que afecten el trabajo.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.98,
@@ -1297,7 +1297,7 @@
         "LFT 47",
         "LFT 47",
         "LFT 46",
-        "LFT 47",
+        "LFT 51",
         "LFT 47"
       ],
       "contexto": [
@@ -1305,16 +1305,16 @@
         "LFT Art. 47, fracc. XI: Son causas de rescisión de la relación de trabajo, sin responsabilidad para el patrón:\nXI. Desobedecer el trabajador al patrón o a sus representantes, sin causa justificada, siempre que se trate del trabajo contratado;",
         "LFT Art. 47: Son causas de rescisión de la relación de trabajo, sin responsabilidad para el patrón:",
         "LFT Art. 46: El trabajador o el patrón podrá rescindir en cualquier tiempo la relación de trabajo, por causa justificada, sin incurrir en responsabilidad.",
-        "LFT Art. 47, fracc. VII: Son causas de rescisión de la relación de trabajo, sin responsabilidad para el patrón:\nVII. Comprometer el trabajador, por su imprudencia o descuido inexcusable, la seguridad del establecimiento o de las personas que se encuentren en él;",
-        "LFT Art. 47, fracc. XIV: Son causas de rescisión de la relación de trabajo, sin responsabilidad para el patrón:\nXIV. La sentencia ejecutoriada que imponga al trabajador una pena de prisión, que le impida el cumplimiento de la relación de trabajo;"
+        "LFT Art. 51: Son causas de rescisión de la relación de trabajo, sin responsabilidad para el trabajador:\nI. Engañarlo el patrón, o en su caso, la agrupación patronal al proponerle el trabajo, respecto de las condiciones del mismo. Esta causa de rescisión dejará de tener efecto después de treinta días de prestar sus servicios el trabajador;\nII. Incurrir el patrón, sus familiares o cualquiera de sus representantes, dentro del servicio, en faltas de probidad u honradez, actos de violencia, amenazas, injurias, hostigamiento y/o acoso sexual, malos tratamientos u otros análogos, en contra del trabajador, cónyuge, padres, hijos o hermanos;\nIII. Incurrir el patrón, sus familiares o trabajadores, fuera del servicio, en los actos a que se refiere la fracción anterior, si son de tal manera graves que hagan imposible el cumplimiento de la relación de trabajo;\nIV. Reducir el patrón el salario del trabajador;\nV. No recibir el salario correspondiente en la fecha o lugar convenidos o acostumbrados;\nVI. Sufrir perjuicios causados maliciosamente por el patrón, en sus herramientas o útiles de trabajo;\nVII. La existencia de un peligro grave para la seguridad o salud del trabajador o de su familia, ya sea por carecer de condiciones higiénicas el establecimiento o porque no se cumplan las medidas preventivas y de seguridad que las leyes establezcan;\nVIII. Comprometer el patrón, con su imprudencia o descuido inexcusables, la seguridad del establecimiento o de las personas que se encuentren en él; y\nIX. Exigir la realización de actos, conductas o comportamientos que menoscaben o atenten contra la dignidad del trabajador; y\nX. Las análogas a las establecidas en las fracciones anteriores, de igual manera graves y de consecuencias semejantes, en lo que al trabajo se refiere.",
+        "LFT Art. 47, fracc. XV: Son causas de rescisión de la relación de trabajo, sin responsabilidad para el patrón:\nXV. Las análogas a las establecidas en las fracciones anteriores, de igual manera graves y de consecuencias semejantes en lo que al trabajo se refiere.\nEl patrón que despida a un trabajador deberá darle aviso escrito en el que refiera claramente la conducta o conductas que motivan la rescisión y la fecha o fechas en que se cometieron.\nEl aviso deberá entregarse personalmente al trabajador en el momento mismo del despido o bien, comunicarlo al Tribunal competente, dentro de los cinco días hábiles siguientes, en cuyo caso deberá proporcionar el último domicilio que tenga registrado del trabajador a fin de que la autoridad se lo notifique en forma personal.\nLa prescripción para ejercer las acciones derivadas del despido no comenzará a correr sino hasta que el trabajador reciba personalmente el aviso de rescisión.\nLa falta de aviso al trabajador personalmente o por conducto del Tribunal, por sí sola presumirá la separación no justificada, salvo prueba en contrario que acredite que el despido fue justificado."
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
       "reescrita": null,
       "similitud_max": 0.689,
-      "tokens_entrada": 871,
-      "tokens_salida": 448,
-      "segundos": 7.24,
+      "tokens_entrada": 1494,
+      "tokens_salida": 341,
+      "segundos": 6.55,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -1325,11 +1325,11 @@
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the answer is fully relevant and directly addresses the question about possible reasons an employer might terminate an employee without liability.",
       "contextual_precision": 0.41111111111111115,
-      "contextual_precision_razon": "The score is 0.41 because the first three nodes are irrelevant and ranked higher than the relevant nodes, which are positioned at positions 4, 5, and 6. The relevant nodes provide direct answers to the input, but they are ranked lower than the irrelevant ones, which lowers the contextual precision score.",
+      "contextual_precision_razon": "The score is 0.41 because the first three nodes are irrelevant and ranked higher than the relevant nodes, which are positioned at positions 4, 5, and 6. The relevant nodes provide direct matches to the input, but their lower ranking reduces the contextual precision score.",
       "contextual_recall": 0.0,
-      "contextual_recall_razon": "The score is 0.00 because the sentence in the expected output does not align with any part of the retrieval context. The retrieval context only lists causes related to labor law, such as absences, disobedience, and safety violations, but not the specific causes mentioned in the sentence.",
-      "correctness": 0.2,
-      "correctness_razon": "La respuesta real menciona causas como faltas de asistencia, desobediencia y compromiso de seguridad, mientras que la respuesta esperada incluye engaño, falta de probidad, violencia y revelar secretos. No hay coincidencia en las causas específicas, lo que indica una falta de alineación con la respuesta esperada. Además, la respuesta real incluye detalles como 'más de tres faltas de asistencia en 30 días', que no están en la respuesta esperada y podrían considerarse contradictorios."
+      "contextual_recall_razon": "The score is 0.00 because the sentence in the expected output does not align with any part of the retrieval context. The retrieval context discusses causes of termination under LFT Art. 47 and related articles, but does not mention 'entre otras' or the specific list of causes provided in the sentence.",
+      "correctness": 0.3,
+      "correctness_razon": "La respuesta real menciona faltas de asistencia, desobediencia y conductas análogas, mientras que la respuesta esperada incluye engaño con certificados falsos, falta de probidad, actos de violencia y revelar secretos de fabricación. No hay coincidencia en los puntos esenciales, lo que resulta en una desviación significativa."
     },
     {
       "id": 24,
@@ -1341,7 +1341,7 @@
         "LFT 51",
         "LFT 52"
       ],
-      "respuesta": "Sí, puedes renunciar porque tu jefe te grita e insulta, ya que eso es un mal trato. Por ley, tienes derecho a que te paguen como si te hubieran despedido sin causa justificada, con el importe de tres meses de salario. También debes recibir aviso escrito del despido, y si no lo recibes, se presume que fue injusto.",
+      "respuesta": "Sí, puedes renunciar porque tu jefe te grita e insulta, ya que eso es un maltrato. Por ley, tienes derecho a que te paguen como si te hayan despedido sin causa justificada, con el importe de tres meses de salario. También debes recibir aviso escrito del despido.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.78,
@@ -1371,8 +1371,8 @@
       "reescrita": null,
       "similitud_max": 0.561,
       "tokens_entrada": 2494,
-      "tokens_salida": 395,
-      "segundos": 6.48,
+      "tokens_salida": 381,
+      "segundos": 9.0,
       "trace_id": null,
       "recall_articulos": 0.5,
       "acierto_recuperacion": true,
@@ -1386,8 +1386,8 @@
       "contextual_precision_razon": "The score is 0.95 because the relevant nodes are ranked higher than the irrelevant ones, with the first five nodes being 'yes' and the sixth node being 'no'. The 'no' verdicts are correctly placed lower in the ranking, ensuring high contextual precision.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the expected output sentence is fully supported by the 2nd node in retrieval context, which directly references the legal provision regarding wrongful treatment by the employer.",
-      "correctness": 0.7,
-      "correctness_razon": "La respuesta real menciona el derecho a tres meses de salario y el aviso escrito, detalles que no están en la respuesta esperada, lo que contradice la evaluación que prioriza la coincidencia esencial. Sin embargo, ambas respuestas coinciden en que el maltrato justifica la renuncia sin responsabilidad. La respuesta real incluye información adicional que no está en la esperada, lo que podría considerarse un desvió."
+      "correctness": 0.6,
+      "correctness_razon": "La respuesta real menciona el derecho a tres meses de salario y el aviso escrito, que no están en la respuesta esperada. Además, la respuesta real incluye detalles como 'tu jefe te grita e insulta' que no están en la respuesta esperada, lo que contradice la evaluación que prioriza la precisión de los elementos legales clave. Sin embargo, ambas respuestas coinciden en que el maltrato justifica la renuncia sin responsabilidad."
     },
     {
       "id": 25,
@@ -1398,11 +1398,12 @@
       "articulos_esperados": [
         "LFT 162"
       ],
-      "respuesta": "La prima de antigüedad es el importe de doce días de salario por cada año de servicio que el trabajador haya cumplido.",
+      "respuesta": "La prima de antigüedad es el importe de doce días de salario por cada año de servicio. También se paga a trabajadores que se separan voluntariamente después de cumplir quince años de servicios.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.95,
       "citados": [
+        "LFT 162",
         "LFT 162"
       ],
       "recuperados": [
@@ -1426,8 +1427,8 @@
       "reescrita": null,
       "similitud_max": 0.669,
       "tokens_entrada": 1139,
-      "tokens_salida": 101,
-      "segundos": 1.7,
+      "tokens_salida": 184,
+      "segundos": 4.12,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -1441,8 +1442,8 @@
       "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 162, fracc. I\" directly answers the input question about the prima de antigüedad, and all other nodes are irrelevant and ranked lower as required.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the first sentence of the expected output is directly supported by the first node in retrieval context, which contains the exact same wording.",
-      "correctness": 0.7,
-      "correctness_razon": "La respuesta real menciona 'doce días de salario por cada año de servicio' lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real no especifica que se aplica a 'trabajadores de planta', lo cual es un detalle clave en la respuesta esperada. Además, la respuesta real usa 'importe de doce días' en lugar de 'doce días de salario', lo cual es una diferencia semántica significativa que podría afectar la precisión."
+      "correctness": 0.4,
+      "correctness_razon": "La respuesta real menciona detalles adicionales como la condición de separación voluntaria y los quince años de servicios, que no están en la respuesta esperada. Además, la respuesta real incluye una mención a 'trabajadores que se separan voluntariamente', lo cual contradice la respuesta esperada que se limita a 'trabajadores de planta'. Estos desvíos significativos reducen la alineación con la respuesta esperada."
     },
     {
       "id": 26,
@@ -1484,7 +1485,7 @@
       "similitud_max": 0.666,
       "tokens_entrada": 1109,
       "tokens_salida": 308,
-      "segundos": 4.72,
+      "segundos": 5.83,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -1510,7 +1511,7 @@
       "articulos_esperados": [
         "LFT 110"
       ],
-      "respuesta": "No, no pueden descontarte del sueldo lo que rompiste, porque la ley solo permite descuentos por deudas específicas como errores o pérdidas en artículos de la empresa, y no por daños causados por el trabajador.",
+      "respuesta": "No, no puedes ser descontado por lo que rompiste en el trabajo porque la ley solo permite descuentos por deudas específicas como errores o pérdidas, y no por daños causados por el trabajador. Si rompiste algo, no está permitido descontarte del sueldo.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.88,
@@ -1538,8 +1539,8 @@
       "reescrita": null,
       "similitud_max": 0.624,
       "tokens_entrada": 1679,
-      "tokens_salida": 191,
-      "segundos": 3.12,
+      "tokens_salida": 203,
+      "segundos": 5.04,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -1554,7 +1555,7 @@
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the first sentence in the expected output is fully supported by the first node in the retrieval context, which provides the exact legal framework regarding prohibited salary deductions and the specific conditions outlined in the example.",
       "correctness": 0.7,
-      "correctness_razon": "La respuesta real menciona que los descuentos por daños causados por el trabajador están prohibidos, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real no menciona los límites específicos como el importe de un mes de salario ni el porcentaje máximo permitido, lo cual es un detalle secundario pero relevante en el contexto legal. Aunque no hay contradicción, la falta de precisión en algunos aspectos reduce la puntuación."
+      "correctness_razon": "La respuesta real menciona que los descuentos por daños causados por el trabajador no están permitidos, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real no menciona los límites de porcentaje ni el requisito de un mes de salario, que son elementos clave en la respuesta esperada. Aunque no hay contradicción, la falta de detalles específicos reduce la precisión."
     },
     {
       "id": 28,
@@ -1565,7 +1566,7 @@
       "articulos_esperados": [
         "LFT 330-E"
       ],
-      "respuesta": "Sí, la empresa te tiene que pagar el internet y una parte proporcional de la luz si trabajas desde casa en modalidad de teletrabajo, según lo establecido en la Ley Federal Del Trabajo.",
+      "respuesta": "Sí, si trabajas desde casa, la empresa te tiene que pagar el internet y una parte proporcional de la luz, según lo establecido en la Ley Federal Del Trabajo.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.84,
@@ -1578,7 +1579,7 @@
         "LFT 330-F",
         "LFT 330-B",
         "LFT 291-K",
-        "LFT 330-A"
+        "LFT 291-K"
       ],
       "contexto": [
         "LFT Art. 330-E: En modalidad de teletrabajo, los patrones tendrán las obligaciones especiales siguientes:\nI. Proporcionar, instalar y encargarse del mantenimiento de los equipos necesarios para el teletrabajo como equipo de cómputo, sillas ergonómicas, impresoras, entre otros;\nII. Recibir oportunamente el trabajo y pagar los salarios en la forma y fechas estipuladas;\nIII. Asumir los costos derivados del trabajo a través de la modalidad de teletrabajo, incluyendo, en su caso, el pago de servicios de telecomunicación y la parte proporcional de electricidad;\nIV. Llevar registro de los insumos entregados a las personas trabajadoras bajo la modalidad de teletrabajo, en cumplimiento a las disposiciones en materia de seguridad y salud en el trabajo establecidas por la Secretaría del Trabajo y Previsión Social;\nV. Implementar mecanismos que preserven la seguridad de la información y datos utilizados por las personas trabajadoras en la modalidad de teletrabajo;\nVI. Respetar el derecho a la desconexión de las personas trabajadoras en la modalidad de teletrabajo al término de la jornada laboral;\nVII. Inscribir a las personas trabajadoras en la modalidad de teletrabajo al régimen obligatorio de la seguridad social, y\nVIII. Establecer los mecanismos de capacitación y asesoría necesarios para garantizar la adaptación, aprendizaje y el uso adecuado de las tecnologías de la información de las personas trabajadoras en la modalidad de teletrabajo, con especial énfasis en aquellas que cambien de modalidad presencial a teletrabajo.",
@@ -1586,15 +1587,15 @@
         "LFT Art. 330-F: Las personas trabajadoras en la modalidad de teletrabajo tienen las obligaciones especiales siguientes:\nI. Tener el mayor cuidado en la guarda y conservación de los equipos, materiales y útiles que reciban del patrón;\nII. Informar con oportunidad sobre los costos pactados para el uso de los servicios de telecomunicaciones y del consumo de electricidad, derivados del teletrabajo;\nIII. Obedecer y conducirse con apego a las disposiciones en materia de seguridad y salud en el trabajo establecidas por el patrón;\nIV. Atender y utilizar los mecanismos y sistemas operativos para la supervisión de sus actividades, y\nV. Atender las políticas y mecanismos de protección de datos utilizados en el desempeño de sus actividades, así como las restricciones sobre su uso y almacenamiento.",
         "LFT Art. 330-B: Las condiciones de trabajo se harán constar por escrito mediante un contrato y cada una de las partes conservará un ejemplar. Además de lo establecido en el artículo 25 de esta Ley, el contrato contendrá:\nI. Nombre, nacionalidad, edad, sexo y domicilio de las partes;\nII. Naturaleza y características del trabajo;\nIII. Monto del salario, fecha y lugar o forma de pago;\nIV. El equipo e insumos de trabajo, incluyendo el relacionado con las obligaciones de seguridad y salud que se entregan a la persona trabajadora bajo la modalidad de teletrabajo;\nV. La descripción y monto que el patrón pagará a la persona trabajadora bajo la modalidad de teletrabajo por concepto de pago de servicios en el domicilio relacionados con el teletrabajo;\nVI. Los mecanismos de contacto y supervisión entre las partes, así como la duración y distribución de horarios, siempre que no excedan los máximos legales, y\nVII. Las demás estipulaciones que convengan las partes.",
         "LFT Art. 291-K, fracc. X: En cualquier caso, las personas físicas y morales que administren o gestionen servicios a través de plataformas digitales, en su carácter de patrón, tendrán las obligaciones especiales siguientes: I. Pagar los trabajos derivados de los servicios otorgados, en un plazo no mayor a una semana; II.…\nX. Informar a las personas trabajadoras en plataformas digitales el pago que recibirán por cada tarea, servicio, obra o trabajo, desglosando los conceptos aplicables en la integración del pago, y",
-        "LFT Art. 330-A: El teletrabajo es una forma de organización laboral subordinada que consiste en el desempeño de actividades remuneradas, en lugares distintos al establecimiento o establecimientos del patrón, por lo que no se requiere la presencia física de la persona trabajadora bajo la modalidad de\nteletrabajo, en el centro de trabajo, utilizando primordialmente las tecnologías de la información y comunicación, para el contacto y mando entre la persona trabajadora bajo la modalidad de teletrabajo y el patrón.\nLa persona trabajadora bajo la modalidad de teletrabajo será quien preste sus servicios personal, remunerado y subordinado en lugar distinto a las instalaciones de la empresa o fuente de trabajo del patrón y utilice las tecnologías de la información y la comunicación.\nPara efectos de la modalidad de teletrabajo, se entenderá por tecnologías de la información y la comunicación, al conjunto de servicios, infraestructura, redes, software, aplicaciones informáticas y dispositivos que tienen como propósito facilitar las tareas y funciones en los centros de trabajo, así como las que se necesitan para la gestión y transformación de la información, en particular los componentes tecnológicos que permiten crear, modificar, almacenar, proteger y recuperar esa información.\nSe regirán por las disposiciones del presente Capítulo las relaciones laborales que se desarrollen más del cuarenta por ciento del tiempo en el domicilio de la persona trabajadora bajo la modalidad de teletrabajo, o en el domicilio elegido por ésta.\nNo será considerado teletrabajo aquel que se realice de forma ocasional o esporádica."
+        "LFT Art. 291-K: En cualquier caso, las personas físicas y morales que administren o gestionen servicios a través de plataformas digitales, en su carácter de patrón, tendrán las obligaciones especiales siguientes: I. Pagar los trabajos derivados de los servicios otorgados, en un plazo no mayor a una semana; II. Establecer mecanismos para llevar registro de las horas trabajadas y tiempos de espera; III. Emitir semanalmente recibos de pagos realizados donde se haga constar el número de tareas, servicios, obras o trabajos realizados, el tiempo efectivamente trabajado, el tiempo durante el que la persona trabajadora está a disposición de la plataforma para la asignación de una tarea, servicio, obra o trabajo, las retenciones legales que en su caso apliquen y demás conceptos análogos que resulten procedentes; IV. Implementar mecanismos que garanticen la seguridad de la información y datos personales de las personas trabajadoras utilizados desde la plataforma, así como el ejercicio de los derechos de Acceso, Rectificación, Cancelación, Oposición y Portabilidad de estos, en términos de la legislación aplicable; V. Inscribir a las personas trabajadoras en plataformas digitales ante el Instituto Mexicano del Seguro Social y, en su caso, determinar, retener y enterar el pago de cuotas obrero patronales en los términos que establezcan las disposiciones en la materia; VI. Realizar las aportaciones correspondientes al Fondo Nacional de la Vivienda para los Trabajadores, en términos de la legislación aplicable; VII. Establecer mecanismos de adiestramiento, capacitación y asesoría necesarios para garantizar la adaptación y el uso adecuado de las plataformas digitales, además de otros materiales, insumos o herramientas necesarias para su trabajo, cuando así se convenga; VIII. Informar sobre las"
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
       "reescrita": null,
       "similitud_max": 0.598,
-      "tokens_entrada": 2041,
-      "tokens_salida": 140,
-      "segundos": 2.32,
+      "tokens_entrada": 2112,
+      "tokens_salida": 134,
+      "segundos": 4.83,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -1605,11 +1606,11 @@
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the response is fully relevant and directly addresses the question about whether the employer must pay for internet and electricity when working from home. There are no irrelevant statements.",
       "contextual_precision": 1.0,
-      "contextual_precision_razon": "The score is 1.00 because all relevant nodes are ranked first, with no irrelevant nodes appearing above them. The first two nodes clearly support the input, while the remaining nodes are irrelevant and correctly ranked lower.",
+      "contextual_precision_razon": "The score is 1.00 because all relevant nodes are ranked higher than irrelevant nodes. The first two nodes with 'yes' verdicts directly address the employer's responsibility for internet and electricity, while the subsequent nodes with 'no' verdicts are about unrelated topics and are appropriately ranked lower.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the first sentence of the expected output is fully supported by node 1 in retrieval context, which directly addresses the assumption of costs related to telework, including telecom services and a proportional share of electricity.",
-      "correctness": 0.7,
-      "correctness_razon": "La respuesta real coincide con la esperada en la afirmación principal de que la empresa debe pagar el internet y una parte de la luz. Sin embargo, la respuesta real es más breve y omite detalles como 'servicios de telecomunicación' y 'parte proporcional de electricidad', que son específicos en la respuesta esperada. Aunque no hay contradicciones, la falta de precisión en los términos clave reduce la calificación."
+      "correctness": 0.8,
+      "correctness_razon": "La respuesta real menciona correctamente que la empresa debe pagar el internet y una parte proporcional de la luz, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real no menciona explícitamente la 'Ley Federal Del Trabajo' ni el término 'patrón', lo cual podría ser considerado un detalle secundario. Aunque no hay contradicciones, la respuesta real es menos completa que la esperada."
     },
     {
       "id": 29,
@@ -1620,27 +1621,28 @@
       "articulos_esperados": [
         "LFT 330-G"
       ],
-      "respuesta": "No, no puedes ser obligado a pasar a home office sin que sea voluntario y establecido por escrito. Si el cambio se hace por fuerza mayor, puede ser válido, pero debe acreditarse.",
+      "respuesta": "No, no puedes ser obligado a pasar a teletrabajo sin tu consentimiento. El cambio debe ser voluntario y establecido por escrito, como indica la ley. Si el trabajo se realiza en tu domicilio, también debes tener derecho a volver a la modalidad presencial si lo deseas.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.79,
       "citados": [
         "LFT 330-G",
-        "LFT 330-E"
+        "LFT 330-E",
+        "LFT 330-F"
       ],
       "recuperados": [
         "LFT 330-G",
         "LFT 330-E",
-        "LFT 330-F",
         "LFT 331 Ter",
+        "LFT 330-F",
         "LFT 330-A",
         "LFT 331 Ter"
       ],
       "contexto": [
         "LFT Art. 330-G: El cambio en la modalidad de presencial a teletrabajo, deberá ser voluntario y establecido por escrito conforme al presente Capítulo, salvo casos de fuerza mayor debidamente acreditada.\nEn todo caso, cuando se dé un cambio a la modalidad de teletrabajo las partes tendrán el derecho de reversibilidad a la modalidad presencial, para lo cual podrán pactar los mecanismos, procesos y tiempos necesarios para hacer válida su voluntad de retorno a dicha modalidad.",
         "LFT Art. 330-E: En modalidad de teletrabajo, los patrones tendrán las obligaciones especiales siguientes:\nI. Proporcionar, instalar y encargarse del mantenimiento de los equipos necesarios para el teletrabajo como equipo de cómputo, sillas ergonómicas, impresoras, entre otros;\nII. Recibir oportunamente el trabajo y pagar los salarios en la forma y fechas estipuladas;\nIII. Asumir los costos derivados del trabajo a través de la modalidad de teletrabajo, incluyendo, en su caso, el pago de servicios de telecomunicación y la parte proporcional de electricidad;\nIV. Llevar registro de los insumos entregados a las personas trabajadoras bajo la modalidad de teletrabajo, en cumplimiento a las disposiciones en materia de seguridad y salud en el trabajo establecidas por la Secretaría del Trabajo y Previsión Social;\nV. Implementar mecanismos que preserven la seguridad de la información y datos utilizados por las personas trabajadoras en la modalidad de teletrabajo;\nVI. Respetar el derecho a la desconexión de las personas trabajadoras en la modalidad de teletrabajo al término de la jornada laboral;\nVII. Inscribir a las personas trabajadoras en la modalidad de teletrabajo al régimen obligatorio de la seguridad social, y\nVIII. Establecer los mecanismos de capacitación y asesoría necesarios para garantizar la adaptación, aprendizaje y el uso adecuado de las tecnologías de la información de las personas trabajadoras en la modalidad de teletrabajo, con especial énfasis en aquellas que cambien de modalidad presencial a teletrabajo.",
-        "LFT Art. 330-F: Las personas trabajadoras en la modalidad de teletrabajo tienen las obligaciones especiales siguientes:\nI. Tener el mayor cuidado en la guarda y conservación de los equipos, materiales y útiles que reciban del patrón;\nII. Informar con oportunidad sobre los costos pactados para el uso de los servicios de telecomunicaciones y del consumo de electricidad, derivados del teletrabajo;\nIII. Obedecer y conducirse con apego a las disposiciones en materia de seguridad y salud en el trabajo establecidas por el patrón;\nIV. Atender y utilizar los mecanismos y sistemas operativos para la supervisión de sus actividades, y\nV. Atender las políticas y mecanismos de protección de datos utilizados en el desempeño de sus actividades, así como las restricciones sobre su uso y almacenamiento.",
         "LFT Art. 331 Ter, fracc. X: El trabajo del hogar deberá fijarse mediante contrato por escrito, de conformidad con la legislación nacional o con convenios colectivos, que incluya como mínimo:\nX. Las herramientas de trabajo que serán brindadas para el correcto desempeño de las actividades laborales.\nLos alimentos destinados a las personas trabajadoras del hogar deberán ser higiénicos y nutritivos, además de ser de la misma calidad y cantidad de los destinados al consumo de la persona empleadora.\nQueda prohibido solicitar constancia o prueba de no gravidez para la contratación de una mujer como trabajadora del hogar; y no podrá despedirse a una persona trabajadora embarazada, de ser el caso, el despido se presumirá como discriminación.\nEn caso de que la persona empleadora requiera que la trabajadora del hogar utilice uniforme o ropa de trabajo, el costo de los mismos quedará a cargo de la persona empleadora.\nEl contrato de trabajo se establecerá sin distinción de condiciones, al tratarse de personas trabajadoras del hogar migrantes.\nQueda prohibida todo tipo de discriminación, en términos de los artículos 1°. de la Constitución Política de los Estados Unidos Mexicanos, y 1, fracción III de la Ley Federal para Prevenir y Eliminar la Discriminación, en todas las etapas de la relación laboral y en el establecimiento de las condiciones laborales, así como cualquier trato que vulnere la dignidad de las personas trabajadoras del hogar.",
+        "LFT Art. 330-F: Las personas trabajadoras en la modalidad de teletrabajo tienen las obligaciones especiales siguientes:\nI. Tener el mayor cuidado en la guarda y conservación de los equipos, materiales y útiles que reciban del patrón;\nII. Informar con oportunidad sobre los costos pactados para el uso de los servicios de telecomunicaciones y del consumo de electricidad, derivados del teletrabajo;\nIII. Obedecer y conducirse con apego a las disposiciones en materia de seguridad y salud en el trabajo establecidas por el patrón;\nIV. Atender y utilizar los mecanismos y sistemas operativos para la supervisión de sus actividades, y\nV. Atender las políticas y mecanismos de protección de datos utilizados en el desempeño de sus actividades, así como las restricciones sobre su uso y almacenamiento.",
         "LFT Art. 330-A: El teletrabajo es una forma de organización laboral subordinada que consiste en el desempeño de actividades remuneradas, en lugares distintos al establecimiento o establecimientos del patrón, por lo que no se requiere la presencia física de la persona trabajadora bajo la modalidad de\nteletrabajo, en el centro de trabajo, utilizando primordialmente las tecnologías de la información y comunicación, para el contacto y mando entre la persona trabajadora bajo la modalidad de teletrabajo y el patrón.\nLa persona trabajadora bajo la modalidad de teletrabajo será quien preste sus servicios personal, remunerado y subordinado en lugar distinto a las instalaciones de la empresa o fuente de trabajo del patrón y utilice las tecnologías de la información y la comunicación.\nPara efectos de la modalidad de teletrabajo, se entenderá por tecnologías de la información y la comunicación, al conjunto de servicios, infraestructura, redes, software, aplicaciones informáticas y dispositivos que tienen como propósito facilitar las tareas y funciones en los centros de trabajo, así como las que se necesitan para la gestión y transformación de la información, en particular los componentes tecnológicos que permiten crear, modificar, almacenar, proteger y recuperar esa información.\nSe regirán por las disposiciones del presente Capítulo las relaciones laborales que se desarrollen más del cuarenta por ciento del tiempo en el domicilio de la persona trabajadora bajo la modalidad de teletrabajo, o en el domicilio elegido por ésta.\nNo será considerado teletrabajo aquel que se realice de forma ocasional o esporádica.",
         "LFT Art. 331 Ter, fracc. VII: El trabajo del hogar deberá fijarse mediante contrato por escrito, de conformidad con la legislación nacional o con convenios colectivos, que incluya como mínimo:\nVII. Las vacaciones anuales pagadas y los períodos de descanso diario y semanal;"
       ],
@@ -1649,23 +1651,23 @@
       "reescrita": null,
       "similitud_max": 0.571,
       "tokens_entrada": 2017,
-      "tokens_salida": 229,
-      "segundos": 3.79,
+      "tokens_salida": 326,
+      "segundos": 7.85,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
-      "precision_citas": 0.5,
+      "precision_citas": 0.3333333333333333,
       "abstencion_correcta": true,
-      "faithfulness": 0.5,
-      "faithfulness_razon": "The score is 0.50 because the actual output contradicts the retrieval context by stating that telework can be valid if done by force without accreditation, whereas the context clearly states that the transition to telework must be voluntary and established in writing.",
+      "faithfulness": 0.6666666666666666,
+      "faithfulness_razon": "The score is 0.67 because the actual output contradicts the retrieval context by stating that it is not possible to return to in-person modality, while the law allows parties to agree on mechanisms to revert to in-person modality.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the response is fully relevant and directly addresses the question about being compelled to work from home, with no irrelevant statements present.",
-      "contextual_precision": 0.7,
-      "contextual_precision_razon": "The score is 0.70 because the first node correctly addresses the input and is ranked first, while the second, third, fourth and sixth nodes are irrelevant and ranked lower, but the fifth node, which is relevant, is ranked lower than some irrelevant nodes, reducing the score.",
+      "contextual_precision": 1.0,
+      "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 330-G\" directly addresses the voluntariness of the change to home office and is ranked first, while the other nodes are irrelevant and correctly ranked lower.",
       "contextual_recall": 1.0,
-      "contextual_recall_razon": "The score is 1.00 because the first sentence of the expected output is fully supported by the first node in retrieval context, which directly aligns with the content and structure of the sentence.",
-      "correctness": 0.7,
-      "correctness_razon": "La respuesta real menciona la necesidad de voluntariedad y escritura, lo cual coincide con la respuesta esperada. Sin embargo, la respuesta real no incluye el derecho de reversibilidad a la modalidad presencial, que es un elemento clave en la respuesta esperada. Además, la respuesta real no menciona explícitamente la obligación de acreditación en caso de fuerza mayor, lo cual es un detalle importante. Aunque hay coincidencia en los puntos esenciales, la falta de algunos elementos clave reduce la puntuación."
+      "contextual_recall_razon": "The score is 1.00 because the first sentence of the expected output is fully supported by the first node in retrieval context, which directly addresses the voluntary and written nature of the transition from in-person to remote work, except in cases of force majeure.",
+      "correctness": 0.9,
+      "correctness_razon": "La respuesta real y la esperada coinciden en que el cambio a teletrabajo debe ser voluntario y por escrito. Sin embargo, la respuesta real menciona específicamente el derecho a volver a la modalidad presencial si se trabaja en el domicilio, mientras que la esperada lo menciona de manera más general. Esta diferencia en el detalle no es crítica, pero la respuesta real incluye información adicional que no está en la esperada, lo que podría considerarse como un detalle secundario. Ambas respuestas son correctas y alineadas con la ley."
     },
     {
       "id": 30,
@@ -1676,7 +1678,7 @@
       "articulos_esperados": [
         "LFT 491"
       ],
-      "respuesta": "Sí, te seguirán pagando el salario que dejes de percibir durante la incapacidad temporal, desde el primer día de la enfermedad. Este pago es íntegro y se hace hasta que se determine si la incapacidad es permanente.",
+      "respuesta": "Sí, te seguirán pagando el salario que dejes de percibir durante la incapacidad temporal, desde el primer día de la falta de trabajo.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 1.0,
@@ -1704,8 +1706,8 @@
       "reescrita": null,
       "similitud_max": 0.717,
       "tokens_entrada": 1702,
-      "tokens_salida": 157,
-      "segundos": 2.57,
+      "tokens_salida": 136,
+      "segundos": 4.31,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -1719,8 +1721,8 @@
       "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 491\" and \"LFT Art. 496\" (nodes 1 and 2) directly answer the question about payment during temporary incapacity, and all irrelevant nodes (3-6) are ranked lower, ensuring high contextual precision.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the expected output sentence aligns perfectly with the content of node 2 in retrieval context, providing a direct and accurate match.",
-      "correctness": 0.9,
-      "correctness_razon": "La respuesta real coincide con la esperada en la afirmación principal y en los elementos esenciales como el pago íntegro del salario y el inicio desde el primer día de la incapacidad. Sin embargo, la respuesta real menciona explícitamente 'hasta que se determine si la incapacidad es permanente', lo cual no está en la respuesta esperada y podría considerarse un detalle secundario, pero no contradice el contenido esencial."
+      "correctness": 0.8,
+      "correctness_razon": "La respuesta real coincide con la esperada en la afirmación principal y en la descripción general de la indemnización, aunque la respuesta real es más breve y omite algunos detalles secundarios como la mención del 'riesgo de trabajo'. No hay contradicciones en días, porcentajes o plazos, lo que refleja un buen alineamiento con la respuesta esperada."
     },
     {
       "id": 31,
@@ -1731,7 +1733,7 @@
       "articulos_esperados": [
         "LFT 487"
       ],
-      "respuesta": "Si sufro un riesgo de trabajo, tengo derecho a asistencia médica, rehabilitación, hospitalización cuando sea necesario, medicamentos, prótesis y la indemnización establecida en la ley.",
+      "respuesta": "Si sufro un riesgo de trabajo, tengo derecho a asistencia médica, rehabilitación, hospitalización si es necesario, medicamentos, aparatos de prótesis y ortopedia, y a una indemnización. Esto está establecido en el artículo 487 de la Ley Federal Del Trabajo.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 1.0,
@@ -1759,8 +1761,8 @@
       "reescrita": null,
       "similitud_max": 0.742,
       "tokens_entrada": 1281,
-      "tokens_salida": 164,
-      "segundos": 3.79,
+      "tokens_salida": 215,
+      "segundos": 4.97,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -1775,7 +1777,7 @@
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the expected output sentence aligns perfectly with the content of node 1 in retrieval context, covering all the mentioned aspects of medical assistance, rehabilitation, hospitalization, medications, prosthetics, and compensation.",
       "correctness": 0.8,
-      "correctness_razon": "La respuesta real incluye elementos clave como asistencia médica, rehabilitación, hospitalización, medicamentos, prótesis e indemnización, que coinciden con la respuesta esperada. Sin embargo, la respuesta real omite algunos detalles específicos como 'quirúrgica', 'material de curación', 'ortopedia necesarios' y 'correspondiente', que son relevantes en el contexto legal. Aunque no hay contradicciones, la falta de algunos elementos secundarios reduce la precisión."
+      "correctness_razon": "La respuesta real incluye la mayoría de los elementos clave de la respuesta esperada, como asistencia médica, rehabilitación, hospitalización, medicamentos, prótesis y indemnización. Sin embargo, la respuesta real menciona específicamente 'riesgo de trabajo' y 'artículo 487 de la Ley Federal Del Trabajo', lo cual no está en la respuesta esperada y podría considerarse un detalle secundario. Aunque no hay contradicciones directas, la inclusión de información no esperada reduce ligeramente la precisión."
     },
     {
       "id": 32,
@@ -1815,7 +1817,7 @@
       "similitud_max": 0.645,
       "tokens_entrada": 1326,
       "tokens_salida": 172,
-      "segundos": 3.89,
+      "segundos": 4.3,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
@@ -1841,7 +1843,7 @@
       "articulos_esperados": [
         "LFT 22"
       ],
-      "respuesta": "Sí, tu hijo puede trabajar si tiene 15 años, pero solo si ha terminado su educación básica obligatoria o si la autoridad laboral aprueba que el trabajo sea compatible con sus estudios. Necesita un certificado médico y puede solicitar autorización ante el Tribunal competente si no ha terminado sus estudios.",
+      "respuesta": "Sí, tu hijo puede trabajar si tiene 15 años, pero solo si ha terminado su educación básica obligatoria o si la autoridad laboral aprueba que el trabajo sea compatible con sus estudios. Debe tener un certificado médico y cumplir con las condiciones establecidas en la ley.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 0.95,
@@ -1873,23 +1875,23 @@
       "reescrita": null,
       "similitud_max": 0.666,
       "tokens_entrada": 1486,
-      "tokens_salida": 573,
-      "segundos": 9.36,
+      "tokens_salida": 566,
+      "segundos": 12.02,
       "trace_id": null,
       "recall_articulos": 1.0,
       "acierto_recuperacion": true,
       "precision_citas": 0.2,
       "abstencion_correcta": true,
-      "faithfulness": 0.5,
-      "faithfulness_razon": "The score is 0.50 because the claim contradicts the retrieval context by omitting the requirement of a medical certificate, which is explicitly mentioned in the context (Art. 174).",
+      "faithfulness": 1.0,
+      "faithfulness_razon": "The score is 1.00 because there are no contradictions, indicating the actual output is fully aligned with the retrieval context.",
       "answer_relevancy": 1.0,
       "answer_relevancy_razon": "The score is 1.00 because the response is fully relevant and directly addresses the question about whether a 15-year-old can work.",
       "contextual_precision": 1.0,
       "contextual_precision_razon": "The score is 1.00 because \"LFT Art. 22\" (node 1), \"LFT Art. 174\" (node 2), and \"LFT Art. 988\" (node 3) are all relevant and ranked first, while the irrelevant nodes (nodes 4, 5, 6) are correctly ranked lower, as they discuss prohibited activities or conditions that do not directly answer the question about a 15-year-old working.",
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the first sentence in the expected output is fully supported by the 1st node and 2nd node in the retrieval context, which directly match the legal provisions regarding minors working and requiring parental authorization.",
-      "correctness": 0.7,
-      "correctness_razon": "La respuesta real menciona la edad de 15 años y la necesidad de terminar la educación básica o de autorización laboral, mientras que la respuesta esperada se centra en la edad de 15 años y la autorización de los padres. Ambas respuestas abordan la edad mínima, pero difieren en los requisitos específicos, lo que reduce la alineación. Además, la respuesta real incluye detalles adicionales como el certificado médico y el Tribunal competente, que no están en la respuesta esperada, pero no contradicen directamente el contenido esencial."
+      "correctness": 0.6,
+      "correctness_razon": "La respuesta real menciona la edad de 15 años y la necesidad de terminar la educación básica o de autorización laboral, mientras que la respuesta esperada habla de las limitaciones de la ley y la autorización de los padres para quienes están entre 15 y 16 años. Aunque ambas respuestas abordan la edad mínima, la respuesta real incluye detalles adicionales que no están en la respuesta esperada, lo que puede considerarse como una discrepancia significativa. Además, la respuesta real no menciona explícitamente la edad de 16 años como límite, lo cual es un detalle clave en la respuesta esperada."
     },
     {
       "id": 34,
@@ -1901,7 +1903,7 @@
         "LFT 153-A",
         "LFT 132"
       ],
-      "respuesta": "Sí, la empresa está obligada a darte capacitación, según la Ley Federal Del Trabajo. Esto se establece en el artículo 153-A y debe estar incluido en los contratos colectivos según el artículo 153-M.",
+      "respuesta": "Sí, la empresa está obligada a darte capacitación, según la Ley Federal Del Trabajo. Esta obligación está establecida en el artículo 153-A y debe incluirse en los contratos colectivos como parte de los planes y programas de trabajo.",
       "encontrado": true,
       "confianza": "alta",
       "confianza_puntaje": 1.0,
@@ -1930,8 +1932,8 @@
       "reescrita": null,
       "similitud_max": 0.703,
       "tokens_entrada": 1611,
-      "tokens_salida": 243,
-      "segundos": 4.07,
+      "tokens_salida": 288,
+      "segundos": 7.12,
       "trace_id": null,
       "recall_articulos": 0.5,
       "acierto_recuperacion": true,
@@ -1946,7 +1948,7 @@
       "contextual_recall": 1.0,
       "contextual_recall_razon": "The score is 1.00 because the first sentence of the expected output is directly supported by the first node in retrieval context, which contains the exact phrase and meaning.",
       "correctness": 0.7,
-      "correctness_razon": "La respuesta real menciona artículos específicos de la Ley Federal Del Trabajo (153-A y 153-M), mientras que la respuesta esperada es más general y no menciona artículos legales. Aunque ambas respuestas coinciden en que la empresa está obligada a proporcionar capacitación, la respuesta real incluye información detallada que no está en la respuesta esperada, lo cual no es un error, pero tampoco se alinea completamente con el enfoque esperado. Sin embargo, la respuesta real no contradice la esperada, por lo que no se aplica penalización."
+      "correctness_razon": "La respuesta real menciona la Ley Federal Del Trabajo y el artículo 153-A, lo cual es relevante, pero no menciona la obligación específica de los patrones de proporcionar capacitación, que es el núcleo de la respuesta esperada. Además, la respuesta real incluye detalles adicionales como los contratos colectivos y los planes de trabajo, que no están en la respuesta esperada y podrían considerarse detalles secundarios. Sin embargo, la respuesta real no contradice directamente la respuesta esperada, lo que evita una penalización severa."
     },
     {
       "id": 35,
@@ -1955,7 +1957,7 @@
       "pregunta": "¿Cuánto es el salario mínimo este año?",
       "respuesta_esperada": "No está en los documentos: la ley define el salario mínimo pero no fija el monto vigente.",
       "articulos_esperados": [],
-      "respuesta": "Los fragmentos no indican cuánto es el salario mínimo este año. Aunque mencionan que debe ser suficiente para las necesidades básicas y que se revisa anualmente con relación a la inflación, no especifican el monto vigente.",
+      "respuesta": "No se especifica cuánto es el salario mínimo este año en los fragmentos proporcionados. La ley menciona cómo se fija y revisa el salario mínimo, pero no da un monto vigente ni para este año.",
       "encontrado": false,
       "confianza": "media",
       "confianza_puntaje": null,
@@ -1966,7 +1968,7 @@
         "LFT 96",
         "LFT 94",
         "LFT 92",
-        "LFT 91"
+        "LFT 570"
       ],
       "contexto": [
         "LFT Art. 90: Salario mínimo es la cantidad menor que debe recibir en efectivo la persona trabajadora por los servicios prestados en una jornada de trabajo.\nEl salario mínimo deberá ser suficiente para satisfacer las necesidades normales de una o un jefe de familia en el orden material, social y cultural, y para proveer a la educación obligatoria de las y los hijos.\nSe considera de utilidad social el establecimiento de instituciones y medidas que protejan la capacidad adquisitiva del salario y faciliten el acceso de toda persona trabajadora a la obtención de satisfactores.\nLa fijación anual de los salarios mínimos, o la revisión de los mismos, nunca estará por debajo de la inflación observada durante el periodo de su vigencia transcurrido.",
@@ -1974,15 +1976,15 @@
         "LFT Art. 96: La Comisión Nacional determinará la división de la República en áreas geográficas, las que estarán constituidas por uno o más municipios en los que deba regir un mismo salario mínimo general, sin que necesariamente exista continuidad territorial entre dichos municipios.",
         "LFT Art. 94: Los salarios mínimos se fijarán por una Comisión Nacional integrada por representantes de los trabajadores, de los patrones y del gobierno, la cual podrá auxiliarse de las comisiones especiales de carácter consultivo que considere indispensables para el mejor desempeño de sus funciones.",
         "LFT Art. 92: Los salarios mínimos generales regirán para todos los trabajadores del área o áreas geográficas de aplicación que se determinen, independientemente de las ramas de la actividad económica, profesiones, oficios o trabajos especiales.",
-        "LFT Art. 91: Los salarios mínimos podrán ser generales para una o varias áreas geográficas de aplicación, que pueden extenderse a una o más entidades federativas o profesionales, para una rama determinada de la actividad económica o para profesiones, oficios o trabajos especiales, dentro de una o varias áreas geográficas."
+        "LFT Art. 570: Los salarios mínimos se fijarán cada año y comenzarán a regir el primero de enero del año siguiente.\nLos salarios mínimos podrán revisarse en cualquier momento en el curso de su vigencia siempre que existan circunstancias económicas que lo justifiquen:\nI. Por iniciativa del Secretario del Trabajo y Previsión Social quien formulará al Presidente de la Comisión Nacional de los Salarios Mínimos solicitud por escrito que contenga exposición de los hechos que la motiven; o\nII. A solicitud de los sindicatos, federaciones y confederaciones de trabajadores o de los patrones previo cumplimiento de los siguientes requisitos:\na) La solicitud deberá presentarse a la Secretaría del Trabajo y Previsión Social por los sindicatos, federaciones y confederaciones que representen el cincuenta y uno por ciento de los trabajadores sindicalizados, por lo menos, o por los patrones que tengan a su servicio por lo menos dicho Porcentaje de trabajadores.\nb) La solicitud contendrá una exposición de los fundamentos que la justifiquen y podrá acompañarse de los estudios y documentos que correspondan.\nc) El Secretario del Trabajo y Previsión Social, dentro de los cinco días siguientes a la fecha en que reciba la solicitud correspondiente y previa certificación de la mayoría a que se refiere el inciso a) de este artículo, la hará llegar al Presidente de la Comisión Nacional de los Salarios Mínimos con los estudios y documentos que la acompañen."
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
       "reescrita": null,
       "similitud_max": 0.648,
-      "tokens_entrada": 1064,
-      "tokens_salida": 76,
-      "segundos": 1.33,
+      "tokens_entrada": 1336,
+      "tokens_salida": 71,
+      "segundos": 11.01,
       "trace_id": null,
       "abstencion_correcta": true
     },
@@ -2002,25 +2004,25 @@
         "LFT 87",
         "LFT 110",
         "LFT 334 Bis",
-        "LFT 97",
         "LFT 784",
+        "LFT 97",
         "LFT 50"
       ],
       "contexto": [
         "LFT Art. 87: Los trabajadores tendrán derecho a un aguinaldo anual que deberá pagarse antes del día veinte de diciembre, equivalente a quince días de salario, por lo menos.\nLos que no hayan cumplido el año de servicios, independientemente de que se encuentren laborando o no en la fecha de liquidación del aguinaldo, tendrán derecho a que se les pague la parte proporcional del mismo, conforme al tiempo que hubieren trabajado, cualquiera que fuere éste.",
         "LFT Art. 110, fracc. II: Los descuentos en los salarios de los trabajadores, están prohibidos salvo en los casos y con los requisitos siguientes:\nII. Pago de la renta a que se refiere el artículo 151 que no podrá exceder del quince por ciento del salario.",
         "LFT Art. 334 Bis: Las personas trabajadoras del hogar contarán con las siguientes prestaciones conforme a las disposiciones de la presente Ley y estarán comprendidas en el régimen obligatorio del seguro social:\na. Vacaciones;\nb. Prima vacacional;\nc. Pago de días de descanso;\nd. Acceso obligatorio a la seguridad social;\ne. Aguinaldo; y\nf. Cualquier otra prestación que se pudieren pactar entre las partes.",
-        "LFT Art. 97: Los salarios mínimos no podrán ser objeto de compensación, descuento o reducción, salvo en los casos siguientes:\nI. Pensiones alimenticias decretadas por la autoridad competente en favor de las personas mencionadas en el artículo 110, fracción V; y\nII. Pago de rentas a que se refiere el artículo 151. Este descuento no podrá exceder del diez por ciento del salario.\nIII. Pago de abonos para cubrir préstamos o rentas provenientes del Fondo Nacional de la Vivienda para los Trabajadores destinados al arrendamiento social, adquisición, construcción, reparación, ampliación o mejoras de vivienda o al pago de pasivos adquiridos por estos conceptos. Estos descuentos deberán haber sido aceptados libremente por la persona trabajadora y no podrán exceder el 20 por ciento del salario para préstamos y 30 por ciento del salario para rentas.\nIV. Pago de abonos para cubrir créditos otorgados o garantizados por el Instituto a que se refiere el artículo 103 Bis de esta Ley, destinados a la adquisición de bienes de consumo duradero o al pago de servicios. Estos descuentos estarán precedidos de la aceptación que libremente haya hecho el trabajador y no podrán exceder del 10% del salario.",
         "LFT Art. 784, fracc. IX: El Tribunal eximirá de la carga de la prueba al trabajador, cuando por otros medios esté en posibilidad de llegar al conocimiento de los hechos, y para tal efecto a petición del trabajador o de considerarlo necesario requerirá al patrón para que exhiba los documentos que, de acuerdo con las leyes,…\nIX. Pagos de días de descanso y obligatorios, así como del aguinaldo;",
+        "LFT Art. 97: Los salarios mínimos no podrán ser objeto de compensación, descuento o reducción, salvo en los casos siguientes:\nI. Pensiones alimenticias decretadas por la autoridad competente en favor de las personas mencionadas en el artículo 110, fracción V; y\nII. Pago de rentas a que se refiere el artículo 151. Este descuento no podrá exceder del diez por ciento del salario.\nIII. Pago de abonos para cubrir préstamos o rentas provenientes del Fondo Nacional de la Vivienda para los Trabajadores destinados al arrendamiento social, adquisición, construcción, reparación, ampliación o mejoras de vivienda o al pago de pasivos adquiridos por estos conceptos. Estos descuentos deberán haber sido aceptados libremente por la persona trabajadora y no podrán exceder el 20 por ciento del salario para préstamos y 30 por ciento del salario para rentas.\nIV. Pago de abonos para cubrir créditos otorgados o garantizados por el Instituto a que se refiere el artículo 103 Bis de esta Ley, destinados a la adquisición de bienes de consumo duradero o al pago de servicios. Estos descuentos estarán precedidos de la aceptación que libremente haya hecho el trabajador y no podrán exceder del 10% del salario.",
         "LFT Art. 50: Las indemnizaciones a que se refiere el artículo anterior consistirán:\nI. Si la relación de trabajo fuere por tiempo determinado menor de un año, en una cantidad igual al importe de los salarios de la mitad del tiempo de servicios prestados; si excediera de un año, en una cantidad igual al importe de los salarios de seis meses por el primer año y de veinte días por cada uno de los años siguientes en que hubiese prestado sus servicios;\nII. Si la relación de trabajo fuere por tiempo indeterminado, la indemnización consistirá en veinte días de salario por cada uno de los años de servicios prestados;\nIII. Además de las indemnizaciones a que se refieren las fracciones anteriores, en el importe de tres meses de salario y el pago de los salarios vencidos e intereses, en su caso, en los términos previstos en el artículo 48 de esta Ley, y\nIV. Para las personas trabajadoras de plataformas digitales la indemnización consistirá en tres meses de salario. Adicionalmente se pagarán veinte días de salario por cada uno de los años de servicios prestados, tomando en cuenta el tiempo efectivamente laborado, como lo establece el artículo 291-D del mismo ordenamiento y los salarios vencidos e intereses, en su caso, en los términos previstos en el artículo 48 de esta Ley."
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
-      "reescrita": "¿Cuál es la cantidad de Impuesto Sobre la Renta que se retiene del pago del aguinaldo conforme al artículo 123 de la Ley Federal del Trabajo?",
-      "similitud_max": 0.602,
+      "reescrita": "¿Cuál es la cantidad de impuesto sobre la renta que se debe retener del pago del aguinaldo conforme al artículo 123 de la Ley Federal del Trabajo?",
+      "similitud_max": 0.634,
       "tokens_entrada": 1651,
-      "tokens_salida": 106,
-      "segundos": 1.84,
+      "tokens_salida": 109,
+      "segundos": 7.85,
       "trace_id": null,
       "abstencion_correcta": true
     },
@@ -2042,7 +2044,7 @@
         "LFT 478",
         "LFT 479",
         "LFT 480",
-        "LFT 330-E"
+        "LFT 491"
       ],
       "contexto": [
         "LFT Art. 483: Las indemnizaciones por riesgos de trabajo que produzcan incapacidades, se pagarán directamente al trabajador.\nEn los casos de incapacidad mental, comprobados ante el Tribunal, la indemnización se pagará a la persona o personas, de las señaladas en el artículo 501, a cuyo cuidado quede; en los casos de muerte del trabajador, se observará lo dispuesto en el artículo 115.",
@@ -2050,15 +2052,15 @@
         "LFT Art. 478: Incapacidad temporal es la pérdida de facultades o aptitudes que imposibilita parcial o totalmente a una persona para desempeñar su trabajo por algún tiempo.",
         "LFT Art. 479: Incapacidad permanente parcial es la disminución de las facultades o aptitudes de una persona para trabajar.",
         "LFT Art. 480: Incapacidad permanente total es la pérdida de facultades o aptitudes de una persona que la imposibilita para desempeñar cualquier trabajo por el resto de su vida.",
-        "LFT Art. 330-E: En modalidad de teletrabajo, los patrones tendrán las obligaciones especiales siguientes:\nI. Proporcionar, instalar y encargarse del mantenimiento de los equipos necesarios para el teletrabajo como equipo de cómputo, sillas ergonómicas, impresoras, entre otros;\nII. Recibir oportunamente el trabajo y pagar los salarios en la forma y fechas estipuladas;\nIII. Asumir los costos derivados del trabajo a través de la modalidad de teletrabajo, incluyendo, en su caso, el pago de servicios de telecomunicación y la parte proporcional de electricidad;\nIV. Llevar registro de los insumos entregados a las personas trabajadoras bajo la modalidad de teletrabajo, en cumplimiento a las disposiciones en materia de seguridad y salud en el trabajo establecidas por la Secretaría del Trabajo y Previsión Social;\nV. Implementar mecanismos que preserven la seguridad de la información y datos utilizados por las personas trabajadoras en la modalidad de teletrabajo;\nVI. Respetar el derecho a la desconexión de las personas trabajadoras en la modalidad de teletrabajo al término de la jornada laboral;\nVII. Inscribir a las personas trabajadoras en la modalidad de teletrabajo al régimen obligatorio de la seguridad social, y\nVIII. Establecer los mecanismos de capacitación y asesoría necesarios para garantizar la adaptación, aprendizaje y el uso adecuado de las tecnologías de la información de las personas trabajadoras en la modalidad de teletrabajo, con especial énfasis en aquellas que cambien de modalidad presencial a teletrabajo."
+        "LFT Art. 491: Si el riesgo produce al trabajador una incapacidad temporal, la indemnización consistirá en el pago íntegro del salario que deje de percibir mientras subsista la imposibilidad de trabajar. Este pago se hará desde el primer día de la incapacidad.\nSi a los tres meses de iniciada una incapacidad no está el trabajador en aptitud de volver al trabajo, él mismo o el patrón podrá pedir, en vista de los certificados médicos respectivos, de los dictámenes que se rindan y de las pruebas conducentes, se resuelva si debe seguir sometido al mismo tratamiento médico y gozar de igual indemnización o procede declarar su incapacidad permanente con la indemnización a que tenga derecho. Estos exámenes podrán repetirse cada tres meses. El trabajador percibirá su salario hasta que se declare su incapacidad permanente y se determine la indemnización a que tenga derecho."
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
       "reescrita": null,
       "similitud_max": 0.564,
-      "tokens_entrada": 1541,
+      "tokens_entrada": 1368,
       "tokens_salida": 61,
-      "segundos": 1.03,
+      "segundos": 4.33,
       "trace_id": null,
       "abstencion_correcta": true
     },
@@ -2083,8 +2085,8 @@
         "LFT 513"
       ],
       "contexto": [
-        "LFT Art. 513: Adicionalmente a lo establecido en el artículo 492 de la Ley Federal del Trabajo, se debe considerar otorgar el valor máximo del rango del porcentaje de incapacidad, cuando el desempeño de sus actividades laborales pueda poner en riesgo su vida, la de terceros o el patrimonio.\n429 Disfunción tubárica crónica bilateral, resistente a tratamiento. 30 a 40%\n430 Disfunción tubárica crónica unilateral, resistente a tratamiento. 15 a 20%\n431 Acufeno bilateral debidamente comprobado. 10%\n432 Sorderas e hipoacusias profesionales. Se valuarán siguiendo las normas de la Tabla III-B. --\nTabla III-B\nSorderas e hipoacusias profesionales\nPorcentaje de hipoacusia bilateral combinada\nPorcentaje de incapacidad órgano funcional\nPorcentaje de hipoacusia bilateral combinada\nPorcentaje de incapacidad órgano funcional\n10 10 18 16\n11 11 19 16\n12 12 20 17\n13 12 21 18\n14 13 22 18\n15 14 23 19\n16 15 24 19\n17 15 25 20\nCálculo de Fletcher\nCálculo de la incapacidad parcial permanente por obtención de la hipoacusia bilateral combinada de acuerdo a los umbrales obtenidos de la audiometría tonal y utilizando el procedimiento para la valuación de hipoacusias de: Fletcher, A.M.A. modificada por: De La Cruz Ávila, Gómez Cruz, Gutiérrez Farfán, Jiménez Ruiz, Rojo Ramírez, Toledo Ortiz, Torres Valenzuela, Velasco Reyna, Zarate Cabrera (octubre de 2016).\nDependiendo del mecanismo de lesión y secuela se podrán utilizar uno de los siguientes rangos de frecuencia:\na. Para lesiones que abarquen el umbral mínimo de audición en las frecuencias de 250, 500, 1,000 y 2,000 Hz.\nb. Para lesiones que abarquen el umbral mínimo de audición en las frecuencias de 2000, 3,000, 4,000, y 6,000 Hz.",
         "LFT Art. 513:  Personas trabajadoras de la industria de cerillas o fósforos, esmaltes, fábricas de cosméticos, fábricas de vasos opalescentes, plaguicidas, porcelanas, productos farmacéuticos, cemento, vidrio, pegamento blanco y rodenticidas. El zinc metálico purificado es moldeado y fundido para equipo eléctrico, herramientas, juguetes, maquinaria, partes automotrices y el zinc en aleación con el cobre forman el latón.\n Personas trabajadoras que presentan exposición de forma directa e indudable a la acción de los agentes causales establecidos en la fracción II de la cédula correspondiente contenida en el Catálogo de las Cédulas para la Valuación de las Enfermedades de Trabajo, que tengan su origen o con motivo del trabajo o en el medio que la persona trabajadora se vea obligada a prestar sus servicios.\n150. Enfermedades producidas por hormonas y sus sustitutos y antagonistas sintéticos\nCódigo CIE-11: NE60, PE88, PB28, PH48, XM6W81, XM5XB7, XM93X7\n Personas trabajadoras de las industrias química y farmacéutica que sintetizan productos hormonales: anticonceptivos orales; andrógenos y sus congéneres anabólicos, antigonadotrofinas, antiestrógenos y antiandrógenos, no clasificados; otros estrógenos y progestágenos, hormonas tiroideas y otras hormonas y sustitutos sintéticos.\n Personas trabajadoras que presentan exposición de forma directa e indudable a la acción de los agentes causales establecidos en la fracción II de la cédula correspondiente contenida en el Catálogo de las Cédulas para la Valuación de las Enfermedades de Trabajo, que tengan su origen o con motivo del trabajo o en el medio que la persona trabajadora se vea obligada a prestar sus servicios.\n151. Enfermedades producidas por la exposición a antibióticos\nCódigo CIE-11: PE88, PB28, PH48, PC98",
+        "LFT Art. 513: Adicionalmente a lo establecido en el artículo 492 de la Ley Federal del Trabajo, se debe considerar otorgar el valor máximo del rango del porcentaje de incapacidad, cuando el desempeño de sus actividades laborales pueda poner en riesgo su vida, la de terceros o el patrimonio.\n429 Disfunción tubárica crónica bilateral, resistente a tratamiento. 30 a 40%\n430 Disfunción tubárica crónica unilateral, resistente a tratamiento. 15 a 20%\n431 Acufeno bilateral debidamente comprobado. 10%\n432 Sorderas e hipoacusias profesionales. Se valuarán siguiendo las normas de la Tabla III-B. --\nTabla III-B\nSorderas e hipoacusias profesionales\nPorcentaje de hipoacusia bilateral combinada\nPorcentaje de incapacidad órgano funcional\nPorcentaje de hipoacusia bilateral combinada\nPorcentaje de incapacidad órgano funcional\n10 10 18 16\n11 11 19 16\n12 12 20 17\n13 12 21 18\n14 13 22 18\n15 14 23 19\n16 15 24 19\n17 15 25 20\nCálculo de Fletcher\nCálculo de la incapacidad parcial permanente por obtención de la hipoacusia bilateral combinada de acuerdo a los umbrales obtenidos de la audiometría tonal y utilizando el procedimiento para la valuación de hipoacusias de: Fletcher, A.M.A. modificada por: De La Cruz Ávila, Gómez Cruz, Gutiérrez Farfán, Jiménez Ruiz, Rojo Ramírez, Toledo Ortiz, Torres Valenzuela, Velasco Reyna, Zarate Cabrera (octubre de 2016).\nDependiendo del mecanismo de lesión y secuela se podrán utilizar uno de los siguientes rangos de frecuencia:\na. Para lesiones que abarquen el umbral mínimo de audición en las frecuencias de 250, 500, 1,000 y 2,000 Hz.\nb. Para lesiones que abarquen el umbral mínimo de audición en las frecuencias de 2000, 3,000, 4,000, y 6,000 Hz.",
         "LFT Art. 513: 128. Efectos tóxicos por diuréticos, otras drogas, medicamentos y substancias biológicas no especificadas\nCódigo CIE-11: NE60, PB28, XM4U75, XM2NF0\n Personas trabajadoras encargadas de la fabricación, formulación y empaque de estas substancias en la industria químico-farmacéutica.\n Personas trabajadoras que presentan exposición de forma directa e indudable a la acción de los agentes causales establecidos en la fracción II de la cédula correspondiente contenida en el Catálogo de las Cédulas para la Valuación de las Enfermedades de Trabajo, que tengan su origen o con motivo del trabajo o en el medio que la persona trabajadora se vea obligada a prestar sus servicios.\n129. Efectos tóxicos por fósforo y sus compuestos\nCódigo CIE-11: PE95, PB36, PH56, XM2AZ6, XM3G46\n Personas trabajadoras en contacto con hidrógeno fosforado (fosfina), gases que se producen durante la elaboración de fumigantes, en la generación de acetilenos e hidrólisis de fosfuros.\n Personas trabajadoras de la fabricación de aleaciones, catálisis en la industria del petróleo, compuestos fosforados o derivados del fósforo blanco, fabricación de bronce de fósforo, fabricación de explosivos, fabricación de semiconductores, hidrógeno fosforado, insecticidas, parasiticidas, pirotecnia y raticidas.\n Personas trabajadoras que presentan exposición de forma directa e indudable a la acción de los agentes causales establecidos en la fracción II de la cédula correspondiente contenida en el Catálogo de las Cédulas para la Valuación de las Enfermedades de Trabajo, que tengan su origen o con motivo del trabajo o en el medio que la persona trabajadora se vea obligada a prestar sus servicios.\n130. Efectos tóxicos por gases, humos y vapores de formaldehído\nCódigo CIE-11: PB36, PE95, PH56, XM0TV9",
         "LFT Art. 513:  V.1.13 Pulmón de las personas manejadoras de arce: personas trabajadoras en la obtención de miel de maple.\n V.1.14 Pulmón de manejadores de café: personas trabajadoras del grano del café.\n V.1.15 Pulmón de las personas curtidoras de pieles y peleteros: personas trabajadoras de la industria de la curtiduría.\n V.1.16 Pulmón de las personas trabajadoras de maderas finas de caoba y roble:\nprincipalmente carpinteros.\n V.1.17 Pulmón de las personas limpiadoras de embutidos: personas trabajadoras que producen y limpian maquinaria para embutidos.\n V.1.18 Pulmón de nácar: personas trabajadoras de nácar en joyería y orfebrería.\n V.1.19 Pulmón de las personas trabajadoras de la manufactura de insecticidas: personas trabajadoras de la producción de insecticidas y fumigadores en general.\n V.1.20 Pulmón de las personas trabajadoras de la industria de plásticos y resinas epóxicas: personas trabajadoras que elaboran plásticos y resinas epóxicas.\n V.1.21 Pulmón de soya: personal que produce y envasa harina de soya.\n V.1.22 Pulmón de la Cándida: panaderos que manejan levadura para pan de trigo, centeno y soya.\n V.1.23 Pulmón del diisocianato: personas trabajadoras de la industria de los isocianatos (en la elaboración de mezclas químicas, manufactura de asientos, tableros y pintores automotrices).\n V.1.24 Pulmón del humidificador electrónico casero: personas que utilizan este equipo.\n V.1.25 Enfermedad por metales pesados: personas trabajadoras de la industria metalúrgica.\n V.1.26 Pulmón de las personas trabajadoras de harina de pescado: personas trabajadoras que producen y envasan harina de pescado.\n V.1.27 Pulmón de las personas trabajadoras de fertilizantes: personas trabajadoras de las empresas donde se elaboran fertilizantes y quienes los aplican.",
         "LFT Art. 513: Moderado  Presencia de sintomatología moderada, tos frecuente con la ingesta de alimentos sólidos, semisólidos, semilíquidos, líquidos y de consistencia mixta;\n Pérdida ponderal menor al 10% del peso en 6 meses;\n Sólo puede comer trozos pequeños o cantidades menores de líquidos a los que estaba acostumbrado;\n Incrementa el número de mordidas para la masticación;\n Necesita varios tragos en seco para pasar el alimento, y\n Con aptitud para ejercer actividades de su profesión u oficio con dificultad, pero las lleva a cabo.\n28 al 34%\nSevero  Presencia de tos o sensación de ahogo importante con los alimentos, sólidos, semisólidos, semilíquidos, líquidos y de consistencia mixta, saliva o flemas espesas;\n Pérdida ponderal igual o mayor al 10% del peso en 6\nmeses;\n Debe comer pequeñas cantidades de alimentos por bocado;\n Requiere varias degluciones en seco;\n Presencia de cuadros respiratorios recurrentes y neumonía, y\n Sin aptitud para ejercer actividades de su profesión u oficio.\n35 al 40%\nNota: El porcentaje de valuación lo determinará el criterio con la categoría más alta encontrada.\nTórax y contenido\n447 Secuelas de fractura aislada del esternón con disminución de los movimientos de amplexión y amplexación. 10%\n448 Secuelas de fracturas del esternón con hundimiento o desviación, sin complicaciones profundas. 20%\n449 Secuela de fracturas de una a tres costillas, con dolores al esfuerzo físico. 5 a 10%\n450 De fracturas costales o condrales con dolor y dificultad al esfuerzo torácico o abdominal. 10 a 15%\n451 De fracturas costales con hundimiento y trastornos funcionales más acentuados. 20 a 30%\n452 Adherencias y retracciones cicatrizales pleurales. 20 a 30%\n453",
@@ -2096,7 +2098,7 @@
       "similitud_max": 0.336,
       "tokens_entrada": 0,
       "tokens_salida": 0,
-      "segundos": 0.02,
+      "segundos": 0.05,
       "trace_id": null,
       "abstencion_correcta": true
     },
@@ -2134,7 +2136,7 @@
       "similitud_max": 0.345,
       "tokens_entrada": 0,
       "tokens_salida": 0,
-      "segundos": 0.02,
+      "segundos": 0.04,
       "trace_id": null,
       "abstencion_correcta": true
     },
@@ -2145,7 +2147,7 @@
       "pregunta": "¿De cuánto deben ser los vales de despensa que me da la empresa?",
       "respuesta_esperada": "No está en los documentos: la ley no obliga a dar vales de despensa ni fija su monto.",
       "articulos_esperados": [],
-      "respuesta": "Los fragmentos no mencionan nada sobre el monto que debe tener un vale de despensa. No se puede determinar la cantidad por ley.",
+      "respuesta": "Los fragmentos no mencionan nada sobre los vales de despensa ni su valor. No se puede determinar cuánto debe ser un vale de despensa según la ley consultada.",
       "encontrado": false,
       "confianza": "media",
       "confianza_puntaje": null,
@@ -2154,25 +2156,25 @@
         "LFT 1004",
         "LFT 85",
         "LFT 143",
+        "LFT 157",
         "LFT 97",
-        "LFT 90",
-        "LFT 153-J"
+        "LFT 90"
       ],
       "contexto": [
         "LFT Art. 1004: A la persona empleadora en cualquier negociación industrial, trabajo del campo, agrícola, minera, comercial o de servicios que haga entrega a una o varias de sus personas trabajadoras del campo de cantidades inferiores al salario fijado como mínimo general o haya entregado comprobantes de pago que amparen sumas de dinero superiores de las que efectivamente hizo entrega, se le castigará con las penas siguientes:\nI. Con prisión de seis meses a tres años y multa que equivalga hasta 800 veces la Unidad de Medida y Actualización, conforme a lo establecido por el artículo 992, cuando el monto de la omisión no exceda del importe de un mes de salario mínimo general del área geográfica de aplicación correspondiente;\nII. Con prisión de seis meses a tres años y multa que equivalga hasta 1600 veces la Unidad de Medida y Actualización, conforme a lo establecido por el artículo 992, cuando el monto de la omisión sea mayor al importe de treinta veces la Unidad de Medida y Actualización, pero no exceda de tres meses de salario mínimo general del área geográfica de aplicación correspondiente, y\nIII. Con prisión de seis meses a cuatro años y multa que equivalga hasta 3200 veces la Unidad de Medida y Actualización, conforme a lo establecido por el artículo 992, si la omisión excede a los tres meses de salario mínimo general del área geográfica de aplicación correspondiente.",
         "LFT Art. 85: El salario debe ser remunerador y nunca menor al fijado como mínimo de acuerdo con las disposiciones de esta Ley. Para fijar el importe del salario se tomarán en consideración la cantidad y calidad del trabajo.\nEn el salario por unidad de obra, la retribución que se pague será tal, que para un trabajo normal, en una jornada de ocho horas, dé por resultado el monto del salario mínimo, por lo menos.",
         "LFT Art. 143: Para los efectos de este Capítulo el salario a que se refiere el artículo 136 se integra con los pagos hechos en efectivo por cuota diaria, y las gratificaciones, percepciones, alimentación, habitación, primas, comisiones, prestaciones en especie y cualquier otra cantidad o prestación que se entregue al trabajador por sus servicios; no se tomarán en cuenta dada su naturaleza, los siguientes conceptos:\na) Los instrumentos de trabajo, tales como herramientas, ropa y otros similares;\nb) El ahorro, cuando se integre por un depósito de cantidad semanaria o mensual igual del trabajador y de la empresa; y las cantidades otorgadas por el patrón para fines sociales o sindicales;\nc) Las aportaciones al Instituto de Fondo Nacional de la Vivienda para los Trabajadores y las participaciones en las utilidades de las empresas;\nd) La alimentación y la habitación cuando no se proporcionen gratuitamente al trabajador, así como las despensas;\ne) Los premios por asistencia;\nf) Los pagos por tiempo extraordinario, salvo cuando este tipo de servicios esté pactado en forma de tiempo fijo;\ng) Las cuotas al Instituto Mexicano del Seguro Social a cargo del trabajador que cubran las empresas.",
+        "LFT Art. 157: El incumplimiento de las obligaciones contenidas en los artículos 154 y 156 da derecho al trabajador para solicitar ante el Tribunal, a su elección, que se le otorgue el puesto correspondiente o se le indemnice con el importe de tres meses de salario. Tendrá además derecho a que se le paguen los salarios e intereses, en su caso, a que se refiere el párrafo segundo del artículo 48.",
         "LFT Art. 97: Los salarios mínimos no podrán ser objeto de compensación, descuento o reducción, salvo en los casos siguientes:\nI. Pensiones alimenticias decretadas por la autoridad competente en favor de las personas mencionadas en el artículo 110, fracción V; y\nII. Pago de rentas a que se refiere el artículo 151. Este descuento no podrá exceder del diez por ciento del salario.\nIII. Pago de abonos para cubrir préstamos o rentas provenientes del Fondo Nacional de la Vivienda para los Trabajadores destinados al arrendamiento social, adquisición, construcción, reparación, ampliación o mejoras de vivienda o al pago de pasivos adquiridos por estos conceptos. Estos descuentos deberán haber sido aceptados libremente por la persona trabajadora y no podrán exceder el 20 por ciento del salario para préstamos y 30 por ciento del salario para rentas.\nIV. Pago de abonos para cubrir créditos otorgados o garantizados por el Instituto a que se refiere el artículo 103 Bis de esta Ley, destinados a la adquisición de bienes de consumo duradero o al pago de servicios. Estos descuentos estarán precedidos de la aceptación que libremente haya hecho el trabajador y no podrán exceder del 10% del salario.",
-        "LFT Art. 90: Salario mínimo es la cantidad menor que debe recibir en efectivo la persona trabajadora por los servicios prestados en una jornada de trabajo.\nEl salario mínimo deberá ser suficiente para satisfacer las necesidades normales de una o un jefe de familia en el orden material, social y cultural, y para proveer a la educación obligatoria de las y los hijos.\nSe considera de utilidad social el establecimiento de instituciones y medidas que protejan la capacidad adquisitiva del salario y faciliten el acceso de toda persona trabajadora a la obtención de satisfactores.\nLa fijación anual de los salarios mínimos, o la revisión de los mismos, nunca estará por debajo de la inflación observada durante el periodo de su vigencia transcurrido.",
-        "LFT Art. 153-J: Para elevar la productividad en las empresas, incluidas las micro y pequeñas empresas, se elaborarán programas que tendrán por objeto:\nI. Hacer un diagnóstico objetivo de la situación de las empresas en materia de productividad;\nII. Proporcionar a las empresas estudios sobre las mejores prácticas tecnológicas y organizativas que incrementen su nivel actual de productividad en función de su grado de desarrollo;\nIII. Adecuar las condiciones materiales, organizativas, tecnológicas y financieras que permitan aumentar la productividad;\nIV. Proponer programas gubernamentales de financiamiento, asesoría, apoyo y certificación para el aumento de la productividad;\nV. Mejorar los sistemas de coordinación entre trabajadores, empresa, gobiernos y academia;\nVI. Establecer compromisos para elevar la productividad por parte de los empresarios, trabajadores, sindicatos, gobiernos y academia;\nVII. Evaluar periódicamente el desarrollo y cumplimiento de los programas;\nVIII. Mejorar las condiciones de trabajo, así como las medidas de Seguridad e Higiene;\nIX. Implementar sistemas que permitan determinar en forma y monto apropiados los incentivos, bonos o comisiones derivados de la contribución de los trabajadores a la elevación de la productividad que se acuerde con los sindicatos y los trabajadores; y\nX. Las demás que se acuerden y se consideren pertinentes.\nLos programas establecidos en este artículo podrán formularse respecto de varias empresas, por actividad o servicio, una o varias ramas industriales o de servicios, por entidades federativas, región o a nivel nacional."
+        "LFT Art. 90: Salario mínimo es la cantidad menor que debe recibir en efectivo la persona trabajadora por los servicios prestados en una jornada de trabajo.\nEl salario mínimo deberá ser suficiente para satisfacer las necesidades normales de una o un jefe de familia en el orden material, social y cultural, y para proveer a la educación obligatoria de las y los hijos.\nSe considera de utilidad social el establecimiento de instituciones y medidas que protejan la capacidad adquisitiva del salario y faciliten el acceso de toda persona trabajadora a la obtención de satisfactores.\nLa fijación anual de los salarios mínimos, o la revisión de los mismos, nunca estará por debajo de la inflación observada durante el periodo de su vigencia transcurrido."
       ],
       "citas_rechazadas": 0,
       "reintentos": 0,
-      "reescrita": "¿Cuál es el monto mínimo que debe tener el vale de despensa establecido por la empresa de acuerdo con lo previsto en el artículo 153 de la Ley Federal del Trabajo?",
-      "similitud_max": 0.553,
-      "tokens_entrada": 2241,
-      "tokens_salida": 99,
-      "segundos": 3.95,
+      "reescrita": "¿Cuál es el monto mínimo que debe tener el vale de despensa establecido por la empresa conforme al artículo 157 de la Ley Federal del Trabajo?",
+      "similitud_max": 0.546,
+      "tokens_entrada": 1972,
+      "tokens_salida": 102,
+      "segundos": 6.75,
       "trace_id": null,
       "abstencion_correcta": true
     }
