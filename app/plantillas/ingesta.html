@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block titulo %}Documentos · Asistente laboral{% endblock %}
+{% block contenido %}
+<header class="page-head">
+  <div>
+    <span class="eyebrow">Documentos</span>
+    <h1>Las leyes que consulta el asistente</h1>
+    <p>Sube una versión reformada y solo se reprocesan los artículos que cambiaron. Cada PDF se procesa por separado: si uno falla, los demás siguen.</p>
+  </div>
+  <div class="chips">
+    <span class="chip">{{ documentos|length }} {{ "ley" if documentos|length == 1 else "leyes" }}</span>
+    <span class="chip">{{ "{:,}".format(total_articulos) }} artículos</span>
+    <span class="chip">{{ "{:,}".format(total_fragmentos) }} fragmentos</span>
+  </div>
+</header>
+
+<div id="grid-docs" class="grid-docs">{% include "_documentos.html" %}</div>
+
+<div class="cols" style="margin-top:22px">
+  <section class="card">
+    <div class="card-head"><h2>Trabajos de procesamiento</h2><span class="tiny faint">los más recientes primero</span></div>
+    <div class="card-pad">
+      <div id="trabajos">
+        {% for t in trabajos %}{% include "_trabajo.html" %}{% endfor %}
+      </div>
+      {% if not trabajos %}<p class="small muted" id="sin-trabajos">Aún no se ha procesado ningún PDF.</p>{% endif %}
+    </div>
+  </section>
+
+  <aside class="stack">
+    <section class="card card-pad">
+      <h2>Subir o actualizar</h2>
+      <p class="card-sub">Uno o varios PDF de la Cámara de Diputados. La API devuelve de inmediato un id de trabajo.</p>
+      {% if escritura %}
+      <form class="drop" style="margin-top:14px" hx-post="/ui/documentos" hx-target="#trabajos" hx-swap="afterbegin" hx-encoding="multipart/form-data" data-reset-ok>
+        <input type="file" name="archivos" accept="application/pdf" multiple required aria-label="Archivos PDF">
+        <button class="btn btn-primary" type="submit">Procesar PDF</button>
+      </form>
+      {% else %}
+      <p class="aviso" style="margin-top:14px">Con <code>API_KEY</code> definida, la subida desde la página está deshabilitada; usa la API con el encabezado <code>X-API-Key</code>.</p>
+      {% endif %}
+    </section>
+    <section class="card card-pad">
+      <h2>Qué pasa con cada PDF</h2>
+      <ol class="flujo" style="margin-top:14px">
+        <li><span><b>Extraer y limpiar</b>Texto por página, sin encabezados ni notas de reforma.</span></li>
+        <li><span><b>Separar artículos y fracciones</b>Los transitorios no se indexan.</span></li>
+        <li><span><b>Comparar con la versión guardada</b>Hash por artículo: nuevos, modificados, eliminados.</span></li>
+        <li><span><b>Embeddings solo de lo que cambió</b>Con caché por texto.</span></li>
+        <li><span><b>Actualizar el índice</b>SQLite (BM25) y la matriz en memoria.</span></li>
+      </ol>
+    </section>
+  </aside>
+</div>
+{% endblock %}

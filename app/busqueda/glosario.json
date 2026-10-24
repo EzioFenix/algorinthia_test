@@ -1,0 +1,268 @@
+{
+  "_descripcion": "Expansión de lenguaje coloquial a términos de la ley. Cada patrón se busca en la pregunta (minúsculas, sin acentos); si aparece, se agregan los términos a la consulta BM25.",
+  "entradas": [
+    {
+      "patrones": [
+        "correr",
+        "corrieron",
+        "corren",
+        "me echaron",
+        "echar",
+        "botar",
+        "sacar del trabajo",
+        "quitar el trabajo",
+        "liquidar",
+        "liquidacion"
+      ],
+      "terminos": "despido rescisión de la relación de trabajo indemnización separación"
+    },
+    {
+      "patrones": [
+        "embaraz",
+        "panza",
+        "voy a tener un bebe",
+        "estoy esperando"
+      ],
+      "terminos": "embarazo madres trabajadoras maternidad discriminación certificado de no embarazo"
+    },
+    {
+      "patrones": [
+        "maternidad",
+        "parto",
+        "dar a luz",
+        "incapacidad por maternidad",
+        "incapacidad por embarazo"
+      ],
+      "terminos": "madres trabajadoras descanso de seis semanas anteriores y seis posteriores al parto"
+    },
+    {
+      "patrones": [
+        "bebe",
+        "recien nacido",
+        "dar pecho",
+        "amamant",
+        "lactan"
+      ],
+      "terminos": "madres trabajadoras lactancia reposos extraordinarios descansos postparto"
+    },
+    {
+      "patrones": [
+        "papa",
+        "paternidad",
+        "mi esposa dio a luz",
+        "nacio mi hijo",
+        "mi esposa",
+        "mi pareja",
+        "soy papa",
+        "voy a ser papa",
+        "nacimiento de mi hijo"
+      ],
+      "terminos": "permiso de paternidad cinco días laborables con goce de sueldo hombres trabajadores nacimiento de sus hijos"
+    },
+    {
+      "patrones": [
+        "finiquito"
+      ],
+      "terminos": "terminación de la relación de trabajo partes proporcionales salarios devengados"
+    },
+    {
+      "patrones": [
+        "aguinaldo",
+        "bono de navidad",
+        "bono navideno"
+      ],
+      "terminos": "aguinaldo anual quince días de salario veinte de diciembre"
+    },
+    {
+      "patrones": [
+        "vacacion",
+        "dias libres al ano",
+        "descansar al ano"
+      ],
+      "terminos": "vacaciones pagadas periodo anual días laborables prima vacacional"
+    },
+    {
+      "patrones": [
+        "horas extra",
+        "tiempo extra",
+        "quedarme mas tarde",
+        "trabajar de mas",
+        "doblar turno"
+      ],
+      "terminos": "jornada extraordinaria horas extraordinarias salario doble triple"
+    },
+    {
+      "patrones": [
+        "domingo"
+      ],
+      "terminos": "prima dominical descanso semanal"
+    },
+    {
+      "patrones": [
+        "dia de descanso",
+        "dias de descanso",
+        "descanso semanal"
+      ],
+      "terminos": "día de descanso semanal salario íntegro"
+    },
+    {
+      "patrones": [
+        "dia festivo",
+        "dias festivos",
+        "feriado",
+        "1 de mayo",
+        "16 de septiembre",
+        "navidad",
+        "ano nuevo"
+      ],
+      "terminos": "días de descanso obligatorio"
+    },
+    {
+      "patrones": [
+        "me enferme",
+        "enfermo",
+        "me lastime",
+        "accidente",
+        "me accidente",
+        "lesion",
+        "incapacidad por accidente",
+        "incapacidad por enfermedad",
+        "riesgo de trabajo"
+      ],
+      "terminos": "riesgos de trabajo accidente de trabajo enfermedad de trabajo incapacidad temporal"
+    },
+    {
+      "patrones": [
+        "horario",
+        "cuantas horas",
+        "jornada"
+      ],
+      "terminos": "jornada de trabajo duración máxima horas diurna nocturna mixta"
+    },
+    {
+      "patrones": [
+        "home office",
+        "trabajo desde casa",
+        "trabajar desde casa",
+        "remoto",
+        "internet",
+        "luz de mi casa"
+      ],
+      "terminos": "teletrabajo personas trabajadoras en la modalidad de teletrabajo costos derivados"
+    },
+    {
+      "patrones": [
+        "acoso",
+        "hostig",
+        "me molestan",
+        "abuso"
+      ],
+      "terminos": "hostigamiento acoso sexual violencia laboral"
+    },
+    {
+      "patrones": [
+        "discrimin",
+        "por ser mujer",
+        "por mi edad",
+        "por ser gay",
+        "por mi religion"
+      ],
+      "terminos": "discriminación igualdad sustantiva condiciones de trabajo"
+    },
+    {
+      "patrones": [
+        "antiguedad",
+        "anos trabajando",
+        "tiempo trabajando"
+      ],
+      "terminos": "prima de antigüedad doce días por año de servicios"
+    },
+    {
+      "patrones": [
+        "utilidades",
+        "reparto",
+        "ptu"
+      ],
+      "terminos": "participación de los trabajadores en las utilidades de las empresas"
+    },
+    {
+      "patrones": [
+        "renunciar",
+        "renuncia",
+        "me quiero ir"
+      ],
+      "terminos": "terminación de la relación de trabajo rescisión sin responsabilidad para el trabajador"
+    },
+    {
+      "patrones": [
+        "no me pagan",
+        "no me han pagado",
+        "me pagan tarde",
+        "descuento",
+        "me descuentan"
+      ],
+      "terminos": "pago del salario descuentos en los salarios plazo para el pago"
+    },
+    {
+      "patrones": [
+        "sindicato"
+      ],
+      "terminos": "sindicatos libertad de asociación coalición"
+    },
+    {
+      "patrones": [
+        "huelga",
+        "paro"
+      ],
+      "terminos": "huelga suspensión temporal del trabajo coalición de trabajadores"
+    },
+    {
+      "patrones": [
+        "contrato",
+        "por honorarios",
+        "sin contrato"
+      ],
+      "terminos": "relación de trabajo condiciones de trabajo constar por escrito"
+    },
+    {
+      "patrones": [
+        "menor de edad",
+        "mi hijo de 16",
+        "adolescente",
+        "15 anos",
+        "16 anos",
+        "17 anos"
+      ],
+      "terminos": "trabajo de los menores de edad mayores de quince años"
+    },
+    {
+      "patrones": [
+        "comida",
+        "comer",
+        "lunch"
+      ],
+      "terminos": "descanso durante la jornada media hora reposo"
+    },
+    {
+      "patrones": [
+        "grita",
+        "insulta",
+        "maltrat",
+        "humilla",
+        "me trata mal",
+        "me amenaza"
+      ],
+      "terminos": "rescisión sin responsabilidad para el trabajador injurias malos tratamientos violencia del patrón separarse indemnización"
+    },
+    {
+      "patrones": [
+        "cada cuanto",
+        "quincena",
+        "cada semana me pagan",
+        "dia de pago",
+        "fecha de pago"
+      ],
+      "terminos": "plazos para el pago del salario una semana quince días"
+    }
+  ]
+}

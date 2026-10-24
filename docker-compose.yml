@@ -1,0 +1,213 @@
+# Lo normal es usar ./run.sh (elige 2). Equivalentes manuales:
+# Mac/Windows (Ollama en el host): docker compose up --build
+# Linux (Ollama en contenedor):     OLLAMA_BASE_URL_DOCKER=http://ollama:11434 docker compose --profile ollama up --build
+# Con Langfuse local:       añade --profile langfuse (run.sh lo hace solo y genera los secretos en .env)
+# Evaluación completa:      docker compose run --rm eval
+services:
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"   # solo accesible desde esta máquina
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      # Por defecto usa el Ollama del host (en Mac, Ollama en Docker no usa la GPU y es mucho más lento)
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL_DOCKER:-http://host.docker.internal:11434}
+      # Langfuse local: la API lo ve por la red interna de Docker; el navegador, por localhost:3000
+      LANGFUSE_HOST: ${LANGFUSE_HOST_DOCKER:-http://langfuse-web:3000}
+      LANGFUSE_ACTIVO: ${LANGFUSE_ACTIVO:-1}
+      # Modo max (./run.sh 3): otro modelo, más tiempo por respuesta y cargado una hora. Sin él, valen los de .env
+      LLM_MODEL: ${MODO_LLM_MODEL:-${LLM_MODEL:-qwen3:4b-instruct}}
+      LLM_KEEP_ALIVE: ${MODO_KEEP_ALIVE:-5m}
+      LLM_TIMEOUT_S: ${MODO_TIMEOUT_S:-120}
+      MODO_APP: ${MODO_APP:-normal}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - estado:/app/estado
+      # La pestaña Evaluación lee los reportes y guarda tu calificación manual en eval/
+      - ./eval:/app/eval
+    restart: unless-stopped
+
+  eval:
+    build: .
+    profiles: ["eval"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL_DOCKER:-http://host.docker.internal:11434}
+      LANGFUSE_HOST: ${LANGFUSE_HOST_DOCKER:-http://langfuse-web:3000}
+      LANGFUSE_ACTIVO: ${LANGFUSE_ACTIVO:-1}
+      LANGFUSE_TRACING_ENVIRONMENT: evaluacion   # las trazas de la evaluación se separan de las de uso real
+      LLM_MODEL: ${MODO_LLM_MODEL:-${LLM_MODEL:-qwen3:4b-instruct}}   # evaluar el modelo max: MODO_LLM_MODEL=… docker compose run --rm eval
+      LLM_TIMEOUT_S: ${MODO_TIMEOUT_S:-120}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - estado:/app/estado
+      - ./eval:/app/eval   # reportes y calificación manual quedan en tu carpeta
+    command: ["/app/.venv/bin/python", "-m", "eval.correr_eval"]
+    healthcheck:
+      disable: true   # el de la imagen consulta la API (:8000), que este contenedor no levanta
+
+  ollama:
+    image: ollama/ollama:0.40.8
+    profiles: ["ollama"]
+    environment:
+      OLLAMA_NUM_PARALLEL: "1"
+      OLLAMA_MAX_LOADED_MODELS: "2"
+      OLLAMA_FLASH_ATTENTION: "1"
+      OLLAMA_KV_CACHE_TYPE: q8_0
+    volumes:
+      - modelos:/root/.ollama
+    # sin "ports": solo lo ven los otros servicios de la red interna
+
+  ollama-modelos:
+    image: ollama/ollama:0.40.8
+    profiles: ["ollama"]
+    depends_on: [ollama]
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    # El juez (~5 GB) solo se descarga con PULL_JUDGE=1: únicamente lo usa la evaluación.
+    entrypoint: ["/bin/sh", "-c", "sleep 3 && ollama pull ${LLM_MODEL:-qwen3:4b-instruct} && ollama pull ${EMBED_MODEL:-bge-m3} && if [ '${PULL_JUDGE:-0}' = 1 ]; then ollama pull ${JUDGE_MODEL:-qwen3:8b}; fi"]
+
+  # ── Langfuse local (perfil "langfuse") ──────────────────────────────────────────
+  # Observabilidad 100 % en tu máquina: ninguna traza sale a internet. Los secretos NO tienen valor por
+  # defecto: los genera run.sh en .env; sin ellos, Postgres y Langfuse se niegan a arrancar (falla cerrada).
+  # Solo la interfaz (3000) y el almacenamiento de medios (9090) se publican, y únicamente en 127.0.0.1.
+  langfuse-web:
+    image: docker.langfuse.com/langfuse/langfuse:4
+    profiles: ["langfuse"]
+    restart: unless-stopped
+    depends_on: &lf-depende
+      langfuse-postgres: {condition: service_healthy}
+      langfuse-minio: {condition: service_healthy}
+      langfuse-redis: {condition: service_healthy}
+      langfuse-clickhouse: {condition: service_healthy}
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment: &lf-entorno
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: ${LANGFUSE_NEXTAUTH_SECRET:-}
+      SALT: ${LANGFUSE_SALT:-}
+      ENCRYPTION_KEY: ${LANGFUSE_ENCRYPTION_KEY:-}
+      DATABASE_URL: postgresql://postgres:${LANGFUSE_POSTGRES_PASSWORD:-}@langfuse-postgres:5432/postgres
+      TELEMETRY_ENABLED: "false"
+      CLICKHOUSE_MIGRATION_URL: clickhouse://langfuse-clickhouse:9000
+      CLICKHOUSE_URL: http://langfuse-clickhouse:8123
+      CLICKHOUSE_USER: clickhouse
+      CLICKHOUSE_PASSWORD: ${LANGFUSE_CLICKHOUSE_PASSWORD:-}
+      CLICKHOUSE_CLUSTER_ENABLED: "false"
+      REDIS_HOST: langfuse-redis
+      REDIS_PORT: "6379"
+      REDIS_AUTH: ${LANGFUSE_REDIS_AUTH:-}
+      LANGFUSE_S3_EVENT_UPLOAD_BUCKET: langfuse
+      LANGFUSE_S3_EVENT_UPLOAD_REGION: auto
+      LANGFUSE_S3_EVENT_UPLOAD_ACCESS_KEY_ID: minio
+      LANGFUSE_S3_EVENT_UPLOAD_SECRET_ACCESS_KEY: ${LANGFUSE_MINIO_PASSWORD:-}
+      LANGFUSE_S3_EVENT_UPLOAD_ENDPOINT: http://langfuse-minio:9000
+      LANGFUSE_S3_EVENT_UPLOAD_FORCE_PATH_STYLE: "true"
+      LANGFUSE_S3_EVENT_UPLOAD_PREFIX: events/
+      LANGFUSE_S3_MEDIA_UPLOAD_BUCKET: langfuse
+      LANGFUSE_S3_MEDIA_UPLOAD_REGION: auto
+      LANGFUSE_S3_MEDIA_UPLOAD_ACCESS_KEY_ID: minio
+      LANGFUSE_S3_MEDIA_UPLOAD_SECRET_ACCESS_KEY: ${LANGFUSE_MINIO_PASSWORD:-}
+      LANGFUSE_S3_MEDIA_UPLOAD_ENDPOINT: http://localhost:9090
+      LANGFUSE_S3_MEDIA_UPLOAD_FORCE_PATH_STYLE: "true"
+      LANGFUSE_S3_MEDIA_UPLOAD_PREFIX: media/
+      # Se crean solos al primer arranque: organización, proyecto, usuario y llaves de la API
+      LANGFUSE_INIT_ORG_ID: asistente-laboral
+      LANGFUSE_INIT_ORG_NAME: Asistente laboral
+      LANGFUSE_INIT_PROJECT_ID: asistente-laboral
+      LANGFUSE_INIT_PROJECT_NAME: Asistente laboral
+      LANGFUSE_INIT_PROJECT_PUBLIC_KEY: ${LANGFUSE_PUBLIC_KEY:-}
+      LANGFUSE_INIT_PROJECT_SECRET_KEY: ${LANGFUSE_SECRET_KEY:-}
+      LANGFUSE_INIT_USER_EMAIL: ${LANGFUSE_USER_EMAIL:-admin@asistente.local}
+      LANGFUSE_INIT_USER_NAME: Administrador
+      LANGFUSE_INIT_USER_PASSWORD: ${LANGFUSE_USER_PASSWORD:-}
+      AUTH_DISABLE_SIGNUP: "true"   # nadie más puede crear cuentas
+
+  langfuse-worker:
+    image: docker.langfuse.com/langfuse/langfuse-worker:4
+    profiles: ["langfuse"]
+    restart: unless-stopped
+    depends_on: *lf-depende
+    environment: *lf-entorno
+
+  langfuse-postgres:
+    image: docker.io/postgres:17
+    profiles: ["langfuse"]
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${LANGFUSE_POSTGRES_PASSWORD:-}
+      POSTGRES_DB: postgres
+      TZ: UTC
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - langfuse_postgres:/var/lib/postgresql/data
+
+  langfuse-clickhouse:
+    image: docker.io/clickhouse/clickhouse-server:25.12
+    profiles: ["langfuse"]
+    restart: unless-stopped
+    user: "101:101"
+    environment:
+      CLICKHOUSE_DB: default
+      CLICKHOUSE_USER: clickhouse
+      CLICKHOUSE_PASSWORD: ${LANGFUSE_CLICKHOUSE_PASSWORD:-}
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8123/ping || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+    volumes:
+      - langfuse_clickhouse:/var/lib/clickhouse
+
+  langfuse-minio:
+    image: cgr.dev/chainguard/minio
+    profiles: ["langfuse"]
+    restart: unless-stopped
+    entrypoint: sh
+    command: -c 'mkdir -p /data/langfuse && minio server --address ":9000" --console-address ":9001" /data'
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: ${LANGFUSE_MINIO_PASSWORD:-}
+    ports:
+      - "127.0.0.1:9090:9000"
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+      start_period: 3s
+    volumes:
+      - langfuse_minio:/data
+
+  langfuse-redis:
+    image: docker.io/redis:7
+    profiles: ["langfuse"]
+    restart: unless-stopped
+    command: --requirepass ${LANGFUSE_REDIS_AUTH:-} --maxmemory-policy noeviction
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 10s
+      retries: 20
+    volumes:
+      - langfuse_redis:/data
+
+volumes:
+  estado:
+  modelos:
+  langfuse_postgres:
+  langfuse_clickhouse:
+  langfuse_minio:
+  langfuse_redis:

@@ -1,0 +1,35 @@
+<section class="card card-pad" aria-label="Calificación manual contra el juez">
+  <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; align-items:flex-start">
+    <div>
+      <h2>Tu calificación contra la del juez</h2>
+      <p class="card-sub">El juez también se equivoca. Califica a mano al menos {{ ac.minimo }} respuestas y aquí verás en qué coincides con él y en qué no.</p>
+    </div>
+    <div class="progreso" style="min-width:230px">
+      <div class="meter"><i style="width: {{ [ac.calificadas / ac.minimo * 100, 100]|min|round|int }}%"></i></div>
+      <b class="small">{{ ac.calificadas }}/{{ ac.minimo }}</b>
+      {% if ac.calificadas >= ac.minimo %}<span class="chip ok tiny">listo</span>{% endif %}
+    </div>
+  </div>
+
+  {% if ac.metricas %}
+  <div class="acuerdo-grid">
+    {% for m in ac.metricas %}
+    <div class="caja">
+      <h4>{{ m.nombre }}</h4>
+      <div class="acuerdo-num">{{ m.porcentaje|pct }}</div>
+      <div class="small muted">acuerdo en {{ m.n }} respuestas · diferencia media {{ "%.2f"|format(m.diferencia_media) }}</div>
+      <div class="small muted" style="margin-top:6px">Juez más estricto: <b>{{ m.juez_mas_estricto }}</b> · más laxo: <b>{{ m.juez_mas_laxo }}</b></div>
+      {% if m.discrepancias %}
+      <ul class="discrepancias">
+        {% for d in m.discrepancias %}
+        <li data-ir-fila="{{ d.id }}"><b>#{{ d.id }}</b> tú {{ d.humano|round(1) }} · juez {{ d.juez|round(2) }} — {{ d.pregunta[:62] }}{% if d.comentario %}<br><span class="faint">“{{ d.comentario }}”</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
+      {% else %}<p class="small" style="margin-top:8px; color:var(--ok)">Sin discrepancias.</p>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="small muted" style="margin-top:14px">Aún no hay calificaciones. Abre una pregunta de la tabla, califícala y vuelve aquí. Por defecto los puntajes del juez están ocultos para no sesgarte.</p>
+  {% endif %}
+</section>

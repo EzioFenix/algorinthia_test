@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block titulo %}Trazas · Asistente laboral{% endblock %}
+{% block contenido %}
+<header class="page-head">
+  <div>
+    <span class="eyebrow">Trazas</span>
+    <h1>Qué hizo el asistente en cada pregunta</h1>
+    <p>Lo que registra Langfuse local, sin salir de esta página: cada pregunta con sus etapas (búsqueda, modelo y validación), el tiempo de cada una, los tokens y el costo estimado. Ahí se ve si falló la búsqueda, el modelo o la validación.</p>
+  </div>
+</header>
+
+<div class="cols-eval cols-trazas">
+  <section class="card" style="overflow:hidden">
+    <div class="filtros">
+      <label for="f-entorno" class="sr-only">Entorno</label>
+      <select id="f-entorno" name="entorno" aria-label="Entorno"
+              hx-get="/ui/trazas/lista" hx-target="#lista-trazas" hx-swap="innerHTML" hx-trigger="change">
+        {% for valor, nombre in entornos.items() %}<option value="{{ valor }}">{{ nombre }}</option>{% endfor %}
+      </select>
+      <button class="btn btn-sm" type="button" hx-get="/ui/trazas/lista" hx-include="#f-entorno" hx-target="#lista-trazas" hx-swap="innerHTML">Actualizar</button>
+    </div>
+    <div id="lista-trazas" class="tabla-scroll" hx-get="/ui/trazas/lista" hx-trigger="load" hx-swap="innerHTML">
+      <div class="detalle-vacio"><span class="spinner"></span></div>
+    </div>
+  </section>
+
+  <section id="detalle-traza" class="card detalle" aria-live="polite"
+           {% if abrir %}hx-get="/ui/trazas/{{ abrir }}" hx-trigger="load" hx-swap="innerHTML"{% endif %}>
+    <div class="detalle-vacio">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+      <p style="margin-top:8px"><b style="color:var(--text)">Elige una traza</b><br>para ver sus etapas, tiempos, tokens y costo.</p>
+    </div>
+  </section>
+</div>
+{% endblock %}

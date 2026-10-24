@@ -1,0 +1,31 @@
+{% set final = t.estado in ("terminado", "terminado_con_errores") %}
+{% set clase = {"pendiente": "", "procesando": "acento", "terminado": "ok", "terminado_con_errores": "warn"}[t.estado] %}
+<div class="trabajo" id="trabajo-{{ t.trabajo_id }}"
+     {% if not final %}hx-get="/ui/trabajo/{{ t.trabajo_id }}" hx-trigger="every 2s" hx-swap="outerHTML"
+     {% elif refrescar %}hx-get="/ui/documentos" hx-trigger="load" hx-target="#grid-docs" hx-swap="innerHTML"{% endif %}>
+  <div class="trabajo-cab">
+    <span class="mono faint" title="{{ t.trabajo_id }}">trabajo {{ t.trabajo_id[:8] }}</span>
+    <span class="chip {{ clase }}">{% if not final %}<span class="spinner" style="width:11px;height:11px;border-width:2px"></span>{% endif %}{{ t.estado|replace("_", " ") }}</span>
+  </div>
+  <ul>
+    {% for d in t.documentos %}
+    <li class="trabajo-doc">
+      <b>{{ d.nombre }}</b>
+      <span class="chip tiny {{ {'error': 'bad', 'terminado': 'ok', 'procesando': 'acento'}.get(d.estado, '') }}">{{ d.estado }}</span>
+      {% if d.resumen %}
+        {% if d.resumen.sin_cambios %}
+        <span class="chip tiny">{{ d.resumen.ley }} · sin cambios (mismo PDF)</span>
+        {% else %}
+        <span class="chip tiny acento">{{ d.resumen.ley }} · DOF {{ d.resumen.version_dof }}</span>
+        <span class="chip tiny ok">+{{ d.resumen.articulos_nuevos }} nuevos</span>
+        <span class="chip tiny warn">{{ d.resumen.articulos_modificados }} modificados</span>
+        <span class="chip tiny bad">{{ d.resumen.articulos_eliminados }} eliminados</span>
+        <span class="chip tiny">{{ d.resumen.articulos_sin_cambios }} sin cambios</span>
+        <span class="chip tiny">{{ d.resumen.fragmentos_indexados }} fragmentos</span>
+        {% endif %}
+      {% endif %}
+      {% if d.error %}<span class="error">{{ d.error }}</span>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>

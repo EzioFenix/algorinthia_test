@@ -1,0 +1,95 @@
+<div class="card-head">
+  <div>
+    <div class="chips"><span class="chip">#{{ f.id }}</span><span class="chip">{{ f.tipo|replace("_", " ") }}</span><span class="chip">{{ f.categoria }}</span>
+      {% if esperados %}<span class="chip {{ 'ok' if ok else 'bad' }}" title="Mide la búsqueda y la decisión de responder, no si el texto es correcto: eso lo calificas tú y el juez.">{{ "recuperó el artículo esperado" if ok else "no recuperó el artículo esperado" }}</span>
+      {% else %}<span class="chip {{ 'ok' if ok else 'bad' }}">{{ "se abstuvo correctamente" if ok else "debió abstenerse" }}</span>{% endif %}</div>
+  </div>
+  <span class="tiny faint">{{ "%.1f"|format(f.segundos) }} s · {{ f.tokens_entrada + f.tokens_salida }} tokens</span>
+</div>
+<div class="card-pad stack">
+  <h2 style="font-size:17px; line-height:1.35">{{ f.pregunta }}</h2>
+
+  <div class="dos-col">
+    <div class="caja"><h4>Respuesta esperada</h4>{{ f.respuesta_esperada }}</div>
+    <div class="caja"><h4>Respuesta del asistente</h4>{{ f.respuesta }}</div>
+  </div>
+
+  <div class="caja">
+    <h4>Artículos</h4>
+    <div class="stack" style="gap:10px">
+      <div><span class="tiny faint">Esperados</span>
+        <div class="arts">{% for a in esperados %}<span class="art {{ 'esperado' if a in recuperados else 'falta' }}" title="{{ 'Recuperado' if a in recuperados else 'No se recuperó' }}">{{ a }}</span>{% else %}<span class="small muted">ninguno: la ley no responde esto</span>{% endfor %}</div></div>
+      <div><span class="tiny faint">Recuperados (top 6)</span>
+        <div class="arts">{% for a in recuperados %}<span class="art {{ 'esperado' if a in esperados }}">{{ a }}</span>{% endfor %}</div></div>
+      <div><span class="tiny faint">Citados en la respuesta</span>
+        <div class="arts">{% for a in citados %}<span class="art {{ 'esperado' if a in esperados else 'extra' }}" title="{{ 'Era un artículo esperado' if a in esperados else 'Cita de más: no estaba entre los esperados' }}">{{ a }}</span>{% else %}<span class="small muted">sin citas</span>{% endfor %}</div></div>
+    </div>
+    <p class="tiny faint" style="margin-top:10px">Verde: esperado · rojo tachado: esperado pero no recuperado · ámbar: cita de más.
+      {% if f.reescrita %}<br>Pregunta reformulada: <i>{{ f.reescrita }}</i>{% endif %}</p>
+  </div>
+
+  {% if califica and not escritura %}
+  <div class="aviso small">Con <code>API_KEY</code> definida, la calificación desde la página está deshabilitada.</div>
+  {% elif califica and not calificable %}
+  <div class="aviso small">Tu calificación manual pertenece a otra corrida, así que aquí no se califica (mezclaría respuestas distintas con los puntajes del juez de esa otra corrida).
+    {% if archivo_calificado %}<a href="/evaluacion?corrida={{ archivo_calificado }}">Abrir la corrida que estás calificando</a>{% endif %}</div>
+  <details class="plegable"><summary>Ver al juez (DeepEval)
+      <svg class="flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="plegable-cuerpo">{% for m in juez %}<div class="juez-m"><span>{{ m.nombre }}</span>
+      <div class="meter {{ '' if nivel(m.valor) == 'ok' else nivel(m.valor) }}"><i style="width: {{ (m.valor * 100)|round|int }}%"></i></div>
+      <b class="val {{ nivel(m.valor) }}">{{ m.valor|pct }}</b>{% if m.razon %}<p class="juez-razon">{{ m.razon }}</p>{% endif %}</div>{% endfor %}</div>
+  </details>
+  {% elif califica %}
+  <form class="form-cal card-pad" style="padding:14px 16px; border:1px solid var(--line); border-radius:var(--radius-sm)"
+        hx-post="/ui/evaluacion/{{ f.id }}/calificar" hx-target="#detalle" hx-swap="innerHTML">
+    <input type="hidden" name="corrida" value="{{ corrida }}">
+    <h3 style="color:var(--text); font-size:14px">Tu calificación {% if guardado %}<span class="chip ok tiny">guardada</span>{% elif hc is not none %}<span class="chip acento tiny">ya calificada</span>{% endif %}</h3>
+    <div>
+      <span class="campo-etq">¿La respuesta es correcta?</span>
+      <div class="opciones" role="radiogroup">
+        <label><input type="radio" name="correcta" value="0" required {{ 'checked' if hc == 0 and hc is not none }}><span>No</span></label>
+        <label><input type="radio" name="correcta" value="0.5" {{ 'checked' if hc == 0.5 }}><span>En parte</span></label>
+        <label><input type="radio" name="correcta" value="1" {{ 'checked' if hc == 1 }}><span>Sí</span></label>
+      </div>
+    </div>
+    <div>
+      <span class="campo-etq">¿Todo lo que dice está respaldado por los artículos citados?</span>
+      <div class="opciones" role="radiogroup">
+        <label><input type="radio" name="fiel" value="0" {{ 'checked' if hf == 0 and hf is not none }}><span>No</span></label>
+        <label><input type="radio" name="fiel" value="0.5" {{ 'checked' if hf == 0.5 }}><span>En parte</span></label>
+        <label><input type="radio" name="fiel" value="1" {{ 'checked' if hf == 1 }}><span>Sí</span></label>
+      </div>
+    </div>
+    <div>
+      <label class="campo-etq" for="comentario">Comentario (opcional)</label>
+      <textarea id="comentario" name="comentario" maxlength="500" placeholder="Por qué la calificaste así. Sirve para explicar las discrepancias con el juez.">{{ comentario }}</textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Guardar calificación</button>
+  </form>
+
+  <details class="plegable" {{ 'open' if hc is not none }}>
+    <summary>Ver al juez (DeepEval)
+      <svg class="flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="plegable-cuerpo">
+      {% if hc is none %}<p class="aviso small" style="margin-bottom:10px">Califica primero: ver al juez antes puede sesgar tu criterio.</p>{% endif %}
+      {% for m in juez %}
+      <div class="juez-m">
+        <span>{{ m.nombre }}</span>
+        <div class="meter {{ '' if nivel(m.valor) == 'ok' else nivel(m.valor) }}"><i style="width: {{ (m.valor * 100)|round|int }}%"></i></div>
+        <b class="val {{ nivel(m.valor) }}">{{ m.valor|pct }}</b>
+        {% if m.razon %}<p class="juez-razon">{{ m.razon }}</p>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </details>
+  {% else %}
+  <div class="aviso small">Esta pregunta no tiene respuesta en la ley, así que se evalúa por <b>abstención</b> (¿dijo que no está en los documentos?), no con DeepEval ni a mano.</div>
+  {% endif %}
+</div>
+
+{% if oob %}
+<div id="panel-acuerdo" hx-swap-oob="true" style="margin-top:22px">{% include "_acuerdo.html" %}</div>
+<span id="cal-{{ f.id }}" class="dot-cal" hx-swap-oob="true" title="Calificada a mano">●</span>
+<span id="nav-cal" class="cuenta" hx-swap-oob="true" title="Respuestas calificadas a mano (mínimo {{ ac.minimo }})">{{ ac.calificadas }}/{{ ac.minimo }}</span>
+{% endif %}

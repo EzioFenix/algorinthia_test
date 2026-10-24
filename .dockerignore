@@ -1,0 +1,15 @@
+.git
+.venv
+.env
+.claude
+CLAUDE.local.md
+Prueba_*.pdf
+data/asistente.db*
+data/subidas
+eval/reportes
+**/__pycache__
+.pytest_cache
+.ruff_cache
+.deepeval
+tarea.md
+.run

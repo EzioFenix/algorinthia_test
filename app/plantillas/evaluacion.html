@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% block titulo %}Evaluación · Asistente laboral{% endblock %}
+{% block contenido %}
+<header class="page-head">
+  <div>
+    <span class="eyebrow">Evaluación</span>
+    <h1>Qué tan confiable es el asistente</h1>
+    <p>Resultados de la última corrida sobre el conjunto de preguntas de prueba, medidos con DeepEval y con métricas propias. Entra a cualquier pregunta para ver qué pasó y calificarla a mano.</p>
+  </div>
+  {% if rep %}
+  <div class="chips">
+    <span class="chip">{{ res.fecha[:16]|replace("T", " ") }}</span>
+    <span class="chip">{{ res.modelo }}</span>
+    <span class="chip {{ 'acento' if res.juez else 'warn' }}">{{ ("juez " ~ res.juez) if res.juez else "sin juez" }}</span>
+    <span class="chip">{{ res.preguntas }} preguntas</span>
+  </div>
+  {% endif %}
+</header>
+
+{% if not rep %}
+<div class="card card-pad" style="max-width:640px">
+  <h2>Todavía no hay resultados</h2>
+  <p class="card-sub">La evaluación es un proceso aparte: nunca corre cuando alguien hace una pregunta. Ejecútala con un comando:</p>
+  <div class="stack" style="margin-top:16px">
+    <div class="comando"><code>docker compose run --rm eval</code><button class="btn btn-sm" data-copiar="docker compose run --rm eval">Copiar</button></div>
+    <div class="comando"><code>make eval</code><button class="btn btn-sm" data-copiar="make eval">Copiar</button></div>
+  </div>
+  <p class="card-sub" style="margin-top:14px">Al terminar, recarga esta página.</p>
+</div>
+{% else %}
+
+{% if corrida %}
+<div class="aviso" style="margin-bottom:18px">Estás viendo la corrida del <b>{{ res.fecha[:16]|replace("T", " ") }}</b> con el modelo <b>{{ res.modelo }}</b>{% if res.etiqueta %} (variante «{{ res.etiqueta }}»){% endif %}.
+  <a href="/evaluacion">Volver a la corrida principal</a></div>
+{% endif %}
+{% if not calificable %}
+<div class="aviso" style="margin-bottom:18px">Tu calificación manual pertenece a otra corrida{% if fecha_calificada %} (la del {{ fecha_calificada[:16]|replace("T", " ") }}){% endif %}: aquí se puede mirar, pero no calificar.
+  {% if archivo_calificado %}<a href="/evaluacion?corrida={{ archivo_calificado }}">Abrir esa corrida</a>{% endif %}</div>
+{% endif %}
+
+{% if kpis_juez %}
+<div class="seccion-titulo" style="margin-top:0"><h2>DeepEval · juez local</h2><span class="small muted">sobre las preguntas con respuesta en la ley</span></div>
+<div class="kpis">
+  {% for k in kpis_juez %}
+  <div class="card kpi {{ nivel(k.valor) }}">
+    <div class="kpi-nombre">{{ k.nombre }}</div>
+    <div class="kpi-valor">{{ k.valor|pct }}</div>
+    <div class="meter"><i style="width: {{ (k.valor * 100)|round|int }}%"></i></div>
+    <div class="kpi-desc">{{ k.desc }}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="seccion-titulo"><h2>Métricas propias</h2><span class="small muted">deterministas: no dependen de ningún juez</span></div>
+<div class="kpis">
+  {% for k in kpis_propias %}
+  <div class="card kpi {{ nivel(k.valor) }}">
+    <div class="kpi-nombre">{{ k.nombre }}</div>
+    <div class="kpi-valor">{{ k.valor|pct }}</div>
+    <div class="meter"><i style="width: {{ (k.valor * 100)|round|int }}%"></i></div>
+    <div class="kpi-desc">{{ k.desc }}</div>
+  </div>
+  {% endfor %}
+  <div class="card kpi">
+    <div class="kpi-nombre">Latencia p50 · p95</div>
+    <div class="kpi-valor" style="font-size:24px">{{ "%.1f"|format(res.latencia_p50_s) }} s · {{ "%.1f"|format(res.latencia_p95_s) }} s</div>
+    <div class="kpi-desc">Por pregunta, de punta a punta, con el modelo local.</div>
+  </div>
+</div>
+
+<div class="dos" style="margin-top:22px">
+  <section class="card card-pad">
+    <h2>Comportamiento por tipo de pregunta</h2>
+    <p class="card-sub">Proporción de preguntas en que el asistente hizo lo correcto: responder con el artículo esperado, o abstenerse cuando no hay respuesta.</p>
+    <div class="barras-tipo" style="margin-top:16px">
+      {% for tipo, v in res.por_tipo.items() %}
+      <div class="barra-fila">
+        <span>{{ tipo|replace("_", " ") }} <span class="faint tiny">({{ v.n }})</span></span>
+        <div class="meter {{ '' if nivel(v.comportamiento_correcto) == 'ok' else nivel(v.comportamiento_correcto) }}"><i style="width: {{ (v.comportamiento_correcto * 100)|round|int }}%"></i></div>
+        <b>{{ v.comportamiento_correcto|pct }}</b>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><h2>Corridas anteriores</h2><span class="tiny faint">cómo cambió entre versiones</span></div>
+    <div style="overflow-x:auto">
+    <table class="tabla-hist">
+      <thead><tr><th>Corrida</th><th>Modelo</th><th class="num">n</th><th class="num">Acierto @6</th><th class="num">Recall</th><th class="num">Fidelidad</th><th class="num">Corrección</th></tr></thead>
+      <tbody>
+        {% for h in historial %}
+        <tr>
+          <td><a href="/evaluacion?corrida={{ h.archivo }}" {% if h.fecha == res.fecha %}style="font-weight:700"{% endif %}>{{ h.fecha[5:16]|replace("T", " ") }}</a>{% if h.archivo[:1] == "v" %} <span class="chip tiny" title="{{ h.archivo.split('_', 1)[1]|replace('_', ' ') if '_' in h.archivo }}">{{ h.archivo.split("_")[0] }}</span>{% endif %}{% if loop.first %} <span class="chip acento tiny">última</span>{% endif %}</td>
+          <td class="small" style="white-space:nowrap">{{ h.modelo }}{% if h.etiqueta %} <span class="chip tiny acento">{{ h.etiqueta }}</span>{% endif %}</td>
+          <td class="num faint">{{ h.preguntas }}</td>
+          <td class="num">{{ h.recuperacion_acierto_k|pct }}</td><td class="num">{{ h.recuperacion_recall_articulos|pct }}</td>
+          <td class="num">{{ h.faithfulness|pct }}</td><td class="num">{{ h.correctness|pct }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </section>
+</div>
+
+<div id="panel-acuerdo" style="margin-top:22px">{% include "_acuerdo.html" %}</div>
+
+<div class="seccion-titulo"><h2>Pregunta por pregunta</h2><span class="small muted">clic en una fila para ver el detalle y calificarla</span></div>
+<div class="cols-eval">
+  <section class="card" style="overflow:hidden">
+    <div class="filtros" data-filtro>
+      <input type="search" id="f-texto" placeholder="Buscar pregunta…" aria-label="Buscar pregunta">
+      <select id="f-tipo" aria-label="Tipo">
+        <option value="">Todos los tipos</option>
+        {% for t in tipos %}<option value="{{ t }}">{{ t|replace("_", " ") }}</option>{% endfor %}
+      </select>
+      <label><input type="checkbox" id="f-alertas"> Solo con alertas</label>
+      <label title="Oculta los puntajes del juez para no sesgar tu calificación"><input type="checkbox" id="f-ciega" checked> Calificar a ciegas</label>
+    </div>
+    <div class="tabla-scroll">
+      <table class="tabla-eval ciega" id="tabla-eval">
+        <thead><tr><th></th><th>#</th><th>Pregunta</th><th>Tipo</th><th class="num">Recup.</th><th class="num juez">Fidel.</th><th class="num juez">Correc.</th></tr></thead>
+        <tbody>
+          {% for f in tabla %}
+          <tr data-id="{{ f.id }}" data-tipo="{{ f.tipo }}" data-alerta="{{ 1 if f.alerta else 0 }}" data-texto="{{ f.pregunta|lower }}"
+              hx-get="/ui/evaluacion/{{ f.id }}{{ '?corrida=' ~ corrida if corrida }}" hx-target="#detalle" hx-swap="innerHTML" tabindex="0">
+            <td><span class="punto-est {{ 'ok' if f.ok else 'bad' }}" title="{{ 'Recuperó el artículo esperado / se abstuvo bien' if f.ok else 'No recuperó el artículo esperado / debió abstenerse' }}"></span></td>
+            <td>{{ f.id }} <span id="cal-{{ f.id }}" class="dot-cal" title="Calificada a mano">{% if f.calificada %}●{% endif %}</span></td>
+            <td class="pregunta" title="{{ f.pregunta }}">{{ f.pregunta }}</td>
+            <td><span class="chip tiny">{{ f.tipo|replace("_", " ") }}</span></td>
+            <td class="num val {{ nivel(f.recall) }}">{{ f.recall|pct }}</td>
+            <td class="num val juez {{ nivel(f.faithfulness) }}">{{ f.faithfulness|pct }}</td>
+            <td class="num val juez {{ nivel(f.correctness) }}">{{ f.correctness|pct }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="detalle" class="card detalle" aria-live="polite">
+    <div class="detalle-vacio">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+      <p style="margin-top:8px"><b style="color:var(--text)">Elige una pregunta</b><br>para ver la respuesta del asistente, los artículos y el juez.</p>
+    </div>
+  </section>
+</div>
+
+<div class="seccion-titulo"><h2>Volver a evaluar</h2><span class="small muted">proceso aparte, no corre al preguntar</span></div>
+<div class="card card-pad">
+  <div class="stack">
+    <div class="comando"><code>docker compose run --rm eval</code><button class="btn btn-sm" data-copiar="docker compose run --rm eval">Copiar</button></div>
+    <div class="comando"><code>make eval-rapida</code><span class="tiny faint">solo métricas propias, sin juez</span><button class="btn btn-sm" data-copiar="make eval-rapida">Copiar</button></div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

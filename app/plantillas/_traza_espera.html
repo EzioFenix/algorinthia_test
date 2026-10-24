@@ -1,0 +1,9 @@
+<div class="detalle-vacio" id="traza-espera"
+     {% if not rendido %}hx-get="/ui/trazas/{{ trace_id }}?n={{ n }}" hx-trigger="load delay:3s" hx-target="#detalle-traza" hx-swap="innerHTML"{% endif %}>
+  {% if rendido %}
+  <p><b style="color:var(--text)">La traza no llegó</b><br>Revisa que Langfuse esté arriba o abre la lista y elige otra.</p>
+  {% else %}
+  <span class="spinner" style="margin-bottom:10px"></span>
+  <p>Langfuse está procesando la traza…</p>
+  {% endif %}
+</div>

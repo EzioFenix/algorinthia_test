@@ -1,0 +1,57 @@
+[project]
+name = "asistente-laboral"
+version = "0.1.0"
+description = "Asistente RAG de derechos laborales (LFT + Art. 123 CPEUM) con LLM local en Ollama"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.8",
+    "pydantic-settings>=2.4",
+    "python-multipart>=0.0.9",
+    "jinja2>=3.1",
+    "httpx>=0.27",
+    "numpy>=1.26",
+    "pypdfium2>=4.30",
+    "rapidfuzz>=3.9",
+    "pystemmer>=2.2",
+    "langfuse>=3.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+    "bandit>=1.7",
+    "pip-audit>=2.7",
+]
+eval = [
+    "deepeval>=3.0",
+]
+parte2 = [
+    "scikit-learn>=1.5",
+    "pandas>=2.2",
+    "matplotlib>=3.9",
+    "ipykernel>=6.29",
+    "nbclient>=0.10",
+    "nbformat>=5.10",
+]
+
+[tool.uv]
+package = false
+default-groups = ["dev", "eval"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+# B008: File(...)/Depends(...) en argumentos es el patrón de FastAPI.
+# ASYNC230: las subidas se escriben a disco local en bloques de 1 MB; no justifica un hilo extra.
+# SIM905: la lista de palabras vacías es más legible como texto partido.
+ignore = ["B008", "ASYNC230", "SIM905"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

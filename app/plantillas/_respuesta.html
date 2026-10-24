@@ -1,0 +1,125 @@
+{% set c = r.confianza %}
+{% set clase = {"alta": "ok", "media": "warn", "baja": "bad"}[c.nivel] %}
+<article class="card resp">
+  <div class="resp-q"><b>Pregunta</b><span>{{ pregunta }}</span></div>
+
+  <div class="resp-cuerpo">
+    <div class="chips">
+      {% if r.encontrado_en_documentos %}
+      <span class="chip acento">Respaldado por {{ r.citas|length }} {{ "cita" if r.citas|length == 1 else "citas" }}</span>
+      {% else %}
+      <span class="chip">No está en los documentos consultados</span>
+      {% endif %}
+      <span class="chip {{ clase }}">Confianza {{ c.nivel }}{% if c.puntaje is not none %} · {{ (c.puntaje * 100)|round|int }}%{% endif %}</span>
+      <span class="chip">{{ "%.1f"|format(segundos) }} s</span>
+    </div>
+
+    <p class="resp-texto">{{ r.respuesta }}</p>
+
+    {% if c.puntaje is not none %}
+    <div class="confianza"><div class="meter {{ '' if clase == 'ok' else clase }}"><i style="width: {{ (c.puntaje * 100)|round|int }}%"></i></div></div>
+    {% endif %}
+    <p class="motivos">{{ c.motivos|join(" · ") }}</p>
+  </div>
+
+  {% if r.citas %}
+  <div class="citas">
+    {% for cita in r.citas %}
+    <details class="cita">
+      <summary>
+        <span class="ley">{{ cita.ley }}</span>
+        <span>Artículo {{ cita.articulo }}{% if cita.apartado %}, apartado {{ cita.apartado }}{% endif %}{% if cita.fraccion %}, fracción {{ cita.fraccion }}{% endif %}</span>
+        <span class="chip ok tiny">verificada</span>
+        <svg class="flecha" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <blockquote>{{ cita.texto }}</blockquote>
+    </details>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <section class="traza" aria-label="Cómo se obtuvo esta respuesta">
+    <div class="traza-cab">
+      <h3>Cómo se obtuvo</h3>
+      <span class="tiny faint">{{ t.total_ms|ms }} en total</span>
+    </div>
+
+    {% if t.segmentos %}
+    <div class="tiempos" role="img" aria-label="Distribución del tiempo por paso">
+      {% for s in t.segmentos %}<i style="width: {{ s.pct|round(1) }}%" title="{{ s.titulo }}: {{ s.ms|ms }}"></i>{% endfor %}
+    </div>
+    <div class="leyenda">{% for s in t.segmentos %}<span>{{ s.titulo }} {{ s.ms|ms }}</span>{% endfor %}</div>
+    {% endif %}
+
+    <ol class="pasos">
+      {% for p in t.pasos %}
+      <li class="paso {{ p.estado if p.estado != 'ok' }}">
+        <span class="paso-n">{{ loop.index }}</span>
+        <div><b>{{ p.titulo }}</b><p>{{ p.resumen }}</p></div>
+        <time>{{ p.ms|ms }}</time>
+      </li>
+      {% endfor %}
+    </ol>
+
+    <div class="totales">
+      <span>Tokens del modelo: <b>{{ "{:,}".format(t.tokens_entrada) }}</b> entrada · <b>{{ "{:,}".format(t.tokens_salida) }}</b> salida</span>
+      <span>Embeddings: <b>{{ t.tokens_embedding }}</b> tokens</span>
+      <span title="El modelo es local: costo real $0. Precio de referencia configurable.">Costo estimado: <b>${{ "%.5f"|format(t.costo_usd) }}</b></span>
+    </div>
+
+    {% if t.fragmentos %}
+    <details class="plegable">
+      <summary>Fragmentos recuperados ({{ t.fragmentos|length }})
+        <svg class="flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="plegable-cuerpo">
+        <table class="tabla-fr">
+          <thead><tr><th>Fragmento</th><th>Similitud</th><th class="num">BM25</th><th class="num">Denso</th><th>Citado</th></tr></thead>
+          <tbody>
+          {% for f in t.fragmentos %}
+          <tr class="{{ 'cit' if f.citado }}">
+            <td>{{ f.etiqueta }}</td>
+            <td><div class="barra-sim"><div class="meter"><i style="width: {{ (f.similitud * 100)|round|int }}%"></i></div><span class="tiny">{{ "%.2f"|format(f.similitud) }}</span></div></td>
+            <td class="num">{{ f.bm25 or "—" }}</td>
+            <td class="num">{{ f.denso or "—" }}</td>
+            <td>{% if f.citado %}<span class="chip ok tiny">sí</span>{% else %}<span class="faint">—</span>{% endif %}</td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <p class="tiny faint" style="margin-top:8px">BM25 y Denso son la posición del fragmento en cada búsqueda; se fusionan con RRF.</p>
+      </div>
+    </details>
+    {% endif %}
+
+    {% if t.glosario or t.reescrita %}
+    <details class="plegable">
+      <summary>Cómo se interpretó la pregunta
+        <svg class="flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="plegable-cuerpo">
+        {% if t.glosario %}<p class="muted">El glosario coloquial→legal agregó estos términos a la búsqueda por palabras:</p>
+        <div class="chips" style="margin-top:8px">{% for g in t.glosario %}<span class="chip acento" style="white-space:normal">{{ g }}</span>{% endfor %}</div>{% endif %}
+        {% if t.reescrita %}<p class="muted" style="margin-top:12px">El modelo reformuló la pregunta como:</p><p style="margin-top:4px"><i>{{ t.reescrita }}</i></p>{% endif %}
+      </div>
+    </details>
+    {% endif %}
+
+    {% if t.rechazadas %}
+    <details class="plegable" open>
+      <summary>Citas rechazadas por la validación ({{ t.rechazadas|length }})
+        <svg class="flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="plegable-cuerpo">
+        <ul class="lista-rechazos">{% for x in t.rechazadas %}<li>{{ x.motivo }}</li>{% endfor %}</ul>
+      </div>
+    </details>
+    {% endif %}
+  </section>
+
+  {% if r.trace_url %}
+  <div class="traza" style="padding:10px 22px; text-align:right; border-top:1px solid var(--line)">
+    <a class="small" href="/trazas?abrir={{ r.trace_id }}">Ver la traza completa →</a>
+  </div>
+  {% endif %}
+</article>

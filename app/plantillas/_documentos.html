@@ -1,0 +1,14 @@
+{% for d in documentos %}
+<article class="card doc">
+  <span class="doc-clave">{{ d.clave }}</span>
+  <h3>{{ d.nombre|lower|capitalize }}</h3>
+  <dl>
+    <dt>Última reforma (DOF)</dt><dd>{{ d.version_dof or "s/f" }}</dd>
+    <dt>Artículos</dt><dd>{{ "{:,}".format(d.articulos) }}</dd>
+    <dt>Fragmentos</dt><dd>{{ "{:,}".format(d.fragmentos) }}</dd>
+    <dt>Indexada</dt><dd>{{ d.actualizado }}</dd>
+  </dl>
+</article>
+{% else %}
+<div class="aviso">Indexando documentos… la primera vez tarda 1–2 minutos. Esta página se actualiza sola al terminar.</div>
+{% endfor %}

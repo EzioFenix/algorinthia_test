@@ -1,0 +1,18 @@
+{% if not filas %}
+<div class="detalle-vacio"><p><b style="color:var(--text)">Aún no hay trazas</b><br>Haz una pregunta en el Asistente y vuelve aquí.</p></div>
+{% else %}
+<table class="tabla-eval tabla-trazas">
+  <thead><tr><th>Hora</th><th>Pregunta</th><th>Confianza</th></tr></thead>
+  <tbody>
+  {% for f in filas %}
+  <tr data-id="{{ f.id }}" hx-get="/ui/trazas/{{ f.id }}" hx-target="#detalle-traza" hx-swap="innerHTML" tabindex="0">
+    <td class="faint small" style="white-space:nowrap">{{ f.inicio.astimezone().strftime("%d/%m %H:%M:%S") }}</td>
+    <td class="pregunta" title="{{ f.pregunta }}">{% if f.entorno == "evaluacion" %}<span class="chip acento tiny" title="Corrida de evaluación">eval</span> {% endif %}{{ f.pregunta }}
+      <div class="tiny faint">{{ "%.1f"|format(f.latencia_s) ~ " s" if f.latencia_s is not none else "" }}</div></td>
+    <td>{% if f.nivel %}<span class="chip tiny {{ {'alta': 'ok', 'media': 'warn', 'baja': 'bad'}.get(f.nivel, '') }}">{{ f.nivel }}</span>{% else %}<span class="faint">—</span>{% endif %}
+        {% if f.encontrado is sameas false %}<span class="chip tiny" title="No está en los documentos">sin resp.</span>{% endif %}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}

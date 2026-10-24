@@ -1,0 +1,50 @@
+{% set c = t.confianza %}
+<div class="card-head">
+  <div class="chips">
+    <span class="chip">{{ t.total_ms|ms }} en total</span>
+    <span class="chip">{{ "{:,}".format(t.tokens_total) }} tokens</span>
+    <span class="chip" title="El modelo es local: costo real $0. Precio de referencia configurable.">${{ "%.5f"|format(t.costo_total) }} estimado</span>
+    {% if c.nivel %}<span class="chip {{ {'alta': 'ok', 'media': 'warn', 'baja': 'bad'}.get(c.nivel, '') }}">confianza {{ c.nivel }}</span>{% endif %}
+    <span class="chip {{ 'acento' if t.entorno == 'evaluacion' }}">{{ "evaluación" if t.entorno == "evaluacion" else "uso real" }}</span>
+  </div>
+  <a class="small" style="white-space:nowrap" href="{{ t.url_langfuse }}" target="_blank" rel="noopener noreferrer">Abrir en Langfuse ↗</a>
+</div>
+<div class="card-pad stack">
+  <div>
+    <h2 style="font-size:17px; line-height:1.35">{{ t.pregunta }}</h2>
+    {% if t.respuesta %}<p class="muted" style="margin-top:8px">{{ t.respuesta }}</p>{% endif %}
+  </div>
+
+  <div class="cascada" role="table" aria-label="Etapas de la respuesta">
+    {% for e in t.etapas %}
+    <div class="cascada-fila" role="row">
+      <div class="cascada-nombre" style="padding-left: {{ e.profundidad * 14 }}px">
+        <span class="tipo tipo-{{ e.tipo }}">{{ e.tipo }}</span><b>{{ e.nombre }}</b>
+        {% if e.nivel in ("WARNING", "ERROR") %}<span class="chip warn tiny">{{ e.nivel|lower }}</span>{% endif %}
+      </div>
+      <div class="cascada-pista"><i class="barra-{{ e.tipo }}" style="left: {{ e.izq_pct|round(2) }}%; width: {{ e.ancho_pct|round(2) }}%"></i></div>
+      <div class="cascada-ms">{{ e.ms|ms }}</div>
+      {% if e.tokens_entrada is not none or e.costo %}
+      <div class="cascada-datos">
+        {% if e.tokens_entrada is not none %}<span>{{ "{:,}".format(e.tokens_entrada) }} → {{ "{:,}".format(e.tokens_salida or 0) }} tokens</span>{% endif %}
+        {% if e.costo %}<span>${{ "%.6f"|format(e.costo) }}</span>{% endif %}
+        {% if e.modelo %}<span>{{ e.modelo }}</span>{% endif %}
+      </div>
+      {% endif %}
+      {% if e.entrada or e.salida or e.metadata or e.mensaje %}
+      <details class="plegable cascada-io">
+        <summary>Entrada, salida y datos
+          <svg class="flecha" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="plegable-cuerpo">
+          {% if e.mensaje %}<p class="aviso small">{{ e.mensaje }}</p>{% endif %}
+          {% if e.entrada %}<h4 class="tiny faint">ENTRADA</h4><pre class="io">{{ e.entrada }}</pre>{% endif %}
+          {% if e.salida %}<h4 class="tiny faint">SALIDA</h4><pre class="io">{{ e.salida }}</pre>{% endif %}
+          {% if e.metadata %}<h4 class="tiny faint">DATOS DE LA ETAPA</h4><pre class="io">{{ e.metadata }}</pre>{% endif %}
+        </div>
+      </details>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
